@@ -33,9 +33,11 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 		{
 			++_index;
 
-			if (_index >= _path.Length)
+			if (_index + 1 >= _path.Length)
 			{
 				_currentDir = EDirection.NONE;
+
+				LookTo(DetermineDirection(transform.position, _path[_path.Length - 1].transform.position));
 
 				_interaction.Interact();
 
@@ -53,9 +55,12 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 			Move(_currentDir, OnMoveCompleted);
 		}
 
-		private void OnMoveCompleted()
+		private void OnMoveCompleted(bool success)
 		{
-			MoveToNextPoint();
+			if (success)
+			{
+				MoveToNextPoint();
+			}
 		}
 
 		private EDirection DetermineDirection(Vector3 start, Vector3 destination)
