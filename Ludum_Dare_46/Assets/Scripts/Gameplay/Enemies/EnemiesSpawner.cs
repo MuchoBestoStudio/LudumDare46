@@ -11,6 +11,8 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 		[SerializeField, Tooltip("")]
 		private	Transform	_parent = null;
 		[SerializeField, Tooltip("")]
+		private Map.Tile _target = null;
+		[SerializeField, Tooltip("")]
 		private	GameObject	_prefab = null;
 		[SerializeField, Tooltip("")]
 		private	uint		_initialAmount = 5;
@@ -54,6 +56,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 			go.transform.position = position;
 
 			EnemyMovements movements = go.GetComponent<EnemyMovements>();
+			movements.SetTarget(_target);
 
 			Assert.IsNotNull(movements, nameof(EnemiesSpawner) + ": Spawn(), movements should not be null.");
 
