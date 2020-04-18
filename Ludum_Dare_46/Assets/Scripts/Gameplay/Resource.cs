@@ -35,8 +35,12 @@ public class Resource : MonoBehaviour, IInteractable
     {
         if (_combustibleAmount > 0)
         {
-            RemoveCombustible(1);
-            FindObjectOfType<Inventory>().AddCombustible(1);
+            Inventory inventory = FindObjectOfType<Inventory>();
+            if (inventory && inventory.CanAddCombustible(1))
+            {
+                RemoveCombustible(1);
+                inventory.AddCombustible(1);
+            }
         }
     }
 
