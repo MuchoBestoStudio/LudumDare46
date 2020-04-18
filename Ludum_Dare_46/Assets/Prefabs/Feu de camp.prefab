@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3972676054594270961}
   - component: {fileID: 2867665539129824287}
   - component: {fileID: 8885624969856899185}
+  - component: {fileID: 1842917730}
+  - component: {fileID: 1842917729}
   m_Layer: 0
   m_Name: Feu de camp
   m_TagString: Untagged
@@ -25,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4024007980401303053}
-  m_LocalRotation: {x: -0.00000006953546, y: 0.00000017484555, z: 1.2157966e-14, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -23.824974, y: 0, z: -8.699911}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -80,6 +82,34 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &1842917730
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4024007980401303053}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.1238332, y: 1.4557334, z: 3.0902252}
+  m_Center: {x: -0.004559934, y: 0.18658173, z: -0.019279659}
+--- !u!114 &1842917729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4024007980401303053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e7824785db2c6443b4f22bf8fd62107, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fireData: {fileID: 11400000, guid: 38f3add1cdefe214ab51ec8ebe9f7ce1, type: 2}
+  _playerInventory: {fileID: 0}
+  _combustibleAmount: 0
 --- !u!1001 &7146692248159687357
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -177,11 +207,6 @@ PrefabInstance:
       propertyPath: IntensvityMax
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 1991799202355857563, guid: 7888403ec3d94e146b19bf6648bd4bad,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1992780520658721916, guid: 7888403ec3d94e146b19bf6648bd4bad,
         type: 3}
       propertyPath: m_Name
@@ -256,21 +281,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1993545627004252770, guid: 7888403ec3d94e146b19bf6648bd4bad,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1993545627004252770, guid: 7888403ec3d94e146b19bf6648bd4bad,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1993545627004252770, guid: 7888403ec3d94e146b19bf6648bd4bad,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7888403ec3d94e146b19bf6648bd4bad, type: 3}
