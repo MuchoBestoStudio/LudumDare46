@@ -6,6 +6,8 @@ using MuchoBestoStudio.LudumDare.UI.ViewModels;
 public class UIManager : MonoBehaviour
 {
     [SerializeField]
+    GameObject _gameOverObject = null;
+    [SerializeField]
     private Inventory _playerInventory = null;
     [SerializeField]
     private FireSource _fireSource = null;
@@ -14,8 +16,9 @@ public class UIManager : MonoBehaviour
     private InventoryViewModel _inventoryViewModel = null;
     private FireSourceViewModel _fireSourceViewModel = null;
 
-    private void Start()
+    void Start()
     {
+        GameManager.Instance.onGameOver += ShowGameOverPanel;
         if (_inventoryViewModel = GetComponent<InventoryViewModel>())
         {
             _inventoryViewModel.SetInventory(_playerInventory);
@@ -25,5 +28,18 @@ public class UIManager : MonoBehaviour
         {
             _fireSourceViewModel.SetFireSource(_fireSource);
         }
+    }
+
+    private void ShowGameOverPanel()
+    {
+        if (_gameOverObject)
+        {
+            _gameOverObject.SetActive(true);
+        }
+    }
+
+    private void HideGameOverPanel()
+    {
+        _gameOverObject.SetActive(false);
     }
 }

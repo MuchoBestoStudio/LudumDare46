@@ -62,13 +62,13 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
             if (_currentCombustibleUpdateTimer > _combustibleUpdateTimer)
             {
                 _currentCombustibleUpdateTimer = 0;
-                if (_combustibleAmount > 1)
+                if (_combustibleAmount > 0)
                 {
                     SetCombustibleAmount(_combustibleAmount - 1);
-                }
-                else if (onNoCombustibleLeft != null)
-                {
-                    onNoCombustibleLeft.Invoke();
+                    if (_combustibleAmount == 0 && onNoCombustibleLeft != null)
+                    {
+                        onNoCombustibleLeft.Invoke();
+                    }
                 }
             }
 
@@ -88,8 +88,6 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
                 pc.onInteractPerformed += AddCombustible;
                 pc.onInteractPerformed += inventory.RemoveCombustible;
             }
-
-            
         }
 
         private void OnTriggerExit(Collider other)
