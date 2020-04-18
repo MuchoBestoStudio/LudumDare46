@@ -5,7 +5,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
 {
     using MuchoBestoStudio.LudumDare.Gameplay._3C;
 
-    public class FireSource : MonoBehaviour
+    public class FireSource : MonoBehaviour, IInteractable
     {
         [SerializeField]
         private FireData _fireData = null;
@@ -75,34 +75,13 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
             _currentCombustibleUpdateTimer += UnityEngine.Time.deltaTime;
         }
 
-        private void OnTriggerEnter(Collider other)
+        public void Interact()
         {
-            PlayerController pc = FindObjectOfType<PlayerController>();
-            Inventory inventory = other.GetComponent<Inventory>();
-
-            if (pc && inventory)
+            AddCombustible();
+            Inventory inventory = FindObjectOfType<Inventory>();
+            if (inventory)
             {
-                pc.onInteractPerformed -= AddCombustible;
-                pc.onInteractPerformed -= inventory.RemoveCombustible;
-
-                pc.onInteractPerformed += AddCombustible;
-                pc.onInteractPerformed += inventory.RemoveCombustible;
-            }
-
-            
-        }
-
-        private void OnTriggerExit(Collider other)
-        {
-            PlayerController pc = FindObjectOfType<PlayerController>();
-            if (pc)
-            {
-                pc.onInteractPerformed -= AddCombustible;
-                Inventory inventory = other.GetComponent<Inventory>();
-                if (inventory)
-                {
-                    pc.onInteractPerformed -= inventory.RemoveCombustible;
-                }
+                inventory.RemoveCombustible();
             }
         }
     }

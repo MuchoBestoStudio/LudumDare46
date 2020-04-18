@@ -50,7 +50,7 @@ namespace MuchoBestoStudio.LudumDare.Map
 		{
 			Vector3 destination = position + direction;
 
-			return GetTile((int)destination.x, (int)destination.z);
+			return GetTile((int)destination.z, (int)destination.x);
 		}
 
 		private Vector3 GetTileSize(Tile[] tileArray)
