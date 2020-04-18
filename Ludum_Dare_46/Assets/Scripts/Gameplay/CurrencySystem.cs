@@ -22,12 +22,15 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
             return _data.Current >= value;
         }
 
-        public void Pay(uint value)
+        public bool Pay(uint value)
         {
             if (CanAfford(value))
             {
                 _data.Current -= value;
+                return true;
             }
+
+            return false;
         }
 
         public void Earn(float survivalTime)
