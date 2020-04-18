@@ -10,8 +10,20 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
         private InventoryData _inventoryData = null;
 
         public Action<uint> onCombustibleAmountChanged = null;
+        public Action<uint> onMaxCombustibleAmountChanged = null;
 
+        [SerializeField]
         private uint _maxCombustiblesAmount = 0;
+        public uint MaxCombustibleAmount => _maxCombustiblesAmount;
+
+        public void SetMaxCombustibleAmount(uint value)
+        {
+            _maxCombustiblesAmount = value;
+            if (onMaxCombustibleAmountChanged != null)
+            {
+                onMaxCombustibleAmountChanged.Invoke(_maxCombustiblesAmount);
+            }
+        }
 
         [SerializeField]
         private uint _combustibleAmount = 0;
@@ -26,16 +38,32 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
             }
         }
 
-        public void AddCombustible(uint value) { SetCombustibleAmount(_combustibleAmount + value); }
-        public void RemoveCombustible(uint value) { SetCombustibleAmount(_combustibleAmount - value); }
+        public void AddCombustible(uint value)
+        {
+            if (CanAddCombustible(value))
+            {
+                SetCombustibleAmount(_combustibleAmount + value);
+            }
+        }
+
+        public void RemoveCombustibles(uint value)
+        {
+            if (_combustibleAmount - value <= _combustibleAmount)
+            {
+                SetCombustibleAmount(_combustibleAmount - value);
+            }
+        }
+
+        public void RemoveCombustible(){ RemoveCombustibles(1); }
+
         public bool CanAddCombustible(uint value)
         {
-            return _combustibleAmount + value < _maxCombustiblesAmount;
+            return _combustibleAmount + value <= _maxCombustiblesAmount;
         }
 
         void Start()
         {
-            _maxCombustiblesAmount = _inventoryData.MaxCombustiblesAmount;
+            SetMaxCombustibleAmount(_inventoryData.MaxCombustiblesAmount);
             SetCombustibleAmount(0);
         }
     }

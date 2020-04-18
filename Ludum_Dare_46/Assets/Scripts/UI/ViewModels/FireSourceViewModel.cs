@@ -10,31 +10,21 @@ namespace MuchoBestoStudio.LudumDare.UI.ViewModels
         private FireSource _fireSource = null;
         [SerializeField]
         private Text _combustibleText = null;
-
-        private int tagIndex = -1;
-
-        void Start()
-        {
-            if (_combustibleText)
-            {
-                tagIndex = _combustibleText.text.IndexOf("[VALUE]");
-            }
-        }
+        [SerializeField]
+        private string _taggedString = null;
 
         public void SetFireSource(FireSource fireSource)
         {
             _fireSource = fireSource;
-            UpdateCombustibleText(_fireSource.CombustibleAmount);
+            UpdateCombustibleText(0);
             _fireSource.onCombustibleAmountChanged += UpdateCombustibleText;
         }
 
         private void UpdateCombustibleText(uint value)
         {
-            if (tagIndex >= 0)
-            {
-                string resultString = _combustibleText.text.Substring(0, tagIndex) + value.ToString();
-                _combustibleText.text = resultString;
-            }
+            string resultString;
+            resultString = StringTagReplacer.ReplaceTag(_taggedString, "[VALUE]", _fireSource.CombustibleAmount.ToString());
+            _combustibleText.text = resultString;
         }
     }
 }

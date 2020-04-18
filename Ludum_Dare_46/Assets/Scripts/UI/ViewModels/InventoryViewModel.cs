@@ -11,31 +11,23 @@ namespace MuchoBestoStudio.LudumDare.UI.ViewModels
 
         [SerializeField]
         private Text _combustibleText = null;
-
-        private int tagIndex = -1;
-
-        void Start()
-        {
-            if (_combustibleText)
-            {
-                tagIndex = _combustibleText.text.IndexOf("[VALUE]");
-            }
-        }
+        [SerializeField]
+        private string _taggedString = null;
 
         public void SetInventory(Inventory inventory)
         {
             _playerInventory = inventory;
-            UpdateCombustibleText(_playerInventory.CombustibleAmount);
+            UpdateCombustibleText(0);
             _playerInventory.onCombustibleAmountChanged += UpdateCombustibleText;
+            _playerInventory.onMaxCombustibleAmountChanged += UpdateCombustibleText;
         }
 
         private void UpdateCombustibleText(uint value)
         {
-            if (tagIndex >= 0)
-            {
-                string resultString = _combustibleText.text.Substring(0, tagIndex) + value.ToString();
-                _combustibleText.text = resultString;
-            }
+            string resultString;
+            resultString = StringTagReplacer.ReplaceTag(_taggedString, "[VALUE]", _playerInventory.CombustibleAmount.ToString());
+            resultString = StringTagReplacer.ReplaceTag(resultString, "[MAX]", _playerInventory.MaxCombustibleAmount.ToString());
+            _combustibleText.text = resultString;
         }
     }
 }
