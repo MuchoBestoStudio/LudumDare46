@@ -43,6 +43,14 @@ namespace MuchoBestoStudio.LudumDare.UI.Skill
 			_upgradeButton.onClick.RemoveListener(UpgradeSkill);
 		}
 
+		public void UpdateVisual(Gameplay.CurrencySystem system)
+		{
+			if (system.CanAfford((uint)_skillData.ValueCurve.Evaluate(_skillData.Level)) != true)
+			{
+				_upgradeButton.interactable = false;
+			}
+		}
+
 		private void UpgradeSkill()
 		{
 			Gameplay.CurrencySystem system = FindObjectOfType<Gameplay.CurrencySystem>();
