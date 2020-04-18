@@ -1,11 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace MuchoBestoStudio.LudumDare.Map
 {
 	public class Tile : MonoBehaviour
 	{
+		public const float SIZE = 1f;
+
 		[SerializeField]
 		protected Transform _center = null;
 
