@@ -23,12 +23,12 @@ MonoBehaviour:
       m_ScaleRangeMax: {x: 1.1438849, y: 1.1541624, z: 1.2158273}
       m_UniformScale: {x: 1, y: 1}
       m_UniformBool: 0
-      m_XRotationBool: 0
-      m_YRotationBool: 0
-      m_ZRotationBool: 0
-      m_XScaleBool: 0
-      m_YScaleBool: 0
-      m_ZScaleBool: 0
+      m_XRotationBool: 1
+      m_YRotationBool: 1
+      m_ZRotationBool: 1
+      m_XScaleBool: 1
+      m_YScaleBool: 1
+      m_ZScaleBool: 1
     name: Roche00
   - gameObject: {fileID: 5776934862659393020, guid: b71b835d21355d046b2285d53948d0b7,
       type: 3}
@@ -108,12 +108,12 @@ MonoBehaviour:
       m_ScaleRangeMax: {x: 1.1849947, y: 1.3052416, z: 1.253854}
       m_UniformScale: {x: 1, y: 1}
       m_UniformBool: 0
-      m_XRotationBool: 0
+      m_XRotationBool: 1
       m_YRotationBool: 0
       m_ZRotationBool: 0
-      m_XScaleBool: 0
-      m_YScaleBool: 0
-      m_ZScaleBool: 0
+      m_XScaleBool: 1
+      m_YScaleBool: 1
+      m_ZScaleBool: 1
     name: Roche05
   - gameObject: {fileID: 1350129999731354670, guid: b38fc115310710e4b9efdb408d867cd6,
       type: 3}

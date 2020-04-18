@@ -6,13 +6,12 @@ namespace MuchoBestoStudio.LudumDare.Map
 {
 	public class TilesManager : MonoBehaviour
 	{
-		public static TilesManager	Instance { get; private set; } = null;
+		public static TilesManager Instance { get; private set; } = null;
 
-		[SerializeField]
-		private uint _row;
-		[SerializeField]
-		private uint _column;
+		public uint Row { get; private set; }
+		public uint Column { get; private set; }
 
+		public Pathfinding.PathFinder PathFinder { get; private set; }
 		private Tile[,] _tilesArray;
 
 		private void Awake()
@@ -45,26 +44,33 @@ namespace MuchoBestoStudio.LudumDare.Map
 			Tile[] tiles = GetComponentsInChildren<Tile>();
 			Vector3 mapSize = GetTileSize(tiles);
 
-			_column = (uint)(mapSize.x / Tile.SIZE);
-			_row = (uint)(mapSize.z / Tile.SIZE);
-			_tilesArray = new Tile[_column, _row];
+			Column = (uint)(mapSize.x / Tile.SIZE);
+			Row = (uint)(mapSize.z / Tile.SIZE);
+			_tilesArray = new Tile[Column, Row];
 
 			foreach (Tile tile in tiles)
 			{
 				Vector3 tilePosition = tile.transform.position;
 				_tilesArray[(uint)(tilePosition.x / Tile.SIZE), (uint)(tilePosition.z / Tile.SIZE)] = tile;
 			}
+
+			PathFinder = new Pathfinding.PathFinder(this, tiles);
 		}
 
 		public Tile GetTile(int row, int column)
 		{
 			if (row < 0 || column < 0 ||
-				row >= _row || column >= _column)
+				row >= Row || column >= Column)
 			{
 				return null;
 			}
 
 			return _tilesArray[column, row];
+		}
+
+		public Tile GetTile(Vector3 position)
+		{
+			return GetTile(Mathf.RoundToInt(position.z / Tile.SIZE), Mathf.RoundToInt(position.x / Tile.SIZE));
 		}
 
 		public Tile GetTile(Vector3 position, Vector3 direction)

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 using MuchoBestoStudio.LudumDare.Gameplay._3C;
 
@@ -9,10 +10,10 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 		#region Variables
 
 		[SerializeField, Tooltip("")]
-		private	Transform _target = null;
+		private	Map.Tile _target = null;
 
 		private	int	_index = 0;
-		private Vector3[]	_path = new Vector3[0];
+		private Map.Tile[]	_path = new Map.Tile[0];
 		private EDirection _currentDir = EDirection.NONE;
 
 		#endregion
@@ -24,12 +25,6 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 		#endregion
 
 		#region MonoBehaviour's Methods
-
-		private void OnEnable()
-		{
-			RetrievePath();
-		}
-
 		#endregion
 
 		#region Movements
@@ -49,8 +44,9 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 				return;
 			}
 
-			_currentDir =  DetermineDirection(transform.position, _path[_index]);
+			_currentDir =  DetermineDirection(transform.position, _path[_index].transform.position);
 
+			Debug.Log(_index + " Move to " + _currentDir + "   /  " + _path[_index]);
 			Move(_currentDir, OnMoveCompleted);
 		}
 
@@ -80,7 +76,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 			return EDirection.NONE;
 		}
 
-		private void SetPath(Vector3[] path)
+		private void SetPath(Map.Tile[] path)
 		{
 			_index = 0;
 
@@ -91,13 +87,16 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 
 		private void RetrievePath()
 		{
-			Vector3[] points = new Vector3[] { transform.position,
-											   transform.position + new Vector3(10f, 0f, 0f),
-											   transform.position + new Vector3(10f, 0f, 10f),
-											   transform.position + new Vector3(0f, 0f, 10f),
-											 };
+			Map.Tile startTile = Map.TilesManager.Instance.GetTile(transform.position);
+			Map.Tile[] path = Map.TilesManager.Instance.PathFinder.GetPath(startTile, _target);
 
-			SetPath(points);
+			SetPath(path);
+		}
+
+		public void SetTarget(Map.Tile newTarget)
+		{
+			_target = newTarget;
+			RetrievePath();
 		}
 
 		#endregion
