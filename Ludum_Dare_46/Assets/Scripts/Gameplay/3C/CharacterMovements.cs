@@ -13,11 +13,17 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 
 		#endregion
 
+		#region Events
+
+		public Action onMovePerformed = null;
+
+		#endregion
+
 		#region Methods
 
 		public void Move(EDirection direction, Action<bool> onCompleted)
 		{
-			if (direction == EDirection.NONE || DOTween.IsTweening(transform) || TilesManager.Instance == null)
+			if (direction == EDirection.NONE || IsMoving() || TilesManager.Instance == null)
 			{
 				return;
 			}
@@ -35,6 +41,11 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 													onCompleted.Invoke(true);
 												}
 											});
+
+				if (onMovePerformed != null)
+				{
+					onMovePerformed.Invoke();
+				}
 			}
 			else
 			{
@@ -77,6 +88,11 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 				default:
 					return;
 			}
+		}
+
+		public bool IsMoving()
+		{
+			return DOTween.IsTweening(transform);
 		}
 
 		#endregion
