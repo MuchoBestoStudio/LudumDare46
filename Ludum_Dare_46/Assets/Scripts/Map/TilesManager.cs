@@ -6,12 +6,33 @@ namespace MuchoBestoStudio.LudumDare.Map
 {
 	public class TilesManager : MonoBehaviour
 	{
+		public static TilesManager	Instance { get; private set; } = null;
+
 		[SerializeField]
 		private uint _row;
 		[SerializeField]
 		private uint _column;
 
 		private Tile[,] _tilesArray;
+
+		private void Awake()
+		{
+			if (Instance != null)
+			{
+				Destroy(this);
+				return;
+			}
+
+			Instance = this;
+		}
+
+		private void OnDestroy()
+		{
+			if (Instance == this)
+			{
+				Instance = null;
+			}
+		}
 
 		void Start()
 		{
@@ -24,14 +45,14 @@ namespace MuchoBestoStudio.LudumDare.Map
 			Tile[] tiles = GetComponentsInChildren<Tile>();
 			Vector3 mapSize = GetTileSize(tiles);
 
-			_column = (uint)mapSize.x;
-			_row = (uint)mapSize.z;
+			_column = (uint)(mapSize.x / Tile.SIZE);
+			_row = (uint)(mapSize.z / Tile.SIZE);
 			_tilesArray = new Tile[_column, _row];
 
 			foreach (Tile tile in tiles)
 			{
 				Vector3 tilePosition = tile.transform.position;
-				_tilesArray[(uint)tilePosition.x, (uint)tilePosition.z] = tile;
+				_tilesArray[(uint)(tilePosition.x / Tile.SIZE), (uint)(tilePosition.z / Tile.SIZE)] = tile;
 			}
 		}
 
@@ -50,7 +71,7 @@ namespace MuchoBestoStudio.LudumDare.Map
 		{
 			Vector3 destination = position + direction;
 
-			return GetTile((int)destination.x, (int)destination.z);
+			return GetTile(Mathf.RoundToInt(destination.z / Tile.SIZE), Mathf.RoundToInt(destination.x / Tile.SIZE));
 		}
 
 		private Vector3 GetTileSize(Tile[] tileArray)
@@ -69,7 +90,7 @@ namespace MuchoBestoStudio.LudumDare.Map
 					size.z = tile.Center.z;
 			}
 
-			return size + Vector3.one;
+			return size + new Vector3(Tile.SIZE, 0f, Tile.SIZE);
 		}
 	}
 }

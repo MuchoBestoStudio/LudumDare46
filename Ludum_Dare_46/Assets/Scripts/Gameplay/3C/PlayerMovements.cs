@@ -8,8 +8,11 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 
 		[SerializeField, Tooltip("")]
 		private PlayerController _controller = null;
+		[Tooltip("")]
+		public float RepeatDuration = 0.5f;
 
-		public	EDirection	CurrentDirection { get; private set; } = EDirection.NONE;
+		public EDirection CurrentDirection { get; private set; } = EDirection.NONE;
+		public float RepeatTime { get; private set; } = 0f;
 
 		#endregion
 
@@ -27,11 +30,23 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 
 		private void Update()
 		{
-			Move(CurrentDirection);
+			if (CurrentDirection != EDirection.NONE)
+			{
+				RepeatTime -= Time.deltaTime;
+
+				if (RepeatTime <= 0f)
+				{
+					RepeatTime += RepeatDuration;
+
+					Move(CurrentDirection, null);
+				}
+			}
 		}
 
 		private void PlayerController_OnMovementsPerformed(EDirection direction, bool started)
 		{
+			RepeatTime = 0f;
+
 			if (started)
 			{
 				CurrentDirection = direction;

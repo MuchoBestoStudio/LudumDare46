@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
+using System;
 
 using MuchoBestoStudio.LudumDare.Gameplay;
 using MuchoBestoStudio.LudumDare.Gameplay._3C;
 
-public class Resource : MonoBehaviour
+public class Resource : MonoBehaviour, IInteractable
 {
     [SerializeField]
     private uint _combustibleAmount = 0;
     public uint CombustibleAmount => _combustibleAmount;
+
+    public Action<uint> onCombustibleAmountChanged = null;
 
     public void SetCombustibleAmount(uint value)
     {
@@ -20,6 +23,7 @@ public class Resource : MonoBehaviour
         if (_combustibleAmount - value <= _combustibleAmount)
         {
             SetCombustibleAmount(_combustibleAmount - value);
+            onCombustibleAmountChanged?.Invoke(_combustibleAmount);
             if (_combustibleAmount == 0)
             {
                 Destroy(gameObject);
@@ -36,18 +40,8 @@ public class Resource : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void Interact()
     {
-        PlayerController pc = FindObjectOfType<PlayerController>();
-        if (pc)
-        {
-            pc.onInteractPerformed -= TakeCombustible;
-            pc.onInteractPerformed += TakeCombustible;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        FindObjectOfType<PlayerController>().onInteractPerformed -= TakeCombustible;
+        TakeCombustible();
     }
 }
