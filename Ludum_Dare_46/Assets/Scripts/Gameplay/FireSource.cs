@@ -73,14 +73,21 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
             _currentCombustibleUpdateTimer += UnityEngine.Time.deltaTime;
         }
 
-        public void Interact()
+        public void Interact(ECharacter character)
         {
-            AddCombustible();
-            Inventory inventory = FindObjectOfType<Inventory>();
-            if (inventory)
-            {
-                inventory.RemoveCombustible();
-            }
+			if (character == ECharacter.PLAYER)
+			{
+				AddCombustible();
+				Inventory inventory = FindObjectOfType<Inventory>();
+				if (inventory)
+				{
+					inventory.RemoveCombustible();
+				}
+			}
+			else
+			{
+				RemoveCombustibles(1);
+			}
         }
     }
 }

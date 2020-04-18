@@ -6,6 +6,6 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
 {
 	public interface IInteractable
 	{
-		void Interact();
+		void Interact(ECharacter character);
 	}
 }

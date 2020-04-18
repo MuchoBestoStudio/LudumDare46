@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using MuchoBestoStudio.LudumDare.Map;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,8 +26,11 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 		{
 			transform.position = new Vector3((int)transform.position.x, transform.position.y, (int)transform.position.z);
 
-			Map.Tile forwardTile = tilesManager.GetTile(transform.position, transform.forward);
-			forwardTile.Interact();
+			Tile forwardTile = tilesManager.GetTile(transform.position, transform.forward);
+			if (forwardTile != null)
+			{
+				forwardTile.Interact(ECharacter.PLAYER);
+			}
 		}
 	}
 }

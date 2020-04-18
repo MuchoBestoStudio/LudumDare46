@@ -50,6 +50,8 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 			if (started)
 			{
 				CurrentDirection = direction;
+
+				LookTo(CurrentDirection);
 			}
 			else
 			{

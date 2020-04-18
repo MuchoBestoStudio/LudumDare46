@@ -12,11 +12,11 @@ namespace MuchoBestoStudio.LudumDare.Map
 		private FireSource _fireSource = null;
 		public override bool Free { get { return false; } }
 
-		public override void Interact()
+		public override void Interact(ECharacter character)
 		{
 			if (_fireSource != null)
 			{
-				_fireSource.Interact();
+				_fireSource.Interact(character);
 			}
 		}
 	}
