@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace MuchoBestoStudio.LudumDare.Gameplay
 {
-
     public class Inventory : MonoBehaviour
     {
         [SerializeField]

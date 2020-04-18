@@ -1,7 +1,8 @@
 ﻿using System;
-using System.Linq;
 using UnityEngine;
 using MuchoBestoStudio.LudumDare.Gameplay._3C;
+using MuchoBestoStudio.LudumDare.Map;
+using UnityEngine.Assertions;
 
 namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 {
@@ -10,10 +11,12 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 		#region Variables
 
 		[SerializeField, Tooltip("")]
-		private	Map.Tile _target = null;
+		private	EnemyInteraction _interaction = null;
+		[SerializeField, Tooltip("")]
+		private	Tile _target = null;
 
 		private	int	_index = 0;
-		private Map.Tile[]	_path = new Map.Tile[0];
+		private Tile[]	_path = new Tile[0];
 		private EDirection _currentDir = EDirection.NONE;
 
 		#endregion
@@ -24,18 +27,19 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 
 		#endregion
 
-		#region MonoBehaviour's Methods
-		#endregion
-
 		#region Movements
 
 		private void MoveToNextPoint()
 		{
 			++_index;
 
-			if (_index >= _path.Length)
+			if (_index + 1 >= _path.Length)
 			{
 				_currentDir = EDirection.NONE;
+
+				LookTo(DetermineDirection(transform.position, _path[_path.Length - 1].transform.position));
+
+				_interaction.Interact();
 
 				if (onEnemyReachEnd != null)
 				{
@@ -46,13 +50,17 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 
 			_currentDir =  DetermineDirection(transform.position, _path[_index].transform.position);
 
-			Debug.Log(_index + " Move to " + _currentDir + "   /  " + _path[_index]);
+			LookTo(_currentDir);
+
 			Move(_currentDir, OnMoveCompleted);
 		}
 
-		private void OnMoveCompleted()
+		private void OnMoveCompleted(bool success)
 		{
-			MoveToNextPoint();
+			if (success)
+			{
+				MoveToNextPoint();
+			}
 		}
 
 		private EDirection DetermineDirection(Vector3 start, Vector3 destination)
@@ -87,13 +95,16 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 
 		private void RetrievePath()
 		{
-			Map.Tile startTile = Map.TilesManager.Instance.GetTile(transform.position);
-			Map.Tile[] path = Map.TilesManager.Instance.PathFinder.GetPath(startTile, _target);
+			Tile startTile = TilesManager.Instance.GetTile(transform.position);
+
+			Assert.IsNotNull(startTile, nameof(EnemyMovements) + ": RetrievePath(), startTile should not be null.");
+
+			Tile[] path = TilesManager.Instance.PathFinder.GetPath(startTile, _target);
 
 			SetPath(path);
 		}
 
-		public void SetTarget(Map.Tile newTarget)
+		public void SetTarget(Tile newTarget)
 		{
 			_target = newTarget;
 			RetrievePath();

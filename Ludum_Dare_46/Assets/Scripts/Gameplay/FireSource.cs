@@ -3,8 +3,6 @@ using UnityEngine;
 
 namespace MuchoBestoStudio.LudumDare.Gameplay
 {
-    using MuchoBestoStudio.LudumDare.Gameplay._3C;
-
     public class FireSource : MonoBehaviour, IInteractable
     {
         [SerializeField]
@@ -75,14 +73,21 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
             _currentCombustibleUpdateTimer += UnityEngine.Time.deltaTime;
         }
 
-        public void Interact()
+        public void Interact(ECharacter character)
         {
-            AddCombustible();
-            Inventory inventory = FindObjectOfType<Inventory>();
-            if (inventory)
-            {
-                inventory.RemoveCombustible();
-            }
+			if (character == ECharacter.PLAYER)
+			{
+				AddCombustible();
+				Inventory inventory = FindObjectOfType<Inventory>();
+				if (inventory)
+				{
+					inventory.RemoveCombustible();
+				}
+			}
+			else
+			{
+				RemoveCombustibles(1);
+			}
         }
     }
 }

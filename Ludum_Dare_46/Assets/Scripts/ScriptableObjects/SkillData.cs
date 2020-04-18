@@ -7,7 +7,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
 	[CreateAssetMenu(fileName = "SkillData", menuName = "ScriptableObjects/SkillData", order = 1)]
 	public class SkillData : ScriptableObject
 	{
-		public int Level { get { return PlayerPrefs.GetInt(name); } set { PlayerPrefs.SetInt(name, value); } }
+		public int Level { get { return PlayerPrefs.GetInt(name, 1); } set { PlayerPrefs.SetInt(name, value); } }
 		public int MaxLevel = 10;
 		public AnimationCurve ValueCurve;
 		public AnimationCurve PriceCurve;

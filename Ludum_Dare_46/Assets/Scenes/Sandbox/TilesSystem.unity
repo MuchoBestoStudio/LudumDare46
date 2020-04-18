@@ -915,6 +915,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7368722731462656565, guid: 18169b0d1889c5746b0583c76480a379,
+        type: 3}
+      propertyPath: MoveDuration
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18169b0d1889c5746b0583c76480a379, type: 3}
 --- !u!1 &84392467
@@ -14218,10 +14223,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parent: {fileID: 1796341204}
-  _target: {fileID: 2044544818}
   _prefab: {fileID: 4631825725256944252, guid: aa479d36b40c4e741bd33bd6bc08283f, type: 3}
-  _initialAmount: 1
-  duration: 100
+  _initialAmount: 4
+  _spawns:
+  - {fileID: 356368193}
+  - {fileID: 500558148}
+  - {fileID: 482397763}
+  _target: {fileID: 2044544818}
+  _interval: 3
 --- !u!4 &1796341204
 Transform:
   m_ObjectHideFlags: 0

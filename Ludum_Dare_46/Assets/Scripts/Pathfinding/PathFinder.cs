@@ -89,8 +89,12 @@ namespace MuchoBestoStudio.LudumDare.Pathfinding
 				currentNode = currentNode.Parent;
 			}
 			path.Add(startNode.TileNode);
+
+			path.RemoveAt(0);
+
 			Map.Tile[] waypoints = path.ToArray();
 			System.Array.Reverse(waypoints);
+
 			return waypoints;
 		}
 
