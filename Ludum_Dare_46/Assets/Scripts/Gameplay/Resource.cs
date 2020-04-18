@@ -40,8 +40,11 @@ public class Resource : MonoBehaviour, IInteractable
         }
     }
 
-    public void Interact()
+    public void Interact(ECharacter character)
     {
-        TakeCombustible();
+		if (character == ECharacter.PLAYER)
+		{
+			TakeCombustible();
+		}
     }
 }

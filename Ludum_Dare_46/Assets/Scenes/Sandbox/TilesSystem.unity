@@ -14218,10 +14218,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parent: {fileID: 1796341204}
-  _target: {fileID: 2044544818}
   _prefab: {fileID: 4631825725256944252, guid: aa479d36b40c4e741bd33bd6bc08283f, type: 3}
-  _initialAmount: 1
-  duration: 100
+  _initialAmount: 4
+  _spawns:
+  - {fileID: 356368193}
+  - {fileID: 500558148}
+  - {fileID: 482397763}
+  _target: {fileID: 2044544818}
+  _interval: 3
 --- !u!4 &1796341204
 Transform:
   m_ObjectHideFlags: 0

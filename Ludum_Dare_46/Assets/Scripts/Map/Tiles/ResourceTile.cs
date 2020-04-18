@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using MuchoBestoStudio.LudumDare.Gameplay;
 
 namespace MuchoBestoStudio.LudumDare.Map
 {
@@ -39,11 +38,11 @@ namespace MuchoBestoStudio.LudumDare.Map
 			}
 		}
 
-		public override void Interact()
+		public override void Interact(ECharacter character)
 		{
 			if (_resource != null)
 			{
-				_resource.Interact();
+				_resource.Interact(character);
 			}
 		}
 	}

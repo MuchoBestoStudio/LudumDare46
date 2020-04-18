@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using MuchoBestoStudio.LudumDare.Gameplay;
 
 namespace MuchoBestoStudio.LudumDare.Map
 {
@@ -12,7 +13,7 @@ namespace MuchoBestoStudio.LudumDare.Map
 		public Vector3 Center => _center.position;
 		public virtual bool Free => true;
 
-		public virtual void Interact()
+		public virtual void Interact(ECharacter character)
 		{
 		}
 	}
