@@ -9,6 +9,11 @@
                 "value": "{\"m_Value\":2.0}"
             },
             {
+                "type": "System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "key": "RaiseLowerBrush.Strength",
+                "value": "{\"m_Value\":20.0}"
+            },
+            {
                 "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "Brush.HideWireframe",
                 "value": "{\"m_Value\":true}"
@@ -64,6 +69,16 @@
                 "value": "{\"m_Value\":true}"
             },
             {
+                "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "key": "RaiseLowerBrush.IgnoreOpenEdges",
+                "value": "{\"m_Value\":true}"
+            },
+            {
+                "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "key": "RaiseLowerBrush.StickToFirstAppliedDirection",
+                "value": "{\"m_Value\":true}"
+            },
+            {
                 "type": "UnityEngine.Color, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "Brush.BrushColor",
                 "value": "{\"m_Value\":{\"r\":0.0,\"g\":0.800000011920929,\"b\":1.0,\"a\":1.0}}"
@@ -91,17 +106,22 @@
             {
                 "type": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "ScatteringEditor.PreviewThumSize",
-                "value": "{\"m_Value\":71}"
+                "value": "{\"m_Value\":79}"
             },
             {
                 "type": "UnityEditor.Polybrush.PrefabLoadout, Unity.Polybrush.Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "ScatteringEditor.userLoadout",
-                "value": "{\"m_Value\":{\"infos\":[{\"palette\":{\"fileID\":11400000,\"guid\":\"3a672d49248eeb54bb20b65108a3c509\",\"type\":2},\"prefab\":{\"fileID\":3188127529449092995,\"guid\":\"6021fc34ae05e1c449606820aaaa3542\",\"type\":3}}]}}"
+                "value": "{\"m_Value\":{\"infos\":[{\"palette\":{\"fileID\":11400000,\"guid\":\"3a672d49248eeb54bb20b65108a3c509\",\"type\":2},\"prefab\":{\"fileID\":4200464564877028159,\"guid\":\"cc62123c9c7f6464db1b8f274b0b5122\",\"type\":3}},{\"palette\":{\"fileID\":11400000,\"guid\":\"3a672d49248eeb54bb20b65108a3c509\",\"type\":2},\"prefab\":{\"fileID\":5776934862659393020,\"guid\":\"b71b835d21355d046b2285d53948d0b7\",\"type\":3}},{\"palette\":{\"fileID\":11400000,\"guid\":\"3a672d49248eeb54bb20b65108a3c509\",\"type\":2},\"prefab\":{\"fileID\":3681489937235360217,\"guid\":\"e7e7c697c1e6b9744a9b8b886c35f11b\",\"type\":3}},{\"palette\":{\"fileID\":11400000,\"guid\":\"3a672d49248eeb54bb20b65108a3c509\",\"type\":2},\"prefab\":{\"fileID\":2619305233235984555,\"guid\":\"fac7a3d6503e206439706d8bfcef12f2\",\"type\":3}},{\"palette\":{\"fileID\":11400000,\"guid\":\"3a672d49248eeb54bb20b65108a3c509\",\"type\":2},\"prefab\":{\"fileID\":6683728877730401977,\"guid\":\"011b0e1fe5ad04d49a8be6e3f19e96d0\",\"type\":3}},{\"palette\":{\"fileID\":11400000,\"guid\":\"3a672d49248eeb54bb20b65108a3c509\",\"type\":2},\"prefab\":{\"fileID\":4497262226775585549,\"guid\":\"f792c75c829e3994fb5e0b6285a6209c\",\"type\":3}},{\"palette\":{\"fileID\":11400000,\"guid\":\"3a672d49248eeb54bb20b65108a3c509\",\"type\":2},\"prefab\":{\"fileID\":1350129999731354670,\"guid\":\"b38fc115310710e4b9efdb408d867cd6\",\"type\":3}},{\"palette\":{\"fileID\":11400000,\"guid\":\"3a672d49248eeb54bb20b65108a3c509\",\"type\":2},\"prefab\":{\"fileID\":3188127529449092995,\"guid\":\"6021fc34ae05e1c449606820aaaa3542\",\"type\":3}}]}}"
             },
             {
                 "type": "UnityEngine.Polybrush.PolyDirection, Unity.Polybrush, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "Brush.Direction",
                 "value": "{\"m_Value\":1}"
+            },
+            {
+                "type": "UnityEngine.Polybrush.PolyDirection, Unity.Polybrush, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                "key": "RaiseLowerBrush.Direction",
+                "value": "{\"m_Value\":0}"
             }
         ]
     }
