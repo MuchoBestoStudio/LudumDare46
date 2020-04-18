@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using System;
+using DG.Tweening;
 using MuchoBestoStudio.LudumDare.Map;
 using UnityEngine;
 
@@ -14,7 +15,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 
 		#region Methods
 
-		public void Move(EDirection direction, TweenCallback onCompleted)
+		public void Move(EDirection direction, Action<bool> onCompleted)
 		{
 			if (direction == EDirection.NONE || DOTween.IsTweening(transform) || TilesManager.Instance == null)
 			{
@@ -26,11 +27,21 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 			// note (rc) : Next Tile can be null if the arrive the the bounds of the arena
 			if (nextTile != null && nextTile.Free)
 			{
-				transform.DOMove(nextTile.Center, MoveDuration, true).OnComplete(onCompleted);
+				DOTween.defaultEaseType = Ease.Linear;
+				transform.DOMove(nextTile.Center, MoveDuration, false)
+						 .OnComplete(() => {
+												if (onCompleted != null)
+												{
+													onCompleted.Invoke(true);
+												}
+											});
 			}
 			else
 			{
-				onCompleted.Invoke();
+				if (onCompleted != null)
+				{
+					onCompleted.Invoke(false);
+				}
 			}
 		}
 
