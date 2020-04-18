@@ -16,11 +16,11 @@ namespace MuchoBestoStudio.LudumDare.UI.ViewModels
         public void SetFireSource(FireSource fireSource)
         {
             _fireSource = fireSource;
-            UpdateCombustibleText(0);
+            UpdateCombustibleText(0, 0);
             _fireSource.onCombustibleAmountChanged += UpdateCombustibleText;
         }
 
-        private void UpdateCombustibleText(uint value)
+        private void UpdateCombustibleText(uint value, int deltaValue)
         {
             string resultString;
             resultString = StringTagReplacer.ReplaceTag(_taggedString, "[VALUE]", _fireSource.CombustibleAmount.ToString());
