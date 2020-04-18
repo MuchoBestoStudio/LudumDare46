@@ -2,44 +2,48 @@
 
 using MuchoBestoStudio.LudumDare.Gameplay;
 using MuchoBestoStudio.LudumDare.UI.ViewModels;
+using UnityEngine.UI;
 
-public class UIManager : MonoBehaviour
+namespace MuchoBestoStudio.LudumDare.UI
 {
-    [SerializeField]
-    GameObject _gameOverObject = null;
-    [SerializeField]
-    private Inventory _playerInventory = null;
-    [SerializeField]
-    private FireSource _fireSource = null;
-
-    // ViewModels
-    private InventoryViewModel _inventoryViewModel = null;
-    private FireSourceViewModel _fireSourceViewModel = null;
-
-    void Start()
+    public class UIManager : MonoBehaviour
     {
-        GameManager.Instance.onGameOver += ShowGameOverPanel;
-        if (_inventoryViewModel = GetComponent<InventoryViewModel>())
+        [SerializeField]
+        GameObject _gameOverObject = null;
+        [SerializeField]
+        private Inventory _playerInventory = null;
+        [SerializeField]
+        private FireSource _fireSource = null;
+
+        // ViewModels
+        private InventoryViewModel _inventoryViewModel = null;
+        private FireSourceViewModel _fireSourceViewModel = null;
+
+        void Start()
         {
-            _inventoryViewModel.SetInventory(_playerInventory);
+            GameManager.Instance.onGameOver += ShowGameOverPanel;
+            if (_inventoryViewModel = GetComponent<InventoryViewModel>())
+            {
+                _inventoryViewModel.SetInventory(_playerInventory);
+            }
+
+            if (_fireSourceViewModel = GetComponent<FireSourceViewModel>())
+            {
+                _fireSourceViewModel.SetFireSource(_fireSource);
+            }
         }
 
-        if (_fireSourceViewModel = GetComponent<FireSourceViewModel>())
+        private void ShowGameOverPanel()
         {
-            _fireSourceViewModel.SetFireSource(_fireSource);
+            if (_gameOverObject)
+            {
+                _gameOverObject.SetActive(true);
+            }
         }
-    }
 
-    private void ShowGameOverPanel()
-    {
-        if (_gameOverObject)
+        private void HideGameOverPanel()
         {
-            _gameOverObject.SetActive(true);
+            _gameOverObject.SetActive(false);
         }
-    }
-
-    private void HideGameOverPanel()
-    {
-        _gameOverObject.SetActive(false);
     }
 }

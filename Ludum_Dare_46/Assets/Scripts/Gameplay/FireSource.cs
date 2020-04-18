@@ -3,8 +3,6 @@ using UnityEngine;
 
 namespace MuchoBestoStudio.LudumDare.Gameplay
 {
-    using MuchoBestoStudio.LudumDare.Gameplay._3C;
-
     public class FireSource : MonoBehaviour, IInteractable
     {
         [SerializeField]
