@@ -28,42 +28,11 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 		private void OnEnable()
 		{
 			RetrievePath();
-
-			// Restart movement
-		}
-
-		private void OnDisable()
-		{
-			
-		}
-
-		private void Update()
-		{
-			if (_currentDir != EDirection.NONE)
-			{
-				if (HasArrived())
-				{
-					transform.position = _path[_index];
-
-					MoveToNextPoint();
-				}
-
-				Move(_currentDir);
-			}
 		}
 
 		#endregion
 
 		#region Movements
-
-		private bool HasArrived()
-		{
-			if (Vector3.Distance(transform.position, _path[_index]) <= 0.1f)
-			{
-				return true;
-			}
-			return false;
-		}
 
 		private void MoveToNextPoint()
 		{
@@ -82,7 +51,12 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 
 			_currentDir =  DetermineDirection(transform.position, _path[_index]);
 
-			//Move(EDirection.);
+			Move(_currentDir, OnMoveCompleted);
+		}
+
+		private void OnMoveCompleted()
+		{
+			MoveToNextPoint();
 		}
 
 		private EDirection DetermineDirection(Vector3 start, Vector3 destination)
@@ -118,9 +92,9 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 		private void RetrievePath()
 		{
 			Vector3[] points = new Vector3[] { transform.position,
-											   new Vector3(2f, transform.position.y, transform.position.z),
-											   new Vector3(2f, transform.position.y, 0f),
-											   new Vector3(0f, transform.position.y, 0f),
+											   transform.position + new Vector3(10f, 0f, 0f),
+											   transform.position + new Vector3(10f, 0f, 10f),
+											   transform.position + new Vector3(0f, 0f, 10f),
 											 };
 
 			SetPath(points);

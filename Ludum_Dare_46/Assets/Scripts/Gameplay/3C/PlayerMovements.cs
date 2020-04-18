@@ -38,7 +38,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 				{
 					RepeatTime += RepeatDuration;
 
-					Move(CurrentDirection);
+					Move(CurrentDirection, null);
 				}
 			}
 		}

@@ -39,7 +39,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 			{
 				_time += duration;
 
-				Spawn(new Vector3(Random.Range(-10, 10), 1f, Random.Range(-10, 10)));
+				Spawn(transform.position);
 			}
 		}
 

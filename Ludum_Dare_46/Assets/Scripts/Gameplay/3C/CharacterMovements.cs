@@ -8,21 +8,19 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 	{
 		#region Variables
 
-		[SerializeField, Tooltip("")]
-		protected	TilesManager	_tilesManager = null;
-
 		public	float	MoveDuration	=	1f;
 
 		#endregion
 
 		#region Methods
 
-		public void Move(EDirection direction)
+		public void Move(EDirection direction, TweenCallback onCompleted)
 		{
-			if (direction == EDirection.NONE)
+			if (direction == EDirection.NONE || DOTween.IsTweening(transform) ||
+				TilesManager.Instance == null)
+			{
 				return;
-			if (DOTween.IsTweening(transform))
-				return;
+			}
 
 			switch (direction)
 			{
@@ -56,12 +54,12 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 					return;
 			}
 
-			Tile nextTile = _tilesManager.GetTile(transform.position, transform.forward * Tile.SIZE);
+			Tile nextTile = TilesManager.Instance.GetTile(transform.position, transform.forward * Tile.SIZE);
 
 			// note (rc) : Next Tile can be null if the arrive the the bounds of the arena
 			if (nextTile != null && nextTile.Free)
 			{
-				transform.DOMove(nextTile.Center, MoveDuration, true);
+				transform.DOMove(nextTile.Center, MoveDuration, true).OnComplete(onCompleted);
 			}
 		}
 

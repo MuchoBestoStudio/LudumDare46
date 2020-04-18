@@ -6,12 +6,33 @@ namespace MuchoBestoStudio.LudumDare.Map
 {
 	public class TilesManager : MonoBehaviour
 	{
+		public static TilesManager	Instance { get; private set; } = null;
+
 		[SerializeField]
 		private uint _row;
 		[SerializeField]
 		private uint _column;
 
 		private Tile[,] _tilesArray;
+
+		private void Awake()
+		{
+			if (Instance != null)
+			{
+				Destroy(this);
+				return;
+			}
+
+			Instance = this;
+		}
+
+		private void OnDestroy()
+		{
+			if (Instance == this)
+			{
+				Instance = null;
+			}
+		}
 
 		void Start()
 		{
