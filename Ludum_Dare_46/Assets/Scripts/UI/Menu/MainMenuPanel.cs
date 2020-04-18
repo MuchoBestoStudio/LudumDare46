@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace MuchoBestoStudio.LudumDare.UI.Menu
@@ -7,9 +6,6 @@ namespace MuchoBestoStudio.LudumDare.UI.Menu
 	public class MainMenuPanel : MonoBehaviour
 	{
 		#region Variables
-
-		[SerializeField, Tooltip("")]
-		private string _gameplayScene = string.Empty;
 
 		[Header("Canvas")]
 		[SerializeField, Tooltip("")]
@@ -59,8 +55,6 @@ namespace MuchoBestoStudio.LudumDare.UI.Menu
 		{
 			_mainCanvas.enabled = false;
 			_playCanvas.enabled = true;
-
-			SceneManager.LoadScene(_gameplayScene, LoadSceneMode.Single);
 		}
 
 		private void OnSettingsButtonClicked()
