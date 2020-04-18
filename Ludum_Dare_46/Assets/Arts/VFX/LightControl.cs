@@ -10,7 +10,7 @@ public class LightControl : MonoBehaviour {
 	
 	void Update ()
     {
-        nRand = Random.RandomRange(IntensityMin, IntensvityMax);
+        nRand = Random.Range(IntensityMin, IntensvityMax);
         this.transform.GetComponent<Light>().intensity = nRand;
 	}
 }

@@ -6,8 +6,10 @@ namespace MuchoBestoStudio.LudumDare.Map
 	public class ResourceTile : Tile
 	{
 		[SerializeField]
+		private bool _block;
+		[SerializeField]
 		private Resource _resource = null;
-		public override bool Free { get { return _resource == null; } }
+		public override bool Free { get { return _resource == null || !_block; } }
 
 		private void OnEnable()
 		{
