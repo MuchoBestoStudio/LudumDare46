@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PolyMesh:
-    name: PolybrushMesh40964
+    name: PolybrushMesh71082
     vertices:
     - {x: 5, y: -1.110223e-16, z: 5}
     - {x: 4, y: -1.110223e-16, z: 5}
@@ -893,17 +893,17 @@ PrefabInstance:
     - target: {fileID: 3972676054594270961, guid: 2ff4cb8693f9af34d8e7e4740f424485,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.038887024
+      value: 2.05
       objectReference: {fileID: 0}
     - target: {fileID: 3972676054594270961, guid: 2ff4cb8693f9af34d8e7e4740f424485,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.9839514e-19
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3972676054594270961, guid: 2ff4cb8693f9af34d8e7e4740f424485,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.013438225
+      value: 1.9
       objectReference: {fileID: 0}
     - target: {fileID: 3972676054594270961, guid: 2ff4cb8693f9af34d8e7e4740f424485,
         type: 3}
