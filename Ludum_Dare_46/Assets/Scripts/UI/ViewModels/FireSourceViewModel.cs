@@ -13,16 +13,13 @@ namespace MuchoBestoStudio.LudumDare.UI.ViewModels
 
         private int tagIndex = -1;
 
-        void Start()
+        public void SetFireSource(FireSource fireSource)
         {
             if (_combustibleText)
             {
                 tagIndex = _combustibleText.text.IndexOf("[VALUE]");
             }
-        }
 
-        public void SetFireSource(FireSource fireSource)
-        {
             _fireSource = fireSource;
             UpdateCombustibleText(_fireSource.CombustibleAmount);
             _fireSource.onCombustibleAmountChanged += UpdateCombustibleText;

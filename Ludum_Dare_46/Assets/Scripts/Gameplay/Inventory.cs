@@ -26,8 +26,24 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
             }
         }
 
-        public void AddCombustible(uint value) { SetCombustibleAmount(_combustibleAmount + value); }
-        public void RemoveCombustible(uint value) { SetCombustibleAmount(_combustibleAmount - value); }
+        public void AddCombustible(uint value)
+        {
+            if (CanAddCombustible(value))
+            {
+                SetCombustibleAmount(_combustibleAmount + value);
+            }
+        }
+
+        public void RemoveCombustibles(uint value)
+        {
+            if (_combustibleAmount - value <= _combustibleAmount)
+            {
+                SetCombustibleAmount(_combustibleAmount - value);
+            }
+        }
+
+        public void RemoveCombustible(){ RemoveCombustibles(1); }
+
         public bool CanAddCombustible(uint value)
         {
             return _combustibleAmount + value < _maxCombustiblesAmount;
