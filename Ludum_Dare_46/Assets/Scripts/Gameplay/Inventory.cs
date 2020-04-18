@@ -63,7 +63,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
 
         void Start()
         {
-            SetMaxCombustibleAmount(_inventoryData.MaxCombustiblesAmount);
+            SetMaxCombustibleAmount((uint)_inventoryData.MaxCombustiblesAmount.LevelValue);
             SetCombustibleAmount(0);
         }
     }

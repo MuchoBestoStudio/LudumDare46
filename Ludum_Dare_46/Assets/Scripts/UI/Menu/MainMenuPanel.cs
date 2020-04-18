@@ -37,6 +37,11 @@ namespace MuchoBestoStudio.LudumDare.UI.Menu
 			_settings.onClick.AddListener(OnSettingsButtonClicked);
 			_credits.onClick.AddListener(OnCreditsButtonClicked);
 			_quit.onClick.AddListener(OnQuitButtonClicked);
+
+			_mainCanvas.enabled = true;
+			_playCanvas.enabled = false;
+			_settingsCanvas.enabled = false;
+			_creditsCanvas.enabled = false;
 		}
 
 		private void OnDisable()

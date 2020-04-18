@@ -52,8 +52,8 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
 
         void Start()
         {
-            SetCombustibleAmount(_fireData.BaseConbustibles);
-            _combustibleUpdateTimer = _fireData.CombustibleTimer;
+            SetCombustibleAmount((uint)_fireData.BaseCombustibles.LevelValue);
+            _combustibleUpdateTimer = _fireData.CombustibleTimer.LevelValue;
             _currentCombustibleUpdateTimer = 0.0f;
         }
 

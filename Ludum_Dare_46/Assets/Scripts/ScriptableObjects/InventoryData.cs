@@ -4,5 +4,5 @@
 public class InventoryData : ScriptableObject
 {
     [Tooltip("Amount of combustibles the player can hold simultaneously")]
-    public uint MaxCombustiblesAmount;
+    public MuchoBestoStudio.LudumDare.Gameplay.SkillData MaxCombustiblesAmount;
 }
