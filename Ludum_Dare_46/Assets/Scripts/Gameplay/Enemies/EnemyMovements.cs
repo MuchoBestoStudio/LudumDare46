@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using UnityEngine.AI;
+﻿using System;
+using UnityEngine;
 using MuchoBestoStudio.LudumDare.Gameplay._3C;
 
 namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
@@ -14,6 +14,12 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 		private	int	_index = 0;
 		private Vector3[]	_path = new Vector3[0];
 		private EDirection _currentDir = EDirection.NONE;
+
+		#endregion
+
+		#region Events
+
+		public Action<EnemyMovements>	onEnemyReachEnd = null;
 
 		#endregion
 
@@ -66,6 +72,11 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 			if (_index >= _path.Length)
 			{
 				_currentDir = EDirection.NONE;
+
+				if (onEnemyReachEnd != null)
+				{
+					onEnemyReachEnd.Invoke(this);
+				}
 				return;
 			}
 
@@ -106,10 +117,10 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 
 		private void RetrievePath()
 		{
-			Vector3[] points = new Vector3[] { new Vector3(0f, 1f, 7f),
-											   new Vector3(2f, 1f, 7f),
-											   new Vector3(2f, 1f, 0f),
-											   new Vector3(0f, 1f, 0f),
+			Vector3[] points = new Vector3[] { transform.position,
+											   new Vector3(2f, transform.position.y, transform.position.z),
+											   new Vector3(2f, transform.position.y, 0f),
+											   new Vector3(0f, transform.position.y, 0f),
 											 };
 
 			SetPath(points);
