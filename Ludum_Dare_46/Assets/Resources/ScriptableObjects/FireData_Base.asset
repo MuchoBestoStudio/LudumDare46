@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80bdac23bc52afd4f812dd3d128cd098, type: 3}
   m_Name: FireData_Base
   m_EditorClassIdentifier: 
-  BaseConbustibles: 5
-  CombustibleTimer: 10
+  BaseConbustibles: {fileID: 11400000, guid: 1dba56ca70f03ba4da7c82634b219f99, type: 2}
+  CombustibleTimer: {fileID: 11400000, guid: bd01829e22846ef489b799559bf7b5e1, type: 2}
