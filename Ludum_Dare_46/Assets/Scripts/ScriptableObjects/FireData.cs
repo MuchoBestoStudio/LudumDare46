@@ -6,8 +6,8 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
     public class FireData : ScriptableObject
     {
         [Tooltip("Amount of combustibles in the fire when the game starts")]
-        public uint BaseConbustibles;
+        public SkillData BaseCombustibles;
         [Tooltip("Timer before a combustible is consumed by the fireplace (in seconds)")]
-        public float CombustibleTimer;
+        public SkillData CombustibleTimer;
     }
 }
