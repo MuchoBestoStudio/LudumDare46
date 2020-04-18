@@ -6,6 +6,9 @@ namespace MuchoBestoStudio.LudumDare.Map
 {
 	public class Tile : MonoBehaviour
 	{
+		public const float SIZE = 10f;
+		//public float SIZE = 1f;
+
 		[SerializeField]
 		private Transform _center = null;
 		[SerializeField]
