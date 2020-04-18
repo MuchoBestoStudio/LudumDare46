@@ -186,9 +186,9 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 
 		private void OnInventoryActionPerformed(InputAction.CallbackContext _)
 		{
-			if (onInteractPerformed != null)
+			if (onInventoryPerformed != null)
 			{
-				onInteractPerformed.Invoke();
+				onInventoryPerformed.Invoke();
 			}
 		}
 
