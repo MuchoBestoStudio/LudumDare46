@@ -11,6 +11,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
 
         [SerializeField]
         private uint _currentCurrency = 0;
+        public uint Currency => _currentCurrency;
 
         public Action<uint> OnCurrencyChanged = null;
 
@@ -31,6 +32,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
             if (CanAfford(value))
             {
                 _currentCurrency -= value;
+                OnCurrencyChanged?.Invoke(_currentCurrency);
                 PlayerPrefs.SetInt("Currency", (int)_currentCurrency);
                 return true;
             }
@@ -41,6 +43,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
         public void Earn(float survivalTime)
         {
             _currentCurrency += (uint)(survivalTime * _data.TimeMultiplier);
+            OnCurrencyChanged?.Invoke(_currentCurrency);
             PlayerPrefs.SetInt("Currency", (int)_currentCurrency);
         }
     }

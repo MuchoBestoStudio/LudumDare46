@@ -30,10 +30,7 @@ namespace MuchoBestoStudio.LudumDare.UI.Skill
 			_valueText.text = "Value : " + _skillData.ValueCurve.Evaluate(skillLevel).ToString();
 
 			Gameplay.CurrencySystem system = FindObjectOfType<Gameplay.CurrencySystem>();
-			if (system.CanAfford((uint)_skillData.ValueCurve.Evaluate(_skillData.Level)) != true)
-			{
-				_upgradeButton.interactable = false;
-			}
+			UpdateVisual(system);
 
 			_upgradeButton.onClick.AddListener(UpgradeSkill);
 		}
