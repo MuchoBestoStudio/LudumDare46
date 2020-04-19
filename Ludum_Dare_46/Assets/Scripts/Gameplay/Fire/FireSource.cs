@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace MuchoBestoStudio.LudumDare.Gameplay
+namespace MuchoBestoStudio.LudumDare.Gameplay.Fire
 {
     public class FireSource : MonoBehaviour, IInteractable
     {

@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 
 using MuchoBestoStudio.LudumDare.Gameplay;
+using MuchoBestoStudio.LudumDare.Gameplay.Fire;
 
 namespace MuchoBestoStudio.LudumDare.UI.ViewModels
 {
