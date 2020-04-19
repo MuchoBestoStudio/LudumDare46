@@ -138,6 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 1225810289008961479}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &4903266350923348573
 MeshRenderer:
@@ -232,6 +233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 870754444367035597}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &7264049533518577232
 MeshRenderer:
@@ -326,6 +328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 2025804322480880189}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &3953055044967050218
 MeshRenderer:
@@ -420,6 +423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 142767834238635393}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &4349352315820579756
 MeshRenderer:
@@ -514,6 +518,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 309435239136577579}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &4279068018907390694
 MeshRenderer:
@@ -608,6 +613,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 4401757864209659932}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &4443208912481583623
 MeshRenderer:
@@ -745,6 +751,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 3530838770260837055}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &1537857428984295360
 MeshRenderer:
@@ -839,6 +846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 6194298836920000114}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &1983521864583739244
 MeshRenderer:
@@ -933,6 +941,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 3908070932265933915}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &7469290479880853492
 MeshRenderer:
@@ -1027,6 +1036,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 6108113689970987283}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &9075670432199014344
 MeshRenderer:
@@ -1121,6 +1131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 33112352524024274}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &1341637263866448339
 MeshRenderer:
@@ -1215,6 +1226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 355946336742953517}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &8508249081792577699
 MeshRenderer:
@@ -1309,6 +1321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 3167201507459563649}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &6559786454367910254
 MeshRenderer:
@@ -1403,6 +1416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 4973095202937980315}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &8536020481471211438
 MeshRenderer:
@@ -1497,6 +1511,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 5148017931323014406}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &8675663819883758848
 MeshRenderer:
@@ -1591,6 +1606,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 6396991516081538414}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &7051603885973863487
 MeshRenderer:
@@ -1685,6 +1701,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 8783810154315499918}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &3953978328882010299
 MeshRenderer:
@@ -1779,6 +1796,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 2227559310295990808}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &1437530132828335150
 MeshRenderer:
@@ -1873,6 +1891,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 2833919183559982908}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &7938226996001084802
 MeshRenderer:
@@ -1967,6 +1986,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 3588648478016028063}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &4123208134567811470
 MeshRenderer:
@@ -2061,6 +2081,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 2944123291889426636}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &2117255145229287606
 MeshRenderer:
@@ -2786,6 +2807,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 5287711713512339619}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &1304796368176604578
 MeshRenderer:
@@ -2880,6 +2902,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 6229757174804911485}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &5912195041908374224
 MeshRenderer:
@@ -2974,6 +2997,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 2377862178837832549}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &4747412499293883857
 MeshRenderer:
@@ -3178,6 +3202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 40031209058301022}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &6730356028958630736
 MeshRenderer:
@@ -3272,6 +3297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 7069355023147648816}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &1195002051869616749
 MeshRenderer:
@@ -3366,6 +3392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 3076084437921674349}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &8622213560574299593
 MeshRenderer:
@@ -3460,6 +3487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 1495748409541034833}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &774911200634017187
 MeshRenderer:
@@ -3554,6 +3582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 4083012369390872618}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &3818571738558555278
 MeshRenderer:
@@ -3648,6 +3677,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 5100086956916489658}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &1329420188507804295
 MeshRenderer:
@@ -3742,6 +3772,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 1293257282851306913}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &3595140619340351024
 MeshRenderer:
@@ -3836,6 +3867,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 640387830562907830}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &2013825619323016357
 MeshRenderer:
@@ -3930,6 +3962,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 223026770550150499}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &925171354085765829
 MeshRenderer:
@@ -4024,6 +4057,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 4386558973580956484}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &4481591496659679561
 MeshRenderer:
@@ -4118,6 +4152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 8294910681937559056}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &7703058241950120538
 MeshRenderer:
@@ -4212,6 +4247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 561473364102350944}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &4173982944930009354
 MeshRenderer:
@@ -4306,6 +4342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 6098135505305049026}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &8831889603485887962
 MeshRenderer:
@@ -4400,6 +4437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 348657294883769928}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &3994613032422680776
 MeshRenderer:
@@ -4494,6 +4532,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 7459333355446756584}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &5847672221455332111
 MeshRenderer:
@@ -4588,6 +4627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 9046205486810144658}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &4719043604252557333
 MeshRenderer:
@@ -4682,6 +4722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 720526942729580076}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &6651517766902491713
 MeshRenderer:
@@ -4776,6 +4817,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 7001164685968263593}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &27006320686144312
 MeshRenderer:
@@ -4870,6 +4912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 4366836647722123479}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &3381491368411459913
 MeshRenderer:
@@ -4964,6 +5007,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 3360628943454009537}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &3640229491420293390
 MeshRenderer:
@@ -5058,6 +5102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 4441520775728336169}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &4602156507328074082
 MeshRenderer:
@@ -5152,6 +5197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 4868207303007938181}
+  _free: 1
   _characterGO: {fileID: 0}
   _block: 1
   _resource: {fileID: 3738701108465948162}
@@ -5248,6 +5294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 9157149057468781875}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &8839525639435062423
 MeshRenderer:
@@ -5342,6 +5389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 4231880945826923290}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &2119853212698288423
 MeshRenderer:
@@ -5436,6 +5484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 5359420252413314040}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &1908376285645919274
 MeshRenderer:
@@ -5530,6 +5579,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 7880665859245773025}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &846828476557848578
 MeshRenderer:
@@ -5624,6 +5674,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 4815716092485355954}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &1715328392272460807
 MeshRenderer:
@@ -5718,6 +5769,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 8474991842592308596}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &5795107514370894704
 MeshRenderer:
@@ -5812,6 +5864,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 4353185692862174310}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &126247006208888641
 MeshRenderer:
@@ -5906,6 +5959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 3842547595179166122}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &7417951433069456427
 MeshRenderer:
@@ -6000,6 +6054,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 5678773735879235237}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &8811567505341401959
 MeshRenderer:
@@ -6094,6 +6149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 5214563873467405597}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &896760957306218296
 MeshRenderer:
@@ -6188,6 +6244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 5549580724744435164}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &985230297532655616
 MeshRenderer:
@@ -6282,6 +6339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 6762959123514436314}
+  _free: 1
   _characterGO: {fileID: 0}
   _block: 1
   _resource: {fileID: 3738701109553455076}
@@ -6378,6 +6436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 8181804543929955949}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &3611627270344304557
 MeshRenderer:
@@ -6472,6 +6531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 1254041377850112644}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &7693214339443191784
 MeshRenderer:
@@ -6566,6 +6626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 5225210841670557861}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &3429182200870839380
 MeshRenderer:
@@ -6660,6 +6721,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 5052774479419474936}
+  _free: 1
   _characterGO: {fileID: 0}
   _block: 1
   _resource: {fileID: 3738701110391422062}
@@ -6756,6 +6818,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 7013027999313442047}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &3067678246659950973
 MeshRenderer:
@@ -6850,6 +6913,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 5433637902886116123}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &2716051970187519374
 MeshRenderer:
@@ -6944,6 +7008,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 5250329213436949011}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &3821855405478103782
 MeshRenderer:
@@ -7038,6 +7103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 5206285672772245172}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &5829801642043232042
 MeshRenderer:
@@ -7132,6 +7198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 6126703748673590794}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &3167246873288199986
 MeshRenderer:
@@ -7226,6 +7293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 8991752132462924738}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &2756762783207847020
 MeshRenderer:
@@ -7320,6 +7388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 6569734052190697670}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &3732788363757798026
 MeshRenderer:
@@ -7414,6 +7483,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 12783530529727329}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &1118296520644488824
 MeshRenderer:
@@ -7508,6 +7578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 5571095918981832950}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &7742089992062840220
 MeshRenderer:
@@ -7602,6 +7673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 5284926191568085311}
+  _free: 1
   _characterGO: {fileID: 0}
 --- !u!23 &1244182944836266437
 MeshRenderer:
@@ -19241,7 +19313,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _axe
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3871283343518221461}
     - target: {fileID: 698238872738387245, guid: ae39728124b64d64f925477111aa61bb,
         type: 3}
       propertyPath: m_Enabled
@@ -19312,6 +19384,12 @@ PrefabInstance:
 --- !u!4 &8621133666544987399 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6290032207473362254, guid: ae39728124b64d64f925477111aa61bb,
+    type: 3}
+  m_PrefabInstance: {fileID: 2373051292640897097}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3871283343518221461 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1537779313043975388, guid: ae39728124b64d64f925477111aa61bb,
     type: 3}
   m_PrefabInstance: {fileID: 2373051292640897097}
   m_PrefabAsset: {fileID: 0}
@@ -19519,6 +19597,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ff4cb8693f9af34d8e7e4740f424485, type: 3}
+--- !u!4 &2179751087649219831 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3972676054594270961, guid: 2ff4cb8693f9af34d8e7e4740f424485,
+    type: 3}
+  m_PrefabInstance: {fileID: 2981892862302540294}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2981892860460688231 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1842917729, guid: 2ff4cb8693f9af34d8e7e4740f424485,
@@ -19531,12 +19615,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e7824785db2c6443b4f22bf8fd62107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &2179751087649219831 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3972676054594270961, guid: 2ff4cb8693f9af34d8e7e4740f424485,
-    type: 3}
-  m_PrefabInstance: {fileID: 2981892862302540294}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5149768245477089276
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19962,12 +20040,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdcf7c4de479a854987e709b508bc09a, type: 3}
---- !u!4 &6269016380472596087 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4398018163386304280, guid: cdcf7c4de479a854987e709b508bc09a,
-    type: 3}
-  m_PrefabInstance: {fileID: 7640606465311887727}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &450846017187782934 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7802865726323650681, guid: cdcf7c4de479a854987e709b508bc09a,
@@ -19980,6 +20052,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf24e2a806623774bb6526b43aa764a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &6269016380472596087 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4398018163386304280, guid: cdcf7c4de479a854987e709b508bc09a,
+    type: 3}
+  m_PrefabInstance: {fileID: 7640606465311887727}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8071264805582360080
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20234,12 +20312,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdcf7c4de479a854987e709b508bc09a, type: 3}
---- !u!4 &5694784303379042526 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4398018163386304280, guid: cdcf7c4de479a854987e709b508bc09a,
-    type: 3}
-  m_PrefabInstance: {fileID: 8218812107701589958}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2181518036097099711 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7802865726323650681, guid: cdcf7c4de479a854987e709b508bc09a,
@@ -20252,3 +20324,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf24e2a806623774bb6526b43aa764a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &5694784303379042526 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4398018163386304280, guid: cdcf7c4de479a854987e709b508bc09a,
+    type: 3}
+  m_PrefabInstance: {fileID: 8218812107701589958}
+  m_PrefabAsset: {fileID: 0}
