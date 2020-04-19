@@ -28,6 +28,8 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
         }
 
         [SerializeField]
+        string MenuSceneName = null;
+        [SerializeField]
         private InputActionMap _currentActionMap = null;
         private InputActionMap CurrentActionMap => _currentActionMap;
 
@@ -84,8 +86,10 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
                 _currentActionMap = PlayerActionMap;
             }
 
-            Scene currentScene = SceneManager.GetActiveScene();
-            SceneManager.LoadSceneAsync(currentScene.buildIndex);
+            if (MenuSceneName != null)
+            {
+                SceneManager.LoadSceneAsync(MenuSceneName);
+            }
         }
 
         void TogglePause(InputAction.CallbackContext _)
