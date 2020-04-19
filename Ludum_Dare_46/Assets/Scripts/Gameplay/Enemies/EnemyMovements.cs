@@ -36,7 +36,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 			{
 				_currentDir = EDirection.NONE;
 
-				LookTo(DetermineDirection(transform.position, _path[_path.Length - 1].transform.position));
+				LookTo(DetermineDirection(transform.position, _path[_path.Length - 1].transform.position), null);
 
 				if (onEnemyReachEnd != null)
 				{
@@ -47,7 +47,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 
 			_currentDir =  DetermineDirection(transform.position, _path[_index].transform.position);
 
-			LookTo(_currentDir);
+			LookTo(_currentDir, null);
 
 			Move(_currentDir, OnMoveCompleted);
 		}

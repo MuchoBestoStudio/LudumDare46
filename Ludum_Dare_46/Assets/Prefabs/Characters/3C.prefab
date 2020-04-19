@@ -231,7 +231,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18f07ca53327fb7449a16570348ada0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveDuration: 1
+  MoveDuration: 0.33
+  RotateDuration: 0.1
   _controller: {fileID: 1501512968312425469}
 --- !u!114 &1353283693121331019
 MonoBehaviour:
