@@ -259,7 +259,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: You won $[VALUE]
+  m_Text: You won [VALUE] Skills Points
 --- !u!1 &1281245734
 GameObject:
   m_ObjectHideFlags: 0
@@ -427,7 +427,6 @@ GameObject:
   - component: {fileID: 539800194136511574}
   - component: {fileID: 539800194136511569}
   - component: {fileID: 539800194136511572}
-  - component: {fileID: 539800194136511575}
   - component: {fileID: 1853259639}
   m_Layer: 0
   m_Name: UI
@@ -467,7 +466,9 @@ MonoBehaviour:
   _gameOverObject: {fileID: 539800194471752825}
   _playerInventory: {fileID: 0}
   _fireSource: {fileID: 0}
-  PauseGameObject: {fileID: 480758480}
+  _pauseGameObject: {fileID: 480758480}
+  _CombustibleWarningObject: {fileID: 539800195536587053}
+  _criticalCombustibleAmount: 5
 --- !u!114 &539800194136511572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -482,20 +483,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _combustibleText: {fileID: 539800195604789257}
   _taggedString: '[VALUE] / [MAX]'
---- !u!114 &539800194136511575
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 539800194136511568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 690dcd3ffa4b23245b23c13882ecee2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _combustibleText: {fileID: 539800195536587027}
-  _taggedString: 'Fire: [VALUE]'
 --- !u!114 &1853259639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -578,6 +565,40 @@ MonoBehaviour:
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
   m_ForceModuleActive: 0
+--- !u!111 &263739409
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539800195536587053}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 218cdf142d3edf9448a01451e7f332ca, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!95 &263739410
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539800195536587053}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8c2c76f1dfa33a94482e039a429a34a1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &2071868891008916362
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -684,13 +705,68 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1998754554957620099, guid: 3c0fd204a9f6f4344a3bdc05803e059f,
         type: 3}
+      propertyPath: m_FontData.m_HorizontalOverflow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1998754554957620099, guid: 3c0fd204a9f6f4344a3bdc05803e059f,
+        type: 3}
+      propertyPath: m_FontData.m_VerticalOverflow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1998754554957620099, guid: 3c0fd204a9f6f4344a3bdc05803e059f,
+        type: 3}
       propertyPath: m_Text
       value: '[VALUE] / [MAX]'
       objectReference: {fileID: 0}
     - target: {fileID: 1998754555023708824, guid: 3c0fd204a9f6f4344a3bdc05803e059f,
         type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1998754555023708824, guid: 3c0fd204a9f6f4344a3bdc05803e059f,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1998754555023708824, guid: 3c0fd204a9f6f4344a3bdc05803e059f,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1998754555023708824, guid: 3c0fd204a9f6f4344a3bdc05803e059f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1998754555023708824, guid: 3c0fd204a9f6f4344a3bdc05803e059f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1998754555023708824, guid: 3c0fd204a9f6f4344a3bdc05803e059f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1998754555023708824, guid: 3c0fd204a9f6f4344a3bdc05803e059f,
+        type: 3}
       propertyPath: m_SizeDelta.x
       value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 1998754555023708824, guid: 3c0fd204a9f6f4344a3bdc05803e059f,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1998754555023708824, guid: 3c0fd204a9f6f4344a3bdc05803e059f,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1998754555023708824, guid: 3c0fd204a9f6f4344a3bdc05803e059f,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1998754555023708825, guid: 3c0fd204a9f6f4344a3bdc05803e059f,
         type: 3}
@@ -709,8 +785,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1998754555023708825, guid: 3c0fd204a9f6f4344a3bdc05803e059f,
         type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1998754555023708825, guid: 3c0fd204a9f6f4344a3bdc05803e059f,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: c109391427ba3f243990e02bdb563852,
+        type: 3}
+    - target: {fileID: 1998754555023708825, guid: 3c0fd204a9f6f4344a3bdc05803e059f,
+        type: 3}
       propertyPath: m_FontData.m_FontSize
-      value: 20
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1998754555023708825, guid: 3c0fd204a9f6f4344a3bdc05803e059f,
         type: 3}
@@ -719,18 +806,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1998754555023708825, guid: 3c0fd204a9f6f4344a3bdc05803e059f,
         type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1998754555023708825, guid: 3c0fd204a9f6f4344a3bdc05803e059f,
+        type: 3}
       propertyPath: m_FontData.m_Alignment
-      value: 3
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1998754555023708825, guid: 3c0fd204a9f6f4344a3bdc05803e059f,
+        type: 3}
+      propertyPath: m_FontData.m_HorizontalOverflow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1998754555023708825, guid: 3c0fd204a9f6f4344a3bdc05803e059f,
+        type: 3}
+      propertyPath: m_FontData.m_VerticalOverflow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1998754555023708825, guid: 3c0fd204a9f6f4344a3bdc05803e059f,
+        type: 3}
+      propertyPath: m_Text
+      value: FIRE IS LOW ON COMBUSTIBLE!
       objectReference: {fileID: 0}
     - target: {fileID: 1998754555023708839, guid: 3c0fd204a9f6f4344a3bdc05803e059f,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      propertyPath: m_Name
+      value: Fire Warning
       objectReference: {fileID: 0}
     - target: {fileID: 1998754555053974145, guid: 3c0fd204a9f6f4344a3bdc05803e059f,
         type: 3}
       propertyPath: m_Color.a
       value: 0.9019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 1998754555446810008, guid: 3c0fd204a9f6f4344a3bdc05803e059f,
+        type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1998754555446810020, guid: 3c0fd204a9f6f4344a3bdc05803e059f,
         type: 3}
@@ -954,18 +1066,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &539800195536587027 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1998754555023708825, guid: 3c0fd204a9f6f4344a3bdc05803e059f,
+--- !u!1 &539800195536587053 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1998754555023708839, guid: 3c0fd204a9f6f4344a3bdc05803e059f,
     type: 3}
   m_PrefabInstance: {fileID: 2071868891008916362}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &539800194471752830 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1998754556089479156, guid: 3c0fd204a9f6f4344a3bdc05803e059f,

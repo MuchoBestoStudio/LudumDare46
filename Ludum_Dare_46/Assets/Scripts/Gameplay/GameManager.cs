@@ -39,10 +39,13 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
 
         [SerializeField]
         FireSource _fireSource = null;
+        [SerializeField]
+        public uint _criticalFireValue = 0;
         public Action onTimeUpdated = null;
         public Action onGameOver = null;
         public Action onRestartGame = null;
         public Action<bool> onPauseChanged = null;
+        public Action<uint, int> onFireCombustibleChanged = null;
 
         [SerializeField]
         private float _gameTime = 0.0f;
@@ -102,6 +105,11 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
             onPauseChanged?.Invoke(_isGamePaused);
         }
 
+        void HandleFireCombustibleAmountChanged(uint value, int delta)
+        {
+            onFireCombustibleChanged?.Invoke(value, delta);
+        }
+
         void Start()
         {
             _isGamePaused = false;
@@ -111,8 +119,13 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
             GameOverActionMap = _controls.GameOver;
             _currentActionMap = PlayerActionMap;
 
-            _fireSource.onNoCombustibleLeft -= InvokeGameOver;
-            _fireSource.onNoCombustibleLeft += InvokeGameOver;
+            if (_fireSource)
+            {
+                _fireSource.onNoCombustibleLeft -= InvokeGameOver;
+                _fireSource.onNoCombustibleLeft += InvokeGameOver;
+                _fireSource.onCombustibleAmountChanged -= HandleFireCombustibleAmountChanged;
+                _fireSource.onCombustibleAmountChanged += HandleFireCombustibleAmountChanged;
+            }
 
             _controls.GameOver.Retry.performed -= InvokeRestartGame;
             _controls.GameOver.Retry.performed += InvokeRestartGame;
@@ -121,7 +134,6 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
             _controls.Player.TogglePause.performed += TogglePause;
 
             _currentActionMap.Enable();
-
         }
 
         void Update()
