@@ -9,7 +9,7 @@ namespace MuchoBestoStudio.LudumDare.Map
 		private bool _block;
 		[SerializeField]
 		private Resource _resource = null;
-		public override bool Free { get { return _resource == null || !_block; } }
+		public override bool Free { get { return _resource == null && !_block; } }
 
 		private void OnEnable()
 		{

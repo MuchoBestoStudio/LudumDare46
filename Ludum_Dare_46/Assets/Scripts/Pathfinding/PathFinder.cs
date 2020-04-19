@@ -22,7 +22,7 @@ namespace MuchoBestoStudio.LudumDare.Pathfinding
 
 				PathNode p = new PathNode(nodesMap[i]);
 
-				_nodes[tabIndex.y, tabIndex.x] = p;
+				_nodes[tabIndex.x, tabIndex.y] = p;
 			}
 		}
 
