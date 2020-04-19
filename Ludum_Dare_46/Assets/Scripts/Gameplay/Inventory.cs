@@ -100,7 +100,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
 
         void UpdateDurabilityShader()
         {
-            if (_axeImage.material.HasProperty("Vector1_495555B1"))
+            if (_axeImage && _axeImage.material.HasProperty("Vector1_495555B1"))
             {
                 float shaderDurability = _playerAxe.Life / _inventoryData.AxeDurability.LevelValue;
                 _axeImage.material.SetFloat("Vector1_495555B1", shaderDurability);
