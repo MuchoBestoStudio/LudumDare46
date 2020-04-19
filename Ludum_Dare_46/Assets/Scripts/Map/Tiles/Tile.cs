@@ -6,6 +6,7 @@ using UnityEngine.Assertions;
 
 namespace MuchoBestoStudio.LudumDare.Map
 {
+	[DisallowMultipleComponent]
 	public class Tile : MonoBehaviour
 	{
 		public const float SIZE = 1f;

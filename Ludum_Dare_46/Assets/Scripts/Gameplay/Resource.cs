@@ -6,9 +6,15 @@ using MuchoBestoStudio.LudumDare.Gameplay._3C;
 
 public class Resource : MonoBehaviour, IInteractable
 {
+    [Header("State")]
+    [SerializeField]
+    private uint _lifePoint = 1;
+    public uint LifePoint => _lifePoint;
     [SerializeField]
     private uint _combustibleAmount = 0;
     public uint CombustibleAmount => _combustibleAmount;
+    [SerializeField]
+    private bool _axeDependent = true;
 
     [Header("Visual")]
     [SerializeField]
@@ -62,10 +68,23 @@ public class Resource : MonoBehaviour, IInteractable
         if (_combustibleAmount > 0)
         {
             Inventory inventory = FindObjectOfType<Inventory>();
-            if (inventory && inventory.CanAddCombustible(1))
+            if (inventory && inventory.CanAddCombustible())
             {
-                RemoveCombustible(1);
-                inventory.AddCombustible(1);
+                if (_axeDependent)
+                {
+                    if (inventory.PlayerAxe == null)
+                    {
+                        return;
+                    }
+                    inventory.UseAxe();
+                }
+                --_lifePoint;
+
+                if (_lifePoint == 0)
+                {
+                    inventory.AddCombustible(_combustibleAmount);
+                    RemoveCombustible(_combustibleAmount);
+                }
             }
         }
     }
