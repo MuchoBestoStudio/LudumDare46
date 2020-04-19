@@ -7,5 +7,6 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
     {
         [Tooltip("Amount of combustibles the player can hold simultaneously")]
         public SkillData MaxCombustiblesAmount;
+        public SkillData AxeDurability;
     }
 }

@@ -4,6 +4,7 @@ using MuchoBestoStudio.LudumDare.Gameplay._3C;
 
 namespace MuchoBestoStudio.LudumDare.Map
 {
+	[DisallowMultipleComponent]
 	public class Tile : MonoBehaviour
 	{
 		public const float SIZE = 1f;

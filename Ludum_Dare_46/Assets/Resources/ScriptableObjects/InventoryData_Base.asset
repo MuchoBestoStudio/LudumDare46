@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxCombustiblesAmount: {fileID: 11400000, guid: 164b2dd6bd8fc984e85caeedf1d1cb08,
     type: 2}
+  AxeDurability: {fileID: 11400000, guid: 77f7230b63c1ed5459f40ee1b2a193c0, type: 2}
