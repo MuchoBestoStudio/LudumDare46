@@ -20,6 +20,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
             DontDestroyOnLoad(this.gameObject);
 
             _currentCurrency = (uint)PlayerPrefs.GetInt("Currency", (int)_data.Current);
+            OnCurrencyChanged?.Invoke(_currentCurrency);
         }
 
         public bool CanAfford(uint value)
