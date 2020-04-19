@@ -47,7 +47,11 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
 		private void FireSource_OnCombustibleAmountChanged(uint amount, int delta)
 		{
 			ChangeAmbiantVolume(amount / _maxCombustible);
-		}
+            if (delta > 0)
+            {
+                PlayThrowingCombustible();
+            }
+        }
 
 		private void FireSource_OnNoCombustibleLeft()
 		{
@@ -56,11 +60,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
 
 		private void FireSource_OnInteraction(ECharacter character)
 		{
-			if (character == ECharacter.PLAYER)
-			{
-				PlayThrowingCombustible();
-			}
-			else
+			if (character == ECharacter.ENEMY)
 			{
 				PlayBlowingFire();
 			}
