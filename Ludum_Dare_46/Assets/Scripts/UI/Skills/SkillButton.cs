@@ -23,15 +23,6 @@ namespace MuchoBestoStudio.LudumDare.UI.Skill
 
 		private void OnEnable()
 		{
-			int skillLevel = _skillData.Level;
-			_nameText.text = _skillData.name;
-			_levelText.text = skillLevel.ToString();
-			_priceText.text = "Price : " + _skillData.PriceCurve.Evaluate(skillLevel).ToString();
-			_valueText.text = "Value : " + _skillData.ValueCurve.Evaluate(skillLevel).ToString();
-
-			Gameplay.CurrencySystem system = FindObjectOfType<Gameplay.CurrencySystem>();
-			UpdateVisual(system);
-
 			_upgradeButton.onClick.AddListener(UpgradeSkill);
 		}
 
@@ -40,9 +31,26 @@ namespace MuchoBestoStudio.LudumDare.UI.Skill
 			_upgradeButton.onClick.RemoveListener(UpgradeSkill);
 		}
 
-		public void UpdateVisual(Gameplay.CurrencySystem system)
+		public void UpdateVisual(Gameplay.CurrencySystem currencySystem)
 		{
-			if (system.CanAfford((uint)_skillData.ValueCurve.Evaluate(_skillData.Level)) != true)
+			int skillLevel = _skillData.Level;
+
+			_nameText.text = _skillData.name;
+			_levelText.text = skillLevel.ToString();
+
+			if (skillLevel == _skillData.MaxLevel)
+			{
+				_levelText.text = "Max level";
+				_priceText.text = "Price : ...";
+			}
+			else
+			{
+				_priceText.text = "Price : " + _skillData.PriceCurve.Evaluate(skillLevel).ToString();
+				_valueText.text = "Value : " + _skillData.ValueCurve.Evaluate(skillLevel).ToString();
+			}
+
+			uint newPrice = (uint)_skillData.ValueCurve.Evaluate(_skillData.Level);
+			if (!currencySystem.CanAfford(newPrice) || skillLevel == _skillData.MaxLevel)
 			{
 				_upgradeButton.interactable = false;
 			}
@@ -53,23 +61,13 @@ namespace MuchoBestoStudio.LudumDare.UI.Skill
 			Gameplay.CurrencySystem system = FindObjectOfType<Gameplay.CurrencySystem>();
 			int skillLevel = _skillData.Level;
 
-			if (skillLevel == _skillData.MaxLevel)
-			{
-				_levelText.text = "Max level";
-				_priceText.text = "Price : ...";
-				_upgradeButton.interactable = false;
-				return;
-			}
-
 			if (system.Pay((uint)_skillData.ValueCurve.Evaluate(skillLevel)) != true)
 			{
 				return;
 			}
 
 			_skillData.Level = ++skillLevel;
-			_levelText.text = skillLevel.ToString();
-			_priceText.text = "Price : " + _skillData.PriceCurve.Evaluate(skillLevel).ToString();
-			_valueText.text = "Value : " + _skillData.ValueCurve.Evaluate(skillLevel).ToString();
+			UpdateVisual(system);
 		}
 	}
 }
