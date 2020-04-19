@@ -8734,6 +8734,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 78805623}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &986598685 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 179587372466170892, guid: 18169b0d1889c5746b0583c76480a379,
+    type: 3}
+  m_PrefabInstance: {fileID: 78805623}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 986598683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0023ba1ab94d338408dfc23a8cd6971e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &986598688 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1501512968312425469, guid: 18169b0d1889c5746b0583c76480a379,
@@ -15837,7 +15849,7 @@ PrefabInstance:
     - target: {fileID: 1842917729, guid: 2ff4cb8693f9af34d8e7e4740f424485, type: 3}
       propertyPath: _playerInventory
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 986598685}
     - target: {fileID: 1842917729, guid: 2ff4cb8693f9af34d8e7e4740f424485, type: 3}
       propertyPath: _combustibleAmount
       value: 1000

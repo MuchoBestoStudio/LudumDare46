@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 {
@@ -10,6 +11,12 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 		private PlayerController _controller = null;
 
 		public EDirection CurrentDirection { get; private set; } = EDirection.NONE;
+
+		#endregion
+
+		#region Events
+
+		public Action onStopMoving = null;
 
 		#endregion
 
@@ -31,15 +38,23 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 			{
 				CurrentDirection = direction;
 
-				LookTo(CurrentDirection);
+				if (!IsMoving())
+				{
+					LookTo(CurrentDirection);
 
-				Move(CurrentDirection, OnMoveCompleted);
+					Move(CurrentDirection, OnMoveCompleted);
+				}
 			}
 			else
 			{
 				if (CurrentDirection == direction)
 				{
 					CurrentDirection = EDirection.NONE;
+
+					if (onStopMoving != null)
+					{
+						onStopMoving.Invoke();
+					}
 				}
 			}
 		}
@@ -48,6 +63,8 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 		{
 			if (success && CurrentDirection != EDirection.NONE)
 			{
+				LookTo(CurrentDirection);
+
 				Move(CurrentDirection, OnMoveCompleted);
 			}
 		}
