@@ -9,6 +9,8 @@ namespace MuchoBestoStudio.LudumDare.Map
 		private bool _block;
 		[SerializeField]
 		private Resource _resource = null;
+		[SerializeField]
+		private GameObject _visualEmptyResource = null;
 		public override bool Free { get { return _resource == null && !_block; } }
 
 		private void OnEnable()
@@ -37,6 +39,10 @@ namespace MuchoBestoStudio.LudumDare.Map
 			{
 				_resource.onCombustibleAmountChanged -= OnResourceAmountChange;
 				_resource = null;
+				if (_visualEmptyResource != null)
+				{
+					GameObject.Instantiate(_visualEmptyResource, transform);
+				}
 			}
 		}
 
