@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 {
+	[DisallowMultipleComponent]
 	public class PlayerAudio : MonoBehaviour
 	{
 		#region Variables

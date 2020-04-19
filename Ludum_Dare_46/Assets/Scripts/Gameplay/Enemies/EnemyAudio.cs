@@ -2,15 +2,20 @@
 
 namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 {
+	[DisallowMultipleComponent]
 	public class EnemyAudio : MonoBehaviour
 	{
 		#region Variables
+
+		[Header("Globals")]
+		[SerializeField, Tooltip("")]
+		private	EnemyAnimator _animator = null;
 
 		[Header("Audio")]
 		[SerializeField, Tooltip("")]
 		private AudioSource _sfx = null;
 		[SerializeField, Tooltip("")]
-		private AudioClip[] _appearing = null;
+		private AudioClip[] _spookyClips = null;
 
 		#endregion
 
@@ -18,16 +23,33 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 
 		private void OnEnable()
 		{
-			PlayAppearingSound();
+			_animator.onEnemyStartToAppear += EnemyAnimator_StartToAppear;
+			_animator.onEnemyStartToDisappear += EnemyAnimator_StartToDisappear;
+		}
+
+		private void OnDisable()
+		{
+			_animator.onEnemyStartToAppear -= EnemyAnimator_StartToAppear;
+			_animator.onEnemyStartToDisappear -= EnemyAnimator_StartToDisappear;
+		}
+
+		private void EnemyAnimator_StartToAppear(EnemyAnimator _)
+		{
+			PlaySpookySound();
+		}
+
+		private void EnemyAnimator_StartToDisappear(EnemyAnimator _)
+		{
+			PlaySpookySound();
 		}
 
 		#endregion
 
 		#region Sounds
 
-		public void PlayAppearingSound()
+		public void PlaySpookySound()
 		{
-			_sfx.PlayOneShot(_appearing[Random.Range(0, _appearing.Length)]);
+			_sfx.PlayOneShot(_spookyClips[Random.Range(0, _spookyClips.Length)]);
 		}
 
 		#endregion

@@ -70,20 +70,24 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 
 			EnemyMovements movements = go.GetComponent<EnemyMovements>();
 
-			movements.SetTarget(_target);
-
 			Assert.IsNotNull(movements, nameof(EnemiesSpawner) + ": Spawn(), movements should not be null.");
 
-			movements.onEnemyReachEnd += EnemyMovements_OnEnemyReachEnd;
+			movements.SetTarget(_target);
 
-			go.SetActive(true);
+			EnemyAnimator animator = go.GetComponent<EnemyAnimator>();
+
+			Assert.IsNotNull(animator, nameof(EnemiesSpawner) + ": Spawn(), animator should not be null.");
+
+			animator.onEnemyEndDisappearing += EnemyAnimator_OnEnemyDisappear;
+
+			animator.Appear();
 		}
 
-		private void EnemyMovements_OnEnemyReachEnd(EnemyMovements movements)
+		private void EnemyAnimator_OnEnemyDisappear(EnemyAnimator animator)
 		{
-			movements.onEnemyReachEnd -= EnemyMovements_OnEnemyReachEnd;
+			animator.onEnemyEndDisappearing -= EnemyAnimator_OnEnemyDisappear;
 
-			Pool.Unused(movements.gameObject);
+			Pool.Unused(animator.gameObject);
 		}
 
 		#endregion
