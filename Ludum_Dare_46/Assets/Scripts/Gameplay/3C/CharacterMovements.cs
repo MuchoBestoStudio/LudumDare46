@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 {
-	public class CharacterMovements : MonoBehaviour
+	public class CharacterMovements : MonoBehaviour, IInteractable
 	{
 		#region Variables
 
@@ -13,15 +13,21 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 
 		#endregion
 
+		#region Events
+
+		public Action onMovePerformed = null;
+
+		#endregion
+
 		#region Methods
 
 		public void Move(EDirection direction, Action<bool> onCompleted)
 		{
-			if (direction == EDirection.NONE || DOTween.IsTweening(transform) || TilesManager.Instance == null)
+			if (direction == EDirection.NONE || IsMoving() || TilesManager.Instance == null)
 			{
 				return;
 			}
-
+            Tile currentTile = TilesManager.Instance.GetTile(transform.position);
 			Tile nextTile = TilesManager.Instance.GetTile(transform.position, transform.forward * Tile.SIZE);
 
 			// note (rc) : Next Tile can be null if the arrive the the bounds of the arena
@@ -34,7 +40,19 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 												{
 													onCompleted.Invoke(true);
 												}
+
+                                                if (currentTile.CharacterOnTile == this)
+                                                {
+                                                    currentTile.SetCharacterOnTile(null);
+                                                }
+
+                                                 nextTile.SetCharacterOnTile(this);
 											});
+
+				if (onMovePerformed != null)
+				{
+					onMovePerformed.Invoke();
+				}
 			}
 			else
 			{
@@ -79,6 +97,15 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 			}
 		}
 
-		#endregion
+		public bool IsMoving()
+		{
+			return DOTween.IsTweening(transform);
+		}
+
+       public virtual void Interact(ECharacter character)
+        {
+        }
+        #endregion
+
 	}
 }
