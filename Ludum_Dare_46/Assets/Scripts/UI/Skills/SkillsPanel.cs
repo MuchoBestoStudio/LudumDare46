@@ -8,11 +8,10 @@ namespace MuchoBestoStudio.LudumDare.UI.Skill
 {
 	public class SkillsPanel : MonoBehaviour
 	{
-		[SerializeField]
 		private SkillButton[] _skillButtons = null;
 		[SerializeField]
 		private TextMeshProUGUI _currencyText = null;
-		Gameplay.CurrencySystem system = null;
+		private Gameplay.CurrencySystem system = null;
 
 		private void OnEnable()
 		{
@@ -21,7 +20,13 @@ namespace MuchoBestoStudio.LudumDare.UI.Skill
             {
                 _currencyText.text = "$" + system.Currency;
                 system.OnCurrencyChanged += UpdateVisualButtons;
-            }
+			}
+			else
+			{
+				Debug.LogError("No currencySystem found");
+			}
+
+			_skillButtons = GetComponentsInChildren<SkillButton>();
 
             UpdateVisualButtons(0u);
 		}
@@ -43,7 +48,7 @@ namespace MuchoBestoStudio.LudumDare.UI.Skill
             else
             {
                 _currencyText.text = "$0";
-            }
+			}
 
 			foreach (SkillButton skillButton in _skillButtons)
 			{
