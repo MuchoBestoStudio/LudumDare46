@@ -38,10 +38,14 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
         public Action onTimeUpdated = null;
         public Action onGameOver = null;
         public Action onRestartGame = null;
+        public Action<bool> onPauseChanged = null;
 
         [SerializeField]
         private float _gameTime = 0.0f;
         public float GameTime => _gameTime;
+
+        private bool _isGamePaused = false;
+        public bool IsGamePaused => _isGamePaused;
 
         void InvokeGameOver()
         {
@@ -82,8 +86,16 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
             SceneManager.LoadSceneAsync(currentScene.buildIndex);
         }
 
+        void TogglePause(InputAction.CallbackContext _)
+        {
+            _isGamePaused = !_isGamePaused;
+            Time.timeScale = _isGamePaused ? 0.0f : 1.0f;
+            onPauseChanged?.Invoke(_isGamePaused);
+        }
+
         void Start()
         {
+            _isGamePaused = false;
             _controls = new Controls();
             PlayerActionMap = _controls.Player;
             GameOverActionMap = _controls.GameOver;
@@ -94,6 +106,12 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
 
             _controls.GameOver.Retry.performed -= InvokeRestartGame;
             _controls.GameOver.Retry.performed += InvokeRestartGame;
+
+            _controls.Player.TogglePause.performed -= TogglePause;
+            _controls.Player.TogglePause.performed += TogglePause;
+
+            _currentActionMap.Enable();
+
         }
 
         void Update()

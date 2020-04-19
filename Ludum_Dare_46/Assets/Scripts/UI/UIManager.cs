@@ -15,13 +15,18 @@ namespace MuchoBestoStudio.LudumDare.UI
         [SerializeField]
         private FireSource _fireSource = null;
 
+        [SerializeField]
+        private GameObject PauseGameObject = null;
+
         // ViewModels
         private InventoryViewModel _inventoryViewModel = null;
         private FireSourceViewModel _fireSourceViewModel = null;
 
         void Start()
         {
-            GameManager.Instance.onGameOver += ShowGameOverPanel;
+            GameManager gameManager = GameManager.Instance;
+            gameManager.onGameOver += ShowGameOverPanel;
+            gameManager.onPauseChanged += OnPauseChanged;
             if (_inventoryViewModel = GetComponent<InventoryViewModel>())
             {
                 _inventoryViewModel.SetInventory(_playerInventory);
@@ -44,6 +49,11 @@ namespace MuchoBestoStudio.LudumDare.UI
         private void HideGameOverPanel()
         {
             _gameOverObject.SetActive(false);
+        }
+
+        private void OnPauseChanged(bool isPaused)
+        {
+            PauseGameObject.SetActive(isPaused);
         }
     }
 }

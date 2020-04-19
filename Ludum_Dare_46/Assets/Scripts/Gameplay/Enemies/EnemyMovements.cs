@@ -110,6 +110,14 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 			RetrievePath();
 		}
 
-		#endregion
-	}
+        #endregion
+
+        override public void Interact(ECharacter character) 
+        {
+            if (character == ECharacter.PLAYER)
+            {
+                Destroy(this.gameObject);
+            }
+        }
+    }
 }
