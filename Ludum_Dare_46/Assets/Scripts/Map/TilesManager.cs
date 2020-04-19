@@ -57,7 +57,7 @@ namespace MuchoBestoStudio.LudumDare.Map
 			PathFinder = new Pathfinding.PathFinder(this, tiles);
 		}
 
-		public Tile GetTile(int row, int column)
+		public Tile GetTile(int column, int row)
 		{
 			if (row < 0 || column < 0 ||
 				row >= Row || column >= Column)
@@ -70,14 +70,14 @@ namespace MuchoBestoStudio.LudumDare.Map
 
 		public Tile GetTile(Vector3 position)
 		{
-			return GetTile(Mathf.RoundToInt(position.z / Tile.SIZE), Mathf.RoundToInt(position.x / Tile.SIZE));
+			return GetTile(Mathf.RoundToInt(position.x / Tile.SIZE), Mathf.RoundToInt(position.z / Tile.SIZE));
 		}
 
 		public Tile GetTile(Vector3 position, Vector3 direction)
 		{
 			Vector3 destination = position + direction;
 
-			return GetTile(Mathf.RoundToInt(destination.z / Tile.SIZE), Mathf.RoundToInt(destination.x / Tile.SIZE));
+			return GetTile(Mathf.RoundToInt(destination.x / Tile.SIZE), Mathf.RoundToInt(destination.z / Tile.SIZE));
 		}
 
 		private Vector3 GetTileSize(Tile[] tileArray)
