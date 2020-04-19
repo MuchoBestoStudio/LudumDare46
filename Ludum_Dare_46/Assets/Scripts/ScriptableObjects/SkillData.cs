@@ -17,8 +17,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
 
 		public float LevelValue { get { return ValueCurve.Evaluate(Level); } }
 
-		[ContextMenu("ResetSkill")]
-		private void ResetSkill()
+		public void ResetSkill()
 		{
 			PlayerPrefs.SetInt(name, _defaultLevel);
 		}
