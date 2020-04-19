@@ -50,7 +50,7 @@ namespace MuchoBestoStudio.LudumDare.UI.Skill
 			}
 
 			uint newPrice = (uint)_skillData.ValueCurve.Evaluate(_skillData.Level);
-			if (!currencySystem.CanAfford(newPrice) || skillLevel == _skillData.MaxLevel)
+			if (currencySystem && (!currencySystem.CanAfford(newPrice) || skillLevel == _skillData.MaxLevel))
 			{
 				_upgradeButton.interactable = false;
 			}
@@ -59,6 +59,11 @@ namespace MuchoBestoStudio.LudumDare.UI.Skill
 		private void UpgradeSkill()
 		{
 			Gameplay.CurrencySystem system = FindObjectOfType<Gameplay.CurrencySystem>();
+            if (!system)
+            {
+                return;
+            }
+
 			int skillLevel = _skillData.Level;
 
 			if (system.Pay((uint)_skillData.ValueCurve.Evaluate(skillLevel)) != true)

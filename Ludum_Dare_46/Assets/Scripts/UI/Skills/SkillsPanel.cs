@@ -17,14 +17,13 @@ namespace MuchoBestoStudio.LudumDare.UI.Skill
 		private void OnEnable()
 		{
 			system = FindObjectOfType<Gameplay.CurrencySystem>();
-			_currencyText.text = system.Currency + " $";
-
-			UpdateVisualButtons(0u);
-
             if (system)
             {
+                _currencyText.text = "$" + system.Currency;
                 system.OnCurrencyChanged += UpdateVisualButtons;
             }
+
+            UpdateVisualButtons(0u);
 		}
 
 		private void OnDisable()
@@ -37,7 +36,14 @@ namespace MuchoBestoStudio.LudumDare.UI.Skill
 
 		private void UpdateVisualButtons(uint currency)
 		{
-			_currencyText.text = system.Currency + " $";
+            if (system)
+            {
+                _currencyText.text = "$" + system.Currency;
+            }
+            else
+            {
+                _currencyText.text = "$0";
+            }
 
 			foreach (SkillButton skillButton in _skillButtons)
 			{
