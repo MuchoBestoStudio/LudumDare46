@@ -8,18 +8,28 @@ namespace MuchoBestoStudio.LudumDare.UI.Skill
 {
 	public class SkillButton : MonoBehaviour
 	{
-		[SerializeField]
-		private Gameplay.SkillData _skillData = null;
-		[SerializeField]
-		private TextMeshProUGUI _nameText = null;
-		[SerializeField]
-		private TextMeshProUGUI _levelText = null;
+		[System.Serializable]
+		private struct SSkillDependence
+		{
+			public Gameplay.SkillData Skill;
+			public int Level;
+		}
+
+		[Header("UI")]
 		[SerializeField]
 		private TextMeshProUGUI _priceText = null;
 		[SerializeField]
-		private TextMeshProUGUI _valueText = null;
-		[SerializeField]
 		private Button _upgradeButton = null;
+
+		[Header("Dependence")]
+		[SerializeField]
+		private SSkillDependence[] _skillsDependence = null;
+
+		[Header("Effect")]
+		[SerializeField]
+		private Gameplay.SkillData _skillData = null;
+		[SerializeField]
+		private int _setLevel = 1;
 
 		private void OnEnable()
 		{
@@ -33,46 +43,62 @@ namespace MuchoBestoStudio.LudumDare.UI.Skill
 
 		public void UpdateVisual(Gameplay.CurrencySystem currencySystem)
 		{
-			int skillLevel = _skillData.Level;
-
-			_nameText.text = _skillData.name;
-			_levelText.text = skillLevel.ToString();
-
-			if (skillLevel == _skillData.MaxLevel)
-			{
-				_levelText.text = "Max level";
-				_priceText.text = "Price : ...";
-			}
-			else
-			{
-				_priceText.text = "Price : " + _skillData.PriceCurve.Evaluate(skillLevel).ToString();
-				_valueText.text = "Value : " + _skillData.ValueCurve.Evaluate(skillLevel).ToString();
-			}
-
-			uint newPrice = (uint)_skillData.ValueCurve.Evaluate(_skillData.Level);
-			if (currencySystem && (!currencySystem.CanAfford(newPrice) || skillLevel == _skillData.MaxLevel))
+			if (!CheckDependence())
 			{
 				_upgradeButton.interactable = false;
+				_priceText.text = "";
+				return;
 			}
+			if (_skillData.Level >= _setLevel)
+			{
+				_upgradeButton.interactable = false;
+				_priceText.text = "Gotten";
+				return;
+			}
+
+			uint price = (uint)_skillData.PriceCurve.Evaluate(_skillData.Level);
+			_priceText.text = "$ " + price;
+
+			if (currencySystem == null || !currencySystem.CanAfford(price))
+			{
+				_upgradeButton.interactable = false;
+				return;
+			}
+
+			_upgradeButton.interactable = true;
+		}
+
+		private bool CheckDependence()
+		{
+			foreach (SSkillDependence dependence in _skillsDependence)
+			{
+				if (dependence.Skill.Level < dependence.Level)
+				{
+					return false;
+				}
+			}
+
+			return true;
 		}
 
 		private void UpgradeSkill()
 		{
 			Gameplay.CurrencySystem system = FindObjectOfType<Gameplay.CurrencySystem>();
-            if (!system)
-            {
-                return;
-            }
+			if (!system)
+			{
+				Debug.LogError("No currencySystem found");
+				return;
+			}
 
 			int skillLevel = _skillData.Level;
 
-			if (system.Pay((uint)_skillData.ValueCurve.Evaluate(skillLevel)) != true)
+			if (system.CanAfford((uint)_skillData.ValueCurve.Evaluate(skillLevel)) != true)
 			{
 				return;
 			}
 
-			_skillData.Level = ++skillLevel;
-			UpdateVisual(system);
+			_skillData.Level = _setLevel;
+			system.Pay((uint)_skillData.ValueCurve.Evaluate(skillLevel));
 		}
 	}
 }
