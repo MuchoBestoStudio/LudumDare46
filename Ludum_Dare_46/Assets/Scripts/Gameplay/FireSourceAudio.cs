@@ -14,17 +14,17 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
 		[SerializeField, Tooltip("")]
 		private	AudioSource	_ambiant = null;
 		[SerializeField, Tooltip("")]
-		private	float		_minAmbiantVolume = 0f;
-		[SerializeField, Tooltip("")]
-		private	float		_maxAmbiantVolume = 0f;
+		private	float		_maxCombustible = 5f;
 
 		[Header("Interact")]
 		[SerializeField, Tooltip("")]
-		private	AudioSource	_interact = null;
+		private	AudioSource	_sfx = null;
 		[SerializeField, Tooltip("")]
 		private	AudioClip	_throwCombustible = null;
 		[SerializeField, Tooltip("")]
 		private AudioClip	_blowingFire = null;
+		[SerializeField, Tooltip("")]
+		private	AudioClip	_fireExtinguished = null;
 
 		#endregion
 
@@ -32,13 +32,38 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
 
 		private void OnEnable()
 		{
-			//_source.onCombustibleAmountChanged += ;
-			//_source.onNoCombustibleLeft += ;
+			_source.onCombustibleAmountChanged += FireSource_OnCombustibleAmountChanged;
+			_source.onNoCombustibleLeft += FireSource_OnNoCombustibleLeft;
+			_source.onInteraction += FireSource_OnInteraction;
 		}
 
 		private void OnDisable()
 		{
-			
+			_source.onCombustibleAmountChanged -= FireSource_OnCombustibleAmountChanged;
+			_source.onNoCombustibleLeft -= FireSource_OnNoCombustibleLeft;
+			_source.onInteraction -= FireSource_OnInteraction;
+		}
+
+		private void FireSource_OnCombustibleAmountChanged(uint amount, int delta)
+		{
+			ChangeAmbiantVolume(amount / _maxCombustible);
+		}
+
+		private void FireSource_OnNoCombustibleLeft()
+		{
+			PlayFireExtinguished();
+		}
+
+		private void FireSource_OnInteraction(ECharacter character)
+		{
+			if (character == ECharacter.PLAYER)
+			{
+				PlayThrowingCombustible();
+			}
+			else
+			{
+				PlayBlowingFire();
+			}
 		}
 
 		#endregion
@@ -47,17 +72,26 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
 
 		public void ChangeAmbiantVolume(float volume)
 		{
-			_ambiant.volume = Mathf.Clamp(volume, _minAmbiantVolume, _maxAmbiantVolume);
+			_ambiant.volume = Mathf.Clamp(volume, 0f, 1f);
 		}
 
 		public void PlayThrowingCombustible()
 		{
-			_interact.PlayOneShot(_throwCombustible);
+			_sfx.PlayOneShot(_throwCombustible);
 		}
 
 		public void PlayBlowingFire()
 		{
-			_interact.PlayOneShot(_blowingFire);
+			if (!_sfx.isPlaying)
+			{
+				_sfx.clip = _blowingFire;
+				_sfx.Play();
+			}
+		}
+
+		public void PlayFireExtinguished()
+		{
+			_sfx.PlayOneShot(_fireExtinguished);
 		}
 
 		#endregion
