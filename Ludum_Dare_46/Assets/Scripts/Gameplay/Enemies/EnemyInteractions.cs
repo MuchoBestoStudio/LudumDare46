@@ -10,7 +10,28 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 		#region Variables
 
 		[SerializeField, Tooltip("")]
+		private	EnemyMovements	_movements = null;
+		[SerializeField, Tooltip("")]
 		private EnemyAnimator	_animator = null;
+
+		#endregion
+
+		#region MonoBehaviour's Methods
+
+		private void OnEnable()
+		{
+			_movements.onEnemyReachEnd += EnemyMovements_onEnemyReachEnd;
+		}
+
+		private void OnDisable()
+		{
+			_movements.onEnemyReachEnd -= EnemyMovements_onEnemyReachEnd;
+		}
+
+		private void EnemyMovements_onEnemyReachEnd(EnemyMovements _)
+		{
+			InteractWithFrontTile();
+		}
 
 		#endregion
 

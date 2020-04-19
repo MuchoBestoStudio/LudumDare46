@@ -12,8 +12,6 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 		#region Variables
 
 		[SerializeField, Tooltip("")]
-		private	EnemyInteractions _interactions = null;
-		[SerializeField, Tooltip("")]
 		private	Tile _target = null;
 
 		private	int	_index = 0;
@@ -39,8 +37,6 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 				_currentDir = EDirection.NONE;
 
 				LookTo(DetermineDirection(transform.position, _path[_path.Length - 1].transform.position));
-
-				_interactions.InteractWithFrontTile();
 
 				if (onEnemyReachEnd != null)
 				{
