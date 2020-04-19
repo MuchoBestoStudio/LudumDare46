@@ -28,6 +28,8 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
         }
 
         [SerializeField]
+        string MenuSceneName = null;
+        [SerializeField]
         private InputActionMap _currentActionMap = null;
         private InputActionMap CurrentActionMap => _currentActionMap;
 
@@ -67,11 +69,14 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
                 GameOverActionMap.Enable();
                 _currentActionMap = GameOverActionMap;
             }
+
+            Time.timeScale = 0.0f;
             onGameOver?.Invoke();
         }
 
         void InvokeRestartGame(InputAction.CallbackContext _)
         {
+            Time.timeScale = 1.0f;
             onRestartGame?.Invoke();
             if (_currentActionMap != null)
             {
@@ -84,8 +89,10 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
                 _currentActionMap = PlayerActionMap;
             }
 
-            Scene currentScene = SceneManager.GetActiveScene();
-            SceneManager.LoadSceneAsync(currentScene.buildIndex);
+            if (MenuSceneName != null)
+            {
+                SceneManager.LoadSceneAsync(MenuSceneName);
+            }
         }
 
         void TogglePause(InputAction.CallbackContext _)
@@ -98,6 +105,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
         void Start()
         {
             _isGamePaused = false;
+            Time.timeScale = 1.0f;
             _controls = new Controls();
             PlayerActionMap = _controls.Player;
             GameOverActionMap = _controls.GameOver;

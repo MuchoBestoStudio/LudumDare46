@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 {
+	[DisallowMultipleComponent]
 	public class PlayerController : MonoBehaviour
 	{
 		#region Struct

@@ -6,12 +6,13 @@ using UnityEngine.Assertions;
 
 namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 {
+	[DisallowMultipleComponent]
 	public class EnemyMovements : CharacterMovements
 	{
 		#region Variables
 
 		[SerializeField, Tooltip("")]
-		private	EnemyInteraction _interaction = null;
+		private	EnemyInteractions _interactions = null;
 		[SerializeField, Tooltip("")]
 		private	Tile _target = null;
 
@@ -39,7 +40,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 
 				LookTo(DetermineDirection(transform.position, _path[_path.Length - 1].transform.position));
 
-				_interaction.Interact();
+				_interactions.InteractWithFrontTile();
 
 				if (onEnemyReachEnd != null)
 				{
@@ -111,13 +112,5 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 		}
 
         #endregion
-
-        override public void Interact(ECharacter character) 
-        {
-            if (character == ECharacter.PLAYER)
-            {
-                Destroy(this.gameObject);
-            }
-        }
     }
 }

@@ -3,6 +3,11 @@ using UnityEngine;
 
 namespace MuchoBestoStudio.LudumDare.Gameplay
 {
+    public class Axe
+    {
+        public uint Life;
+    }
+
     public class Inventory : MonoBehaviour
     {
         [SerializeField]
@@ -30,7 +35,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
 
         public void SetCombustibleAmount(uint value)
         {
-            _combustibleAmount = value;
+            _combustibleAmount = (uint)Mathf.Min(_combustibleAmount + value, MaxCombustibleAmount);
             if (onCombustibleAmountChanged != null)
             {
                 onCombustibleAmountChanged.Invoke(_combustibleAmount);
@@ -39,7 +44,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
 
         public void AddCombustible(uint value)
         {
-            if (CanAddCombustible(value))
+            if (CanAddCombustible())
             {
                 SetCombustibleAmount(_combustibleAmount + value);
             }
@@ -55,14 +60,44 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
 
         public void RemoveCombustible(){ RemoveCombustibles(1); }
 
-        public bool CanAddCombustible(uint value)
+        public bool CanAddCombustible()
         {
-            return _combustibleAmount + value <= _maxCombustiblesAmount;
+            return _combustibleAmount < _maxCombustiblesAmount;
+        }
+
+        private Axe _playerAxe = null;
+        public Axe PlayerAxe => _playerAxe;
+
+        private void SetAxe(uint axeDurability)
+        {
+            _playerAxe = new Axe();
+            _playerAxe.Life = axeDurability;
+        }
+
+        public void UseAxe()
+        {
+            if (_playerAxe == null)
+            {
+                return;
+            }
+            if ((--_playerAxe.Life) == 0)
+            {
+                _playerAxe = null;
+            }
+        }
+
+        public void PickUpAxe()
+        {
+            SetAxe((uint)_inventoryData.AxeDurability.LevelValue);
         }
 
         void Start()
         {
             SetMaxCombustibleAmount((uint)_inventoryData.MaxCombustiblesAmount.LevelValue);
+            if (_inventoryData.AxeDurability.Level > 0)
+            {
+                PickUpAxe();
+            }
             SetCombustibleAmount(0);
         }
     }

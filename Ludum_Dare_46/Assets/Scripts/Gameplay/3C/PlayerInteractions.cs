@@ -1,16 +1,15 @@
-﻿using MuchoBestoStudio.LudumDare.Map;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using MuchoBestoStudio.LudumDare.Map;
 
 namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 {
-	public class PlayerInteractions : MonoBehaviour
+	[DisallowMultipleComponent]
+	public class PlayerInteractions : CharacterInteractions
 	{
 		[SerializeField, Tooltip("")]
 		private PlayerController _controller = null;
 		[SerializeField]
-		private Map.TilesManager tilesManager = null;
+		private TilesManager tilesManager = null;
 
 		private void OnEnable()
 		{

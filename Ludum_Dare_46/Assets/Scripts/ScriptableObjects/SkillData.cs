@@ -7,7 +7,10 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
 	[CreateAssetMenu(fileName = "SkillData", menuName = "ScriptableObjects/SkillData", order = 1)]
 	public class SkillData : ScriptableObject
 	{
-		public int Level { get { return PlayerPrefs.GetInt(name, 1); } set { PlayerPrefs.SetInt(name, value); } }
+		[SerializeField]
+		private int _defaultLevel = 1;
+		public int Level { get { return PlayerPrefs.GetInt(name, _defaultLevel); } set { PlayerPrefs.SetInt(name, value); } }
+
 		public int MaxLevel = 10;
 		public AnimationCurve ValueCurve;
 		public AnimationCurve PriceCurve;
@@ -17,7 +20,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
 		[ContextMenu("ResetSkill")]
 		private void ResetSkill()
 		{
-			PlayerPrefs.SetInt(name, 0);
+			PlayerPrefs.SetInt(name, _defaultLevel);
 		}
 	}
 }

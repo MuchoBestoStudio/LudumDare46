@@ -31,11 +31,16 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 
 		public	GameObjectPool	Pool { get; private set; } = null;
 
-		#endregion
+        private Transform _spawnTransform = null;
+        private GameObject _spawnedObject = null;
+        private EnemyMovements _spawnedMovements = null;
+        private EnemyAnimator _spawnedAnimator = null;
 
-		#region MonoBehaviour's Methods
+        #endregion
 
-		private void Start()
+        #region MonoBehaviour's Methods
+
+        private void Start()
 		{
 			Pool = new GameObjectPool(_prefab, _parent, _initialAmount);
 
@@ -60,30 +65,33 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 
 		public void Spawn(Vector3 position)
 		{
-			Transform spawn = _spawns[Random.Range(0, _spawns.Length)];
+            _spawnTransform = _spawns[Random.Range(0, _spawns.Length)];
 
-			Assert.IsNotNull(spawn, nameof(EnemiesSpawner) + ": Spawn(), spawn should not be null.");
+			Assert.IsNotNull(_spawnTransform, nameof(EnemiesSpawner) + ": Spawn(), spawn should not be null.");
 
-			GameObject go = Pool.Use();
+            _spawnedObject = Pool.Use();
 
-			go.transform.position = spawn.position;
+            _spawnedObject.transform.position = _spawnTransform.position;
 
-			EnemyMovements movements = go.GetComponent<EnemyMovements>();
+			_spawnedMovements = _spawnedObject.GetComponent<EnemyMovements>();
 
-			movements.SetTarget(_target);
+			Assert.IsNotNull(_spawnedMovements, nameof(EnemiesSpawner) + ": Spawn(), movements should not be null.");
 
-			Assert.IsNotNull(movements, nameof(EnemiesSpawner) + ": Spawn(), movements should not be null.");
+            _spawnedMovements.SetTarget(_target);
 
-			movements.onEnemyReachEnd += EnemyMovements_OnEnemyReachEnd;
+            _spawnedAnimator = _spawnedObject.GetComponent<EnemyAnimator>();
 
-			go.SetActive(true);
+			Assert.IsNotNull(_spawnedAnimator, nameof(EnemiesSpawner) + ": Spawn(), animator should not be null.");
+
+            _spawnedAnimator.onEnemyEndDisappearing += EnemyAnimator_OnEnemyDisappear;
+
+            _spawnedAnimator.Appear();
 		}
 
-		private void EnemyMovements_OnEnemyReachEnd(EnemyMovements movements)
+		private void EnemyAnimator_OnEnemyDisappear(EnemyAnimator animator)
 		{
-			movements.onEnemyReachEnd -= EnemyMovements_OnEnemyReachEnd;
-
-			Pool.Unused(movements.gameObject);
+			animator.onEnemyEndDisappearing -= EnemyAnimator_OnEnemyDisappear;
+			Pool.Unused(animator.gameObject);
 		}
 
 		#endregion
