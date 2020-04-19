@@ -21,12 +21,18 @@ namespace MuchoBestoStudio.LudumDare.UI.Skill
 
 			UpdateVisualButtons(0u);
 
-			system.OnCurrencyChanged += UpdateVisualButtons;
+            if (system)
+            {
+                system.OnCurrencyChanged += UpdateVisualButtons;
+            }
 		}
 
 		private void OnDisable()
 		{
-			system.OnCurrencyChanged -= UpdateVisualButtons;
+            if (system)
+            {
+                system.OnCurrencyChanged -= UpdateVisualButtons;
+            }
 		}
 
 		private void UpdateVisualButtons(uint currency)

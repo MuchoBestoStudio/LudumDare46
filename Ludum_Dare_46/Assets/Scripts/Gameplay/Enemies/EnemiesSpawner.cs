@@ -31,11 +31,15 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 
 		public	GameObjectPool	Pool { get; private set; } = null;
 
-		#endregion
+        private GameObject _spawnedObject = null;
+        private Transform _spawnTransform = null;
+        private EnemyMovements _spawnedMovements = null;
 
-		#region MonoBehaviour's Methods
+        #endregion
 
-		private void Start()
+        #region MonoBehaviour's Methods
+
+        private void Start()
 		{
 			Pool = new GameObjectPool(_prefab, _parent, _initialAmount);
 
@@ -60,24 +64,19 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 
 		public void Spawn(Vector3 position)
 		{
-			Transform spawn = _spawns[Random.Range(0, _spawns.Length)];
-
-			Assert.IsNotNull(spawn, nameof(EnemiesSpawner) + ": Spawn(), spawn should not be null.");
-
-			GameObject go = Pool.Use();
-
-			go.transform.position = spawn.position;
-
-			EnemyMovements movements = go.GetComponent<EnemyMovements>();
-
-			movements.SetTarget(_target);
-
-			Assert.IsNotNull(movements, nameof(EnemiesSpawner) + ": Spawn(), movements should not be null.");
-
-			movements.onEnemyReachEnd += EnemyMovements_OnEnemyReachEnd;
-
-			go.SetActive(true);
-		}
+            _spawnTransform = _spawns[Random.Range(0, _spawns.Length)];
+			Assert.IsNotNull(_spawnTransform, nameof(EnemiesSpawner) + ": Spawn(), spawn should not be null.");
+            _spawnedObject = Pool.Use();
+            _spawnedObject.transform.position = _spawnTransform.position;
+            _spawnedMovements = _spawnedObject.GetComponent<EnemyMovements>();
+            _spawnedMovements.SetTarget(_target);
+			Assert.IsNotNull(_spawnedMovements, nameof(EnemiesSpawner) + ": Spawn(), movements should not be null.");
+            _spawnedMovements.onEnemyReachEnd += EnemyMovements_OnEnemyReachEnd;
+            _spawnedObject.SetActive(true);
+            _spawnedObject = null;
+            _spawnTransform = null;
+            _spawnedMovements = null;
+        }
 
 		private void EnemyMovements_OnEnemyReachEnd(EnemyMovements movements)
 		{
