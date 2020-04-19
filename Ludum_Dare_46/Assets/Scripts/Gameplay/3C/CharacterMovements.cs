@@ -37,14 +37,16 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 				DOTween.defaultEaseType = Ease.Linear;
 				transform.DOMove(nextTile.Center, MoveDuration, false)
 						 .OnComplete(() => {
-                                                if (currentTile.CharacterOnTile == this)
+                                                if (currentTile.CharacterOnTile == gameObject)
                                                 {
                                                     currentTile.SetCharacterOnTile(null);
+                                                    currentTile.SetFree(true);
                                                 }
 
-                                                 nextTile.SetCharacterOnTile(gameObject);
+                                                nextTile.SetCharacterOnTile(gameObject);
+                                                nextTile.SetFree(false);
 
-							 					if (onCompleted != null)
+                                                if (onCompleted != null)
 												{
 													onCompleted.Invoke(true);
 												}

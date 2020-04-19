@@ -15,7 +15,11 @@ namespace MuchoBestoStudio.LudumDare.Map
 		protected Transform _center = null;
 
 		public Vector3 Center => _center.position;
-		public virtual bool Free => true;
+        [SerializeField]
+        private bool _free = true;
+        public virtual bool Free => _free;
+
+        public void SetFree(bool value) { _free = value; }
 
         [SerializeField]
         private GameObject _characterGO = null;
