@@ -15,7 +15,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 		[SerializeField, Tooltip("")]
 		private	GameObject	_prefab = null;
 		[SerializeField, Tooltip("")]
-		private	uint		_initialAmount = 5;
+		private	uint		_initialAmount = 4;
 
 		[Header("Spawn settings")]
 		[SerializeField, Tooltip("")]

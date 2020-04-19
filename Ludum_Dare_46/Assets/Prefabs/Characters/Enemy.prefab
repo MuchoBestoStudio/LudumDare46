@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5823c69dc1f6a484d8f5a0a5c3b366e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveDuration: 0.5
+  MoveDuration: 1
   _interaction: {fileID: 1416125876204032571}
   _target: {fileID: 0}
 --- !u!114 &1416125876204032571
