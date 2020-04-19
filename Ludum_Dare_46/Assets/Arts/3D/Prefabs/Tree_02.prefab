@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3429581166784510959}
   - component: {fileID: 1918565399247591921}
   - component: {fileID: 2447837129239507253}
-  - component: {fileID: 6284608627860348240}
   m_Layer: 0
   m_Name: Tree_02
   m_TagString: Untagged
@@ -60,7 +59,6 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 22c962b06042a7d4fa182b0f5c6a5fb2, type: 2}
-  - {fileID: 2100000, guid: a97822256caa3254fb7b880303af5694, type: 2}
   - {fileID: 2100000, guid: 977b3ba391b49654593631032d33a6cb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -82,16 +80,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &6284608627860348240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6690129591872967638}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf24e2a806623774bb6526b43aa764a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _combustibleAmount: 10
