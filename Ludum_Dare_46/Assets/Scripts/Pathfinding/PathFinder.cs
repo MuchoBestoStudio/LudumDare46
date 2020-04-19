@@ -110,7 +110,7 @@ namespace MuchoBestoStudio.LudumDare.Pathfinding
 			{
 				nodeMap = _nodes[checkX, checkY].TileNode;
 				if (nodeMap.Free || nodeMap == target)
-					neighbours.Add(_nodes[checkY, checkX]);
+					neighbours.Add(_nodes[checkX, checkY]);
 			}
 
 			checkX = Mathf.RoundToInt(node.Position.x + 1);
@@ -118,7 +118,7 @@ namespace MuchoBestoStudio.LudumDare.Pathfinding
 			{
 				nodeMap = _nodes[checkX, checkY].TileNode;
 				if (nodeMap.Free || nodeMap == target)
-					neighbours.Add(_nodes[checkY, checkX]);
+					neighbours.Add(_nodes[checkX, checkY]);
 			}
 
 			checkX = Mathf.RoundToInt(node.Position.x);
@@ -128,7 +128,7 @@ namespace MuchoBestoStudio.LudumDare.Pathfinding
 			{
 				nodeMap = _nodes[checkX, checkY].TileNode;
 				if (nodeMap.Free || nodeMap == target)
-					neighbours.Add(_nodes[checkY, checkX]);
+					neighbours.Add(_nodes[checkX, checkY]);
 			}
 
 			checkY = Mathf.RoundToInt(node.Position.z + 1);
@@ -136,7 +136,7 @@ namespace MuchoBestoStudio.LudumDare.Pathfinding
 			{
 				nodeMap = _nodes[checkX, checkY].TileNode;
 				if (nodeMap.Free || nodeMap == target)
-					neighbours.Add(_nodes[checkY, checkX]);
+					neighbours.Add(_nodes[checkX, checkY]);
 			}
 			return neighbours.ToArray();
 		}
