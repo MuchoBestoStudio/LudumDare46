@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 {
@@ -8,10 +10,12 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 	{
 		#region Variables
 
-		[SerializeField, Tooltip("")]
-		private PlayerController _controller = null;
+		public EDirection NextMoveDirection { get; private set; } = EDirection.NONE;
 
-		public EDirection CurrentDirection { get; private set; } = EDirection.NONE;
+		[SerializeField, Tooltip("")]
+		private PlayerController	_controller = null;
+
+		private	List<EDirection>	_directionsPressed	=	new List<EDirection>();
 
 		#endregion
 
@@ -37,36 +41,76 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 		{
 			if (started)
 			{
-				CurrentDirection = direction;
+				Assert.IsFalse(_directionsPressed.Contains(direction), nameof(PlayerMovements) + ": PlayerController_OnMovementsPerformed(), _directionsPressed already contains the direction: " + direction);
 
-				if (!IsMoving())
-				{
-					LookTo(CurrentDirection);
+				_directionsPressed.Add(direction);
 
-					Move(CurrentDirection, OnMoveCompleted);
-				}
+				NextMoveDirection = direction;
 			}
 			else
 			{
-				if (CurrentDirection == direction)
+				_directionsPressed.Remove(direction);
+
+				if (_directionsPressed.Count == 0)
 				{
-					CurrentDirection = EDirection.NONE;
+					NextMoveDirection = EDirection.NONE;
 
 					if (onStopMoving != null)
 					{
 						onStopMoving.Invoke();
 					}
+
+					return;
 				}
+
+				NextMoveDirection = _directionsPressed[_directionsPressed.Count - 1];
+			}
+
+			if (IsMoving())
+			{
+				return;
+			}
+
+			if (LookDirection == NextMoveDirection)
+			{
+				Move(direction, OnMoveCompleted);
+			}
+			else
+			{
+				LookTo(NextMoveDirection, OnLookCompleted);
+			}
+		}
+
+		private void OnLookCompleted(bool _)
+		{
+			if (NextMoveDirection == EDirection.NONE)
+			{
+				return;
+			}
+			if (NextMoveDirection != LookDirection)
+			{
+				LookTo(NextMoveDirection, OnLookCompleted);
+			}
+			else
+			{
+				Move(NextMoveDirection, OnMoveCompleted);
 			}
 		}
 
 		private void OnMoveCompleted(bool success)
 		{
-			if (success && CurrentDirection != EDirection.NONE)
+			if (NextMoveDirection == EDirection.NONE)
 			{
-				LookTo(CurrentDirection);
+				return;
+			}
 
-				Move(CurrentDirection, OnMoveCompleted);
+			if (NextMoveDirection != LookDirection)
+			{
+				LookTo(NextMoveDirection, OnLookCompleted);
+			}
+			else
+			{
+				Move(NextMoveDirection, OnMoveCompleted);
 			}
 		}
 

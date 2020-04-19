@@ -9578,7 +9578,12 @@ PrefabInstance:
     - target: {fileID: 7368722731462656565, guid: 18169b0d1889c5746b0583c76480a379,
         type: 3}
       propertyPath: MoveDuration
-      value: 0.5
+      value: 0.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 7368722731462656565, guid: 18169b0d1889c5746b0583c76480a379,
+        type: 3}
+      propertyPath: RotateDuration
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18169b0d1889c5746b0583c76480a379, type: 3}

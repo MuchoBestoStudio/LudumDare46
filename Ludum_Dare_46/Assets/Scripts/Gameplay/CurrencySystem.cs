@@ -15,11 +15,18 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
 
         public Action<uint> OnCurrencyChanged = null;
 
-        void Start()
+       private void Start()
         {
             DontDestroyOnLoad(this.gameObject);
 
             _currentCurrency = (uint)PlayerPrefs.GetInt("Currency", (int)_data.Current);
+            OnCurrencyChanged?.Invoke(_currentCurrency);
+        }
+
+        public void ResetCurrency()
+        {
+            PlayerPrefs.SetInt("Currency", (int)_data.Current);
+            _currentCurrency = _data.Current;
             OnCurrencyChanged?.Invoke(_currentCurrency);
         }
 
