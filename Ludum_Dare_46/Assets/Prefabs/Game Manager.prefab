@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 151aad9577a4dfe4590895b6acee39e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MenuSceneName: Menu
   _currentActionMap:
     m_Name: Current
     m_Id: ec5772c5-3ffe-4f36-b55d-8a6339045be8
@@ -50,3 +51,4 @@ MonoBehaviour:
     m_Actions: []
     m_Bindings: []
   _fireSource: {fileID: 0}
+  _gameTime: 0
