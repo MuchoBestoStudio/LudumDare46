@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3366b06aa70f7a44abe945144d885339, type: 3}
   m_Name: CurrencyData_Base
   m_EditorClassIdentifier: 
-  Current: 100
+  Current: 1000
   TimeMultiplier: 5

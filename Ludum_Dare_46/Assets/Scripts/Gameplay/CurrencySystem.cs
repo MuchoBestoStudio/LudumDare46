@@ -43,7 +43,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
 
         public void Earn(float survivalTime)
         {
-            _currentCurrency += (uint)(survivalTime * _data.TimeMultiplier);
+            _currentCurrency = (uint)(survivalTime * _data.TimeMultiplier);
             OnCurrencyChanged?.Invoke(_currentCurrency);
             PlayerPrefs.SetInt("Currency", (int)_currentCurrency);
         }

@@ -31,7 +31,13 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 		private void EnemyMovements_onEnemyReachEnd(EnemyMovements _)
 		{
 			InteractWithFrontTile();
-		}
+            Tile currentTile = TilesManager.Instance.GetTile(transform.position);
+            if (currentTile.CharacterOnTile == gameObject)
+            {
+                currentTile.SetCharacterOnTile(null);
+                currentTile.SetFree(true);
+            }
+        }
 
 		#endregion
 
@@ -42,7 +48,13 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 			if (character == ECharacter.PLAYER)
 			{
 				_animator.Disappear();
-			}
+                Tile currentTile = TilesManager.Instance.GetTile(transform.position);
+                if (currentTile.CharacterOnTile == gameObject)
+                {
+                    currentTile.SetCharacterOnTile(null);
+                    currentTile.SetFree(true);
+                }
+            }
 		}
 
 		public void InteractWithFrontTile()
