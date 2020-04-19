@@ -5,7 +5,8 @@ using UnityEngine;
 
 namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 {
-	public class CharacterMovements : MonoBehaviour, IInteractable
+	[DisallowMultipleComponent]
+	public class CharacterMovements : MonoBehaviour
 	{
 		#region Variables
 
@@ -36,17 +37,17 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 				DOTween.defaultEaseType = Ease.Linear;
 				transform.DOMove(nextTile.Center, MoveDuration, false)
 						 .OnComplete(() => {
-												if (onCompleted != null)
-												{
-													onCompleted.Invoke(true);
-												}
-
                                                 if (currentTile.CharacterOnTile == this)
                                                 {
                                                     currentTile.SetCharacterOnTile(null);
                                                 }
 
-                                                 nextTile.SetCharacterOnTile(this);
+                                                 nextTile.SetCharacterOnTile(gameObject);
+
+							 					if (onCompleted != null)
+												{
+													onCompleted.Invoke(true);
+												}
 											});
 
 				if (onMovePerformed != null)
@@ -102,9 +103,6 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 			return DOTween.IsTweening(transform);
 		}
 
-       public virtual void Interact(ECharacter character)
-        {
-        }
         #endregion
 
 	}

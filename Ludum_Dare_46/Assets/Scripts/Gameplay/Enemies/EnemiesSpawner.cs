@@ -31,9 +31,10 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 
 		public	GameObjectPool	Pool { get; private set; } = null;
 
-        private GameObject _spawnedObject = null;
         private Transform _spawnTransform = null;
+        private GameObject _spawnedObject = null;
         private EnemyMovements _spawnedMovements = null;
+        private EnemyAnimator _spawnedAnimator = null;
 
         #endregion
 
@@ -65,24 +66,32 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 		public void Spawn(Vector3 position)
 		{
             _spawnTransform = _spawns[Random.Range(0, _spawns.Length)];
+
 			Assert.IsNotNull(_spawnTransform, nameof(EnemiesSpawner) + ": Spawn(), spawn should not be null.");
+
             _spawnedObject = Pool.Use();
+
             _spawnedObject.transform.position = _spawnTransform.position;
-            _spawnedMovements = _spawnedObject.GetComponent<EnemyMovements>();
-            _spawnedMovements.SetTarget(_target);
+
+			_spawnedMovements = _spawnedObject.GetComponent<EnemyMovements>();
+
 			Assert.IsNotNull(_spawnedMovements, nameof(EnemiesSpawner) + ": Spawn(), movements should not be null.");
-            _spawnedMovements.onEnemyReachEnd += EnemyMovements_OnEnemyReachEnd;
-            _spawnedObject.SetActive(true);
-            _spawnedObject = null;
-            _spawnTransform = null;
-            _spawnedMovements = null;
-        }
 
-		private void EnemyMovements_OnEnemyReachEnd(EnemyMovements movements)
+            _spawnedMovements.SetTarget(_target);
+
+            _spawnedAnimator = _spawnedObject.GetComponent<EnemyAnimator>();
+
+			Assert.IsNotNull(_spawnedAnimator, nameof(EnemiesSpawner) + ": Spawn(), animator should not be null.");
+
+            _spawnedAnimator.onEnemyEndDisappearing += EnemyAnimator_OnEnemyDisappear;
+
+            _spawnedAnimator.Appear();
+		}
+
+		private void EnemyAnimator_OnEnemyDisappear(EnemyAnimator animator)
 		{
-			movements.onEnemyReachEnd -= EnemyMovements_OnEnemyReachEnd;
-
-			Pool.Unused(movements.gameObject);
+			animator.onEnemyEndDisappearing -= EnemyAnimator_OnEnemyDisappear;
+			Pool.Unused(animator.gameObject);
 		}
 
 		#endregion

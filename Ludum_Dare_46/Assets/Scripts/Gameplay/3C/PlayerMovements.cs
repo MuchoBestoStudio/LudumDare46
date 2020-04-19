@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 {
+	[DisallowMultipleComponent]
 	public class PlayerMovements : CharacterMovements
 	{
 		#region Variables

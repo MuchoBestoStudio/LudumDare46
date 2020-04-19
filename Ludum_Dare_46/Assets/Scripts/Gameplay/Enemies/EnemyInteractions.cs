@@ -1,17 +1,30 @@
 ﻿using UnityEngine;
 using MuchoBestoStudio.LudumDare.Map;
+using MuchoBestoStudio.LudumDare.Gameplay._3C;
 
 namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 {
-	public class EnemyInteraction : MonoBehaviour
+	[DisallowMultipleComponent]
+	public class EnemyInteractions : CharacterInteractions
 	{
 		#region Variables
+
+		[SerializeField, Tooltip("")]
+		private EnemyAnimator	_animator = null;
 
 		#endregion
 
 		#region Interact
 
-		public void Interact()
+		public override void Interact(ECharacter character)
+		{
+			if (character == ECharacter.PLAYER)
+			{
+				_animator.Disappear();
+			}
+		}
+
+		public void InteractWithFrontTile()
 		{
 			if (TilesManager.Instance == null)
 			{
