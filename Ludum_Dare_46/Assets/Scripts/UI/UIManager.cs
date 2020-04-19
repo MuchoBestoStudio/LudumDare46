@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 using MuchoBestoStudio.LudumDare.Gameplay;
+using MuchoBestoStudio.LudumDare.Gameplay.Fire;
 using MuchoBestoStudio.LudumDare.UI.ViewModels;
 using UnityEngine.UI;
 

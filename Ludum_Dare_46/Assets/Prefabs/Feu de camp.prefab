@@ -141,6 +141,7 @@ GameObject:
   - component: {fileID: 8885624969856899185}
   - component: {fileID: 1842917729}
   - component: {fileID: 7493589262013571655}
+  - component: {fileID: 2342437447783950350}
   m_Layer: 0
   m_Name: Feu de camp
   m_TagString: Untagged
@@ -245,6 +246,22 @@ MonoBehaviour:
   _throwCombustible: {fileID: 8300000, guid: 02bf81b29ed62c94d92e8a862d7f3c48, type: 3}
   _blowingFire: {fileID: 8300000, guid: 07cba35a565d6e346848bf287075124b, type: 3}
   _fireExtinguished: {fileID: 8300000, guid: 7acb031feff4a014894e23d6c41fd146, type: 3}
+--- !u!114 &2342437447783950350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4024007980401303053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fb04eb756f814d40b24c74234af1feb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _source: {fileID: 1842917729}
+  _flame: {fileID: 8805948598068340559}
+  _maxRateOverTime: 40
+  _maxCombustible: 5
 --- !u!1 &6235830958619728361
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,6 +599,12 @@ PrefabInstance:
 --- !u!4 &8684164470974947551 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1993545627004252770, guid: 7888403ec3d94e146b19bf6648bd4bad,
+    type: 3}
+  m_PrefabInstance: {fileID: 7146692248159687357}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &8805948598068340559 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1809080512685209074, guid: 7888403ec3d94e146b19bf6648bd4bad,
     type: 3}
   m_PrefabInstance: {fileID: 7146692248159687357}
   m_PrefabAsset: {fileID: 0}
