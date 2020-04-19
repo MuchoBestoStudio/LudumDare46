@@ -31,6 +31,11 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
             {
                 onCombustibleAmountChanged.Invoke(_combustibleAmount, deltaValue);
             }
+
+            if (_combustibleAmount == 0 && onNoCombustibleLeft != null)
+            {
+                onNoCombustibleLeft.Invoke();
+            }
         }
 
         public void AddCombustibles(uint value) { SetCombustibleAmount(_combustibleAmount + value); }
@@ -59,20 +64,16 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
 
         void Update()
         {
+            _currentCombustibleUpdateTimer += UnityEngine.Time.deltaTime;
+
             if (_currentCombustibleUpdateTimer > _combustibleUpdateTimer)
             {
-                _currentCombustibleUpdateTimer = 0;
+                _currentCombustibleUpdateTimer = 0.0f;
                 if (_combustibleAmount > 0)
                 {
                     SetCombustibleAmount(_combustibleAmount - 1);
-                    if (_combustibleAmount == 0 && onNoCombustibleLeft != null)
-                    {
-                        onNoCombustibleLeft.Invoke();
-                    }
                 }
             }
-
-            _currentCombustibleUpdateTimer += UnityEngine.Time.deltaTime;
         }
 
         public void Interact(ECharacter character)
