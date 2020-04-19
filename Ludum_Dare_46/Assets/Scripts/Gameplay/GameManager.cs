@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
+using MuchoBestoStudio.LudumDare.Gameplay.Fire;
+
 namespace MuchoBestoStudio.LudumDare.Gameplay
 {
     public class GameManager : MonoBehaviour

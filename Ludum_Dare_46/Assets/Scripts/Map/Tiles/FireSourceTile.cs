@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using MuchoBestoStudio.LudumDare.Gameplay;
+using MuchoBestoStudio.LudumDare.Gameplay.Fire;
 
 namespace MuchoBestoStudio.LudumDare.Map
 {

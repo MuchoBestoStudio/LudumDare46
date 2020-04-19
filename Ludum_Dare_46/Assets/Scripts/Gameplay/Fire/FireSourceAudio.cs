@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace MuchoBestoStudio.LudumDare.Gameplay
+namespace MuchoBestoStudio.LudumDare.Gameplay.Fire
 {
 	public class FireSourceAudio : MonoBehaviour
 	{
