@@ -173,6 +173,7 @@ GameObject:
   - component: {fileID: 7368722731462656565}
   - component: {fileID: 1353283693121331019}
   - component: {fileID: 179587372466170892}
+  - component: {fileID: 6998041153490574929}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -280,6 +281,20 @@ MonoBehaviour:
   _inventoryData: {fileID: 11400000, guid: 25c564ba2d4791148b61063daf7efe0c, type: 2}
   _maxCombustiblesAmount: 0
   _combustibleAmount: 0
+--- !u!114 &6998041153490574929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1635786295227572384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bbcf9bb301dedc40b70898e0411cae0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _controller: {fileID: 1501512968312425469}
+  tilesManager: {fileID: 0}
 --- !u!1 &4180249310297721457
 GameObject:
   m_ObjectHideFlags: 0

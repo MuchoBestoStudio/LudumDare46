@@ -407,6 +407,18 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &50711114 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7368722731462656565, guid: 18169b0d1889c5746b0583c76480a379,
+    type: 3}
+  m_PrefabInstance: {fileID: 1616394844}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18f07ca53327fb7449a16570348ada0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &69751287
 Mesh:
   m_ObjectHideFlags: 0
@@ -6411,6 +6423,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1208631072}
+    - target: {fileID: 449585104120340792, guid: afc9d7433f2d98f41961d321c2364af9,
+        type: 3}
+      propertyPath: _playerInventory
+      value: 
+      objectReference: {fileID: 237061757}
     - target: {fileID: 536707977981013231, guid: afc9d7433f2d98f41961d321c2364af9,
         type: 3}
       propertyPath: m_Mesh
@@ -6561,6 +6578,11 @@ PrefabInstance:
       propertyPath: m_PolyMesh.m_Mesh
       value: 
       objectReference: {fileID: 209000206}
+    - target: {fileID: 2043049685925573130, guid: afc9d7433f2d98f41961d321c2364af9,
+        type: 3}
+      propertyPath: _characterOnTile
+      value: 
+      objectReference: {fileID: 50711114}
     - target: {fileID: 2313841920712813674, guid: afc9d7433f2d98f41961d321c2364af9,
         type: 3}
       propertyPath: m_PolyMesh.m_Mesh
@@ -7085,6 +7107,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e7824785db2c6443b4f22bf8fd62107, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1166889252 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7433168531680529978, guid: afc9d7433f2d98f41961d321c2364af9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1097738432}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 696ee6a1f2d6de44aaa15568a2053a95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!43 &1172688505
@@ -9536,6 +9570,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 6998041153490574929, guid: 18169b0d1889c5746b0583c76480a379,
+        type: 3}
+      propertyPath: tilesManager
+      value: 
+      objectReference: {fileID: 1166889252}
     - target: {fileID: 7368722731462656565, guid: 18169b0d1889c5746b0583c76480a379,
         type: 3}
       propertyPath: MoveDuration
