@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf24e2a806623774bb6526b43aa764a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _combustibleAmount: 3
+  _combustibleAmount: 5
   _basicVisual: {fileID: 9195521079399008195}
   _emptyVisual: {fileID: 6977990795165129669}
 --- !u!1001 &5490035648576980679
