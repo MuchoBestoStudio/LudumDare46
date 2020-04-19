@@ -28,7 +28,7 @@ public class Resource : MonoBehaviour, IInteractable
     {
         if (_basicVisual == null)
         {
-            Debug.LogError("No \"_basicVisual\" set for the resource : " + gameObject.name);
+            Debug.LogError("No \"_basicVisual\" set for the resource : " + gameObject.name, gameObject);
         }
     }
 

@@ -35,7 +35,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
 
         public void SetCombustibleAmount(uint value)
         {
-            _combustibleAmount = (uint)Mathf.Min(_combustibleAmount + value, MaxCombustibleAmount);
+            _combustibleAmount = (uint)Mathf.Min(value, MaxCombustibleAmount);
             if (onCombustibleAmountChanged != null)
             {
                 onCombustibleAmountChanged.Invoke(_combustibleAmount);

@@ -19,7 +19,7 @@ namespace MuchoBestoStudio.LudumDare.Map
 			}
 			else
 			{
-				Debug.LogWarning("Any resource set in : " + gameObject);
+				Debug.LogWarning("Any resource set in : " + gameObject, gameObject);
 			}
 		}
 

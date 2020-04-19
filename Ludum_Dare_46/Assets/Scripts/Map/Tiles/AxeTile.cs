@@ -9,7 +9,7 @@ namespace MuchoBestoStudio.LudumDare.Map
 	{
 		[SerializeField]
 		private GameObject _axe = null;
-		public override bool Free { get { return !_axe; } }
+		public override bool Free { get { return false; } }
 
 		public override void Interact(ECharacter character)
 		{
