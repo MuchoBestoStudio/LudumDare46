@@ -23,6 +23,8 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 		[SerializeField, Tooltip("")]
 		private Tile		_target = null;
 		[SerializeField, Tooltip("")]
+		private	float		_initialTimer = 5f;
+		[SerializeField, Tooltip("")]
 		private float		_interval = 3f;
 
 		public float Timer { get; private set; } = 0f;
@@ -36,6 +38,8 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 		private void Start()
 		{
 			Pool = new GameObjectPool(_prefab, _parent, _initialAmount);
+
+			Timer = _initialTimer;
 		}
 
 		private void Update()
