@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace MuchoBestoStudio.LudumDare.Gameplay
 {
@@ -15,6 +16,9 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
 
         public Action<uint> onCombustibleAmountChanged = null;
         public Action<uint> onMaxCombustibleAmountChanged = null;
+
+        [SerializeField]
+        private Image _axeImage;
 
         [SerializeField]
         private uint _maxCombustiblesAmount = 0;
@@ -72,6 +76,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
         {
             _playerAxe = new Axe();
             _playerAxe.Life = axeDurability;
+            UpdateDurabilityShader();
         }
 
         public void UseAxe()
@@ -82,13 +87,24 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
             }
             if ((--_playerAxe.Life) == 0)
             {
+                UpdateDurabilityShader();
                 _playerAxe = null;
             }
+
         }
 
         public void PickUpAxe()
         {
             SetAxe((uint)_inventoryData.AxeDurability.LevelValue);
+        }
+
+        void UpdateDurabilityShader()
+        {
+            if (_axeImage.material.HasProperty("Vector1_495555B1"))
+            {
+                float shaderDurability = _playerAxe.Life / _inventoryData.AxeDurability.LevelValue;
+                _axeImage.material.SetFloat("Vector1_495555B1", shaderDurability);
+            }
         }
 
         void Start()
