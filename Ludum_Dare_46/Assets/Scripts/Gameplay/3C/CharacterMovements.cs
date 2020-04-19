@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 {
-	public class CharacterMovements : MonoBehaviour
+	public class CharacterMovements : MonoBehaviour, IInteractable
 	{
 		#region Variables
 
@@ -21,7 +21,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 			{
 				return;
 			}
-
+            Tile currentTile = TilesManager.Instance.GetTile(transform.position);
 			Tile nextTile = TilesManager.Instance.GetTile(transform.position, transform.forward * Tile.SIZE);
 
 			// note (rc) : Next Tile can be null if the arrive the the bounds of the arena
@@ -34,6 +34,13 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 												{
 													onCompleted.Invoke(true);
 												}
+
+                                                if (currentTile.CharacterOnTile == this)
+                                                {
+                                                    currentTile.SetCharacterOnTile(null);
+                                                }
+
+                                                 nextTile.SetCharacterOnTile(this);
 											});
 			}
 			else
@@ -79,6 +86,10 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 			}
 		}
 
-		#endregion
-	}
+        public virtual void Interact(ECharacter character)
+        {
+        }
+
+        #endregion
+    }
 }
