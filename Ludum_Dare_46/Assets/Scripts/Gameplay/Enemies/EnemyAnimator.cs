@@ -6,6 +6,13 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 	[DisallowMultipleComponent]
 	public class EnemyAnimator : MonoBehaviour
 	{
+		#region Variables
+
+		[SerializeField, Tooltip("")]
+		private	EnemyMovements	_movements = null;
+
+		#endregion
+
 		#region Events
 
 		public	Action<EnemyAnimator> onEnemyStartToAppear = null;
@@ -13,6 +20,25 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 
 		public	Action<EnemyAnimator> onEnemyStartToDisappear = null;
 		public	Action<EnemyAnimator> onEnemyEndDisappearing = null;
+
+		#endregion
+
+		#region MonoBehaviour's Methods
+
+		private void OnEnable()
+		{
+			_movements.onEnemyReachEnd += Enemy_OnEnemyReachEnd;
+		}
+
+		private void OnDisable()
+		{
+			_movements.onEnemyReachEnd -= Enemy_OnEnemyReachEnd;
+		}
+
+		private void Enemy_OnEnemyReachEnd(EnemyMovements _)
+		{
+			Disappear();
+		}
 
 		#endregion
 
