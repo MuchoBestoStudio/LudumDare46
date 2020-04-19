@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 namespace MuchoBestoStudio.LudumDare.UI.Menu
@@ -19,6 +20,17 @@ namespace MuchoBestoStudio.LudumDare.UI.Menu
 		[SerializeField, Tooltip("")]
 		private Button _reset = null;
 
+		[Header("Sounds")]
+		[SerializeField]
+		private Slider _masterSlider = null;
+		[SerializeField]
+		private Slider _musicsSlider = null;
+		[SerializeField]
+		private Slider _sfxSlider = null;
+		[SerializeField]
+		private AudioMixer _audioMixer = null;
+
+
 		[Header("Reset")]
 		[SerializeField]
 		private GameObject _resetPanel = null;
@@ -34,6 +46,13 @@ namespace MuchoBestoStudio.LudumDare.UI.Menu
 
 		#region MonoBehaviour's Methods
 
+		private void Start()
+		{
+			_masterSlider.value = PlayerPrefs.GetFloat("MasterVolume", 1f);
+			_musicsSlider.value = PlayerPrefs.GetFloat("MusicsVolume", 1f);
+			_sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume", 1f);
+		}
+
 		private void OnEnable()
 		{
 			_back.onClick.AddListener(OnBackButtonClicked);
@@ -42,8 +61,11 @@ namespace MuchoBestoStudio.LudumDare.UI.Menu
 			_resetYes.onClick.AddListener(OnResetButtonClicked);
 			_resetNo.onClick.AddListener(OnSwitchResetPanel);
 
-			_resetPanel.SetActive(false);
+			_masterSlider.onValueChanged.AddListener(ChangeMasterVolumeGoupe);
+			_musicsSlider.onValueChanged.AddListener(ChangeMusicsVolumeGoupe);
+			_sfxSlider.onValueChanged.AddListener(ChangeSFXVolumeGoupe);
 
+			_resetPanel.SetActive(false);
 		}
 
 		private void OnDisable()
@@ -53,6 +75,10 @@ namespace MuchoBestoStudio.LudumDare.UI.Menu
 
 			_resetYes.onClick.RemoveListener(OnResetButtonClicked);
 			_resetNo.onClick.RemoveListener(OnSwitchResetPanel);
+
+			_masterSlider.onValueChanged.RemoveListener(ChangeMasterVolumeGoupe);
+			_musicsSlider.onValueChanged.RemoveListener(ChangeMusicsVolumeGoupe);
+			_sfxSlider.onValueChanged.RemoveListener(ChangeSFXVolumeGoupe);
 		}
 
 		#endregion
@@ -78,6 +104,26 @@ namespace MuchoBestoStudio.LudumDare.UI.Menu
 			}
 			FindObjectOfType<Gameplay.CurrencySystem>().ResetCurrency();
 			_resetPanel.SetActive(false);
+		}
+		#endregion
+
+		#region Slider
+		private void ChangeMasterVolumeGoupe(float value)
+		{
+			_audioMixer.SetFloat("MasterVolume", Mathf.Log10(value) * 20f);
+			PlayerPrefs.SetFloat("MasterVolume", value);
+		}
+
+		private void ChangeMusicsVolumeGoupe(float value)
+		{
+			_audioMixer.SetFloat("MusicsVolume", Mathf.Log10(value) * 20f);
+			PlayerPrefs.SetFloat("MusicsVolume", value);
+		}
+
+		private void ChangeSFXVolumeGoupe(float value)
+		{
+			_audioMixer.SetFloat("SFXVolume", Mathf.Log10(value) * 20f);
+			PlayerPrefs.SetFloat("SFXVolume", value);
 		}
 		#endregion
 	}

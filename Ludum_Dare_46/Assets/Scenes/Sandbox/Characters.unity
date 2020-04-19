@@ -197,8 +197,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec9f29fab271f9d408670b10f956563c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 0
-  _amount: 10
 --- !u!65 &71502023
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -305,8 +303,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec9f29fab271f9d408670b10f956563c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 0
-  _amount: 10
 --- !u!65 &183257866
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -537,7 +533,7 @@ GameObject:
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &417374589
 Transform:
   m_ObjectHideFlags: 0
@@ -567,7 +563,10 @@ MonoBehaviour:
   _parent: {fileID: 417374589}
   _prefab: {fileID: 4631825725256944252, guid: aa479d36b40c4e741bd33bd6bc08283f, type: 3}
   _initialAmount: 5
-  duration: 3
+  _spawns: []
+  _target: {fileID: 0}
+  _initialTimer: 5
+  _interval: 3
 --- !u!1 &443166539
 GameObject:
   m_ObjectHideFlags: 0
@@ -616,7 +615,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 1800153190}
-  _resource: {fileID: 0}
+  _free: 1
+  _characterGO: {fileID: 0}
 --- !u!64 &443166542
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -757,7 +757,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 1396189508}
-  _resource: {fileID: 2044182660}
+  _free: 1
+  _characterGO: {fileID: 0}
 --- !u!64 &470427410
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -898,7 +899,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 1539093061}
-  _resource: {fileID: 1048130351}
+  _free: 1
+  _characterGO: {fileID: 0}
 --- !u!64 &807657520
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1008,7 +1010,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 1882628464}
-  _resource: {fileID: 0}
+  _free: 1
+  _characterGO: {fileID: 0}
 --- !u!64 &851029412
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1118,7 +1121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 358277446}
-  _resource: {fileID: 0}
+  _free: 1
+  _characterGO: {fileID: 0}
 --- !u!64 &906974593
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1320,7 +1324,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 25511365}
-  _resource: {fileID: 0}
+  _free: 1
+  _characterGO: {fileID: 0}
 --- !u!64 &977670899
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1428,8 +1433,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec9f29fab271f9d408670b10f956563c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 0
-  _amount: 10
 --- !u!65 &1048130352
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1536,8 +1539,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec9f29fab271f9d408670b10f956563c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 0
-  _amount: 10
 --- !u!65 &1301756693
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1646,7 +1647,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 532341653}
-  _resource: {fileID: 0}
+  _free: 1
+  _characterGO: {fileID: 0}
 --- !u!64 &1326623425
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1756,7 +1758,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 1688860706}
-  _resource: {fileID: 0}
+  _free: 1
+  _characterGO: {fileID: 0}
 --- !u!64 &1329465623
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1867,7 +1870,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 340546583}
-  _resource: {fileID: 71502022}
+  _free: 1
+  _characterGO: {fileID: 0}
 --- !u!64 &1377648435
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2008,7 +2012,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 1772148924}
-  _resource: {fileID: 1301756692}
+  _free: 1
+  _characterGO: {fileID: 0}
 --- !u!64 &1457168801
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2148,7 +2153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 1940831038}
-  _resource: {fileID: 0}
+  _free: 1
+  _characterGO: {fileID: 0}
 --- !u!64 &1546027260
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2239,8 +2245,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 696ee6a1f2d6de44aaa15568a2053a95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _row: 0
-  _column: 0
 --- !u!4 &1559707595
 Transform:
   m_ObjectHideFlags: 0
@@ -2466,7 +2470,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 445222690}
-  _resource: {fileID: 183257865}
+  _free: 1
+  _characterGO: {fileID: 0}
 --- !u!64 &1842876103
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2634,8 +2639,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec9f29fab271f9d408670b10f956563c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 0
-  _amount: 10
 --- !u!65 &2044182661
 BoxCollider:
   m_ObjectHideFlags: 0
