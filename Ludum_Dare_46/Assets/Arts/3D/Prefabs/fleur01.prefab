@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 5417558161797887608}
   - component: {fileID: 6796618533286559212}
   m_Layer: 0
-  m_Name: fleur01 (1)
+  m_Name: fleur01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &3623001795808296272
 Transform:
