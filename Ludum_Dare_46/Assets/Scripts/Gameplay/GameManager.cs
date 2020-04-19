@@ -38,6 +38,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
         public Action onTimeUpdated = null;
         public Action onGameOver = null;
         public Action onRestartGame = null;
+        public Action<bool> onPauseChanged = null;
 
         [SerializeField]
         private float _gameTime = 0.0f;
@@ -89,6 +90,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
         {
             _isGamePaused = !_isGamePaused;
             Time.timeScale = _isGamePaused ? 0.0f : 1.0f;
+            onPauseChanged?.Invoke(_isGamePaused);
         }
 
         void Start()
