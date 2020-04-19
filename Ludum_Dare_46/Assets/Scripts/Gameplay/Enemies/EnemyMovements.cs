@@ -12,6 +12,8 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 		#region Variables
 
 		[SerializeField, Tooltip("")]
+		private	EnemyAnimator _animator = null;
+		[SerializeField, Tooltip("")]
 		private	Tile _target = null;
 
 		private	int	_index = 0;
@@ -26,17 +28,41 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 
 		#endregion
 
+		#region MonoBehaviour's Methods
+
+		private void OnEnable()
+		{
+			_animator.onEnemyEndAppearing += EnemyAnimator_OnEnemyEndAppearing;
+		}
+
+		private void OnDisable()
+		{
+			_animator.onEnemyEndAppearing -= EnemyAnimator_OnEnemyEndAppearing;
+		}
+
+		private	void EnemyAnimator_OnEnemyEndAppearing(EnemyAnimator _)
+		{
+			StartPath();
+		}
+
+		#endregion
+
 		#region Movements
 
 		private void MoveToNextPoint()
 		{
+			if (!enabled || _path == null || _path.Length == 0)
+			{
+				return;
+			}
+
 			++_index;
 
 			if (_index + 1 >= _path.Length)
 			{
 				_currentDir = EDirection.NONE;
 
-				LookTo(DetermineDirection(transform.position, _path[_path.Length - 1].transform.position), null);
+				LookTo(DetermineDirection(transform.position, _path[_path.Length - 1].Center), null);
 
 				if (onEnemyReachEnd != null)
 				{
@@ -45,10 +71,20 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 				return;
 			}
 
-			_currentDir =  DetermineDirection(transform.position, _path[_index].transform.position);
+			_currentDir =  DetermineDirection(transform.position, _path[_index].Center);
 
-			LookTo(_currentDir, null);
+			if (_currentDir != LookDirection)
+			{
+				LookTo(_currentDir, OnLookToCompleted);
+			}
+			else
+			{
+				Move(_currentDir, OnMoveCompleted);
+			}
+		}
 
+		private void OnLookToCompleted(bool _)
+		{
 			Move(_currentDir, OnMoveCompleted);
 		}
 
@@ -81,13 +117,11 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 			return EDirection.NONE;
 		}
 
-		private void SetPath(Map.Tile[] path)
+		private void SetPath(Tile[] path)
 		{
 			_index = 0;
 
 			_path = path;
-
-			MoveToNextPoint();
 		}
 
 		private void RetrievePath()
@@ -104,7 +138,13 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 		public void SetTarget(Tile newTarget)
 		{
 			_target = newTarget;
+
 			RetrievePath();
+		}
+
+		public void StartPath()
+		{
+			MoveToNextPoint();
 		}
 
         #endregion

@@ -14,6 +14,8 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 
 		[SerializeField, Tooltip("")]
 		private PlayerController	_controller = null;
+		[SerializeField, Tooltip("")]
+		private	PlayerAnimator		_animator = null;
 
 		private	List<EDirection>	_directionsPressed	=	new List<EDirection>();
 
@@ -66,7 +68,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 				NextMoveDirection = _directionsPressed[_directionsPressed.Count - 1];
 			}
 
-			if (IsMoving())
+			if (IsMoving() || IsPlayingIdleAnimations())
 			{
 				return;
 			}
@@ -99,7 +101,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 
 		private void OnMoveCompleted(bool success)
 		{
-			if (NextMoveDirection == EDirection.NONE)
+			if (!success || NextMoveDirection == EDirection.NONE)
 			{
 				return;
 			}
@@ -113,6 +115,12 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 				Move(NextMoveDirection, OnMoveCompleted);
 			}
 		}
+
+		private bool IsPlayingIdleAnimations()
+		{
+			return _animator.IsPlayingAnyIdles();
+		}
+
 
 		#endregion
 	}

@@ -91,6 +91,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 		private void EnemyAnimator_OnEnemyDisappear(EnemyAnimator animator)
 		{
 			animator.onEnemyEndDisappearing -= EnemyAnimator_OnEnemyDisappear;
+
 			Pool.Unused(animator.gameObject);
 		}
 

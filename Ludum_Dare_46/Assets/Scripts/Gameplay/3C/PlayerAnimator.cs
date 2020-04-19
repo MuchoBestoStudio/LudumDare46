@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 {
@@ -9,7 +10,9 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 
 		#region Const Keys
 
-		public const string MOVING_KEY = "Move";
+		public const string MOVE_KEY = "Move";
+		public const string PICK_AXE_KEY = "PickAxe";
+		public const string PICK_WOOD_LOG_KEY = "PickWoodLog";
 		public const string CUT_TREE_KEY = "CutTree";
 		public const string MENACE_KEY = "Menace";
 		public const string SCARED_KEY = "Scared";
@@ -20,6 +23,8 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 		private	Animator		_animator	=	null;
 		[SerializeField, Tooltip("")]
 		private	PlayerMovements	_movements	=	null;
+		[SerializeField, Tooltip("")]
+		private	PlayerInteractions _interactions = null;
 
 		#endregion
 
@@ -29,12 +34,22 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 		{
 			_movements.onMovePerformed += StartMoving;
 			_movements.onStopMoving += StopMoving;
+
+			_interactions.onCutingTree += CutTree;
+			_interactions.onMenacingGhost += MenaceGhost;
+			//_interactions.onPickingAxe += PickAxe;
+			//_interactions.onPickingWoodLog += PickWoodLog;
 		}
 
 		private void OnDisable()
 		{
 			_movements.onMovePerformed -= StartMoving;
 			_movements.onStopMoving -= StopMoving;
+
+			_interactions.onCutingTree -= CutTree;
+			_interactions.onMenacingGhost -= MenaceGhost;
+			_interactions.onPickingAxe -= PickAxe;
+			_interactions.onPickingWoodLog -= PickWoodLog;
 		}
 
 		#endregion
@@ -43,12 +58,22 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 
 		public void StartMoving()
 		{
-			_animator.SetBool(MOVING_KEY, true);
+			_animator.SetBool(MOVE_KEY, true);
 		}
 
 		public void StopMoving()
 		{
-			_animator.SetBool(MOVING_KEY, false);
+			_animator.SetBool(MOVE_KEY, false);
+		}
+
+		public void	PickAxe()
+		{
+			_animator.SetTrigger(PICK_AXE_KEY);
+		}
+
+		public void PickWoodLog()
+		{
+			_animator.SetTrigger(PICK_WOOD_LOG_KEY);
 		}
 
 		public void CutTree()
@@ -56,7 +81,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 			_animator.SetTrigger(CUT_TREE_KEY);
 		}
 
-		public void Menace()
+		public void MenaceGhost()
 		{
 			_animator.SetTrigger(MENACE_KEY);
 		}
@@ -64,6 +89,21 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 		public void Scared()
 		{
 			_animator.SetTrigger(SCARED_KEY);
+		}
+
+		public bool IsPlayingAnyIdles()
+		{
+			return false;
+		}
+
+		public bool IsPlayingAnyMovements()
+		{
+			return false;
+		}
+
+		public bool IsPlayingAnyInteractions()
+		{
+			return false;
 		}
 
 		#endregion

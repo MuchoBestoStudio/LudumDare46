@@ -5,11 +5,15 @@ namespace MuchoBestoStudio.LudumDare.Map
 {
 	public class ResourceTile : Tile
 	{
+		public override bool Free { get { return _resource == null && !_block; } }
+
+		public bool		Block { get { return _block; } }
+		public Resource	Resource { get { return _resource; } }
+
 		[SerializeField]
 		private bool _block;
 		[SerializeField]
 		private Resource _resource = null;
-		public override bool Free { get { return _resource == null && !_block; } }
 
 		private void OnEnable()
 		{

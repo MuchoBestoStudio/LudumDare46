@@ -28,11 +28,21 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 		private void OnEnable()
 		{
 			_movements.onEnemyReachEnd += Enemy_OnEnemyReachEnd;
+
+			if (onEnemyEndAppearing != null)
+			{
+				onEnemyEndAppearing.Invoke(this);
+			}
 		}
 
 		private void OnDisable()
 		{
 			_movements.onEnemyReachEnd -= Enemy_OnEnemyReachEnd;
+
+			if (onEnemyEndDisappearing != null)
+			{
+				onEnemyEndDisappearing.Invoke(this);
+			}
 		}
 
 		private void Enemy_OnEnemyReachEnd(EnemyMovements _)
@@ -46,30 +56,22 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 
 		public void Appear()
 		{
-			gameObject.SetActive(true);
-
 			if (onEnemyStartToAppear != null)
 			{
 				onEnemyStartToAppear.Invoke(this);
 			}
-			if (onEnemyEndAppearing != null)
-			{
-				onEnemyEndAppearing.Invoke(this);
-			}
+
+			gameObject.SetActive(true);
 		}
 
 		public void Disappear()
 		{
-			gameObject.SetActive(false);
-
 			if (onEnemyStartToDisappear != null)
 			{
 				onEnemyStartToDisappear.Invoke(this);
 			}
-			if (onEnemyEndDisappearing != null)
-			{
-				onEnemyEndDisappearing.Invoke(this);
-			}
+
+			gameObject.SetActive(false);
 		}
 
 		#endregion

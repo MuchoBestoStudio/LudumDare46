@@ -235,6 +235,7 @@ MonoBehaviour:
   MoveDuration: 0.3
   RotateDuration: 0.1
   _controller: {fileID: 1501512968312425469}
+  _animator: {fileID: 9208027817022405891}
 --- !u!114 &1353283693121331019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,6 +282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inventoryData: {fileID: 11400000, guid: 25c564ba2d4791148b61063daf7efe0c, type: 2}
+  _axeImage: {fileID: 0}
   _maxCombustiblesAmount: 0
   _combustibleAmount: 0
 --- !u!114 &6998041153490574929
@@ -296,6 +298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _controller: {fileID: 1501512968312425469}
+  _animator: {fileID: 9208027817022405891}
   tilesManager: {fileID: 0}
 --- !u!114 &9208027817022405891
 MonoBehaviour:
@@ -311,6 +314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 474559604707316936}
   _movements: {fileID: 7368722731462656565}
+  _interactions: {fileID: 6998041153490574929}
 --- !u!95 &474559604707316936
 Animator:
   serializedVersion: 3

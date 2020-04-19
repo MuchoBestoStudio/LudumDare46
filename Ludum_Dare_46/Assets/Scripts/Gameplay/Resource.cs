@@ -6,6 +6,8 @@ using MuchoBestoStudio.LudumDare.Gameplay._3C;
 
 public class Resource : MonoBehaviour, IInteractable
 {
+	public bool AxeDependent { get { return _axeDependent; } }
+
     [Header("State")]
     [SerializeField]
     private uint _lifePoint = 1;
