@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1115329394174762921}
   - component: {fileID: 2800867036393449170}
   - component: {fileID: 243972860094625812}
-  - component: {fileID: -4667251897442879364}
   m_Layer: 0
   m_Name: Tree_01
   m_TagString: Untagged
@@ -82,16 +81,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &-4667251897442879364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 167751155950853598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf24e2a806623774bb6526b43aa764a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _combustibleAmount: 10
