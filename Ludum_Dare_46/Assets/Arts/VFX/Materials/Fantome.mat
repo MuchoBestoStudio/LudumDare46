@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: sphereAlphaMat 1
+  m_Name: Fantome
   m_Shader: {fileID: -6465566751694194690, guid: 66f75f1b4c4a0a749ba10e3a145e8551,
     type: 3}
   m_ShaderKeywords: _EMISSION
@@ -20,8 +20,12 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_55847FAE:
+        m_Texture: {fileID: 2800000, guid: 3ec89c74ab20b714bbad2465258a0ca8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - Texture2D_8FF82332:
-        m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
+        m_Texture: {fileID: 2800000, guid: 48d030b60fab74347b5c7d400046c9c4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -65,7 +69,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_8FC0A29A: 3
+    - Vector1_85D334BD: 0
+    - Vector1_8FC0A29A: 1.61
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
