@@ -79,7 +79,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 				Move(direction, OnMoveCompleted);
 
 				Map.Tile nextTile = Map.TilesManager.Instance.GetTile(transform.position, transform.forward * Map.Tile.SIZE);
-				if (nextTile.CharacterOnTile.Count > 1)
+				if (nextTile.CharacterOnTile.Count > 0)
 				{
 					nextTile.Interact(ECharacter.PLAYER);
 				}
