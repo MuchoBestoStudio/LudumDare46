@@ -9631,6 +9631,16 @@ PrefabInstance:
       propertyPath: tilesManager
       value: 
       objectReference: {fileID: 7433168532763846394}
+    - target: {fileID: 7368722731462656565, guid: 18169b0d1889c5746b0583c76480a379,
+        type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 603987334}
+    - target: {fileID: 9208027817022405891, guid: 18169b0d1889c5746b0583c76480a379,
+        type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 603987334}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18169b0d1889c5746b0583c76480a379, type: 3}
 --- !u!43 &1671139575

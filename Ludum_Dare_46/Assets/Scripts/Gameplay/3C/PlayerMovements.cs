@@ -12,6 +12,11 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 
 		public EDirection NextMoveDirection { get; private set; } = EDirection.NONE;
 
+		[Header("Gameplay")]
+		[SerializeField, Tooltip("")]
+		private GameManager _gameManager = null;
+
+		[Header("Player")]
 		[SerializeField, Tooltip("")]
 		private PlayerController	_controller = null;
 		[SerializeField, Tooltip("")]
@@ -33,6 +38,8 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 
 		private void OnEnable()
 		{
+			_gameManager.onGameOver += StopMove;
+
 			_controller.onMovementPerformed += PlayerController_OnMovementsPerformed;
 
 			_interactions.onInteractionCompleted += PlayerInteractions_OnInteractionCompleted;
@@ -42,10 +49,11 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 		{
             base.OnDisable();
 
+			_gameManager.onGameOver -= StopMove;
+
 			_controller.onMovementPerformed -= PlayerController_OnMovementsPerformed;
 
 			_interactions.onInteractionCompleted -= PlayerInteractions_OnInteractionCompleted;
-
 		}
 
 		private void PlayerController_OnMovementsPerformed(EDirection direction, bool started)

@@ -24,6 +24,11 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 
 		#endregion
 
+		[Header("Gameplay")]
+		[SerializeField, Tooltip("")]
+		private	GameManager _gameManager = null;
+
+		[Header("Player")]
 		[SerializeField, Tooltip("")]
 		private	Animator		_animator	=	null;
 		[SerializeField, Tooltip("")]
@@ -48,6 +53,8 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 
 		private void OnEnable()
 		{
+			_gameManager.onGameOver += Scared;
+
 			_movements.onMovePerformed += StartMoving;
 			_movements.onStopMoving += StopMoving;
 
@@ -58,6 +65,8 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 
 		private void OnDisable()
 		{
+			_gameManager.onGameOver -= Scared;
+
 			_movements.onMovePerformed -= StartMoving;
 			_movements.onStopMoving -= StopMoving;
 

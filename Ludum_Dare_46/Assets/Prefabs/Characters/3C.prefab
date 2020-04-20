@@ -40,7 +40,7 @@ AudioSource:
   m_GameObject: {fileID: 276798466681844995}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 1664414949306826904, guid: 3040b39b2f34b9c4084c58b52814acde,
+  OutputAudioMixerGroup: {fileID: -591268907259688603, guid: 3040b39b2f34b9c4084c58b52814acde,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
@@ -362,6 +362,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveDuration: 0.33
   RotateDuration: 0.1
+  _gameManager: {fileID: 0}
   _controller: {fileID: 1501512968312425469}
   _animator: {fileID: 9208027817022405891}
   _interactions: {fileID: 6998041153490574929}
@@ -456,6 +457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20569491b3718974f967bde120059155, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameManager: {fileID: 0}
   _animator: {fileID: 474559604707316936}
   _movements: {fileID: 7368722731462656565}
   _interactions: {fileID: 6998041153490574929}
