@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: MaxCombustiblesAmount_Skill
   m_EditorClassIdentifier: 
   _defaultLevel: 1
-  MaxLevel: 10
+  MaxLevel: 4
   ValueCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 1
-      value: 1
-      inSlope: 6.3333335
-      outSlope: 6.3333335
+      value: 5
+      inSlope: 5
+      outSlope: 5
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
@@ -29,8 +29,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 4
       value: 20
-      inSlope: 6.3333335
-      outSlope: 6.3333335
+      inSlope: 5
+      outSlope: 5
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -43,19 +43,37 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 1
+      value: 0
+      inSlope: 15
+      outSlope: 15
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 10
-      value: 10
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
+      time: 2
+      value: 15
+      inSlope: 15
+      outSlope: 35
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 3
+      value: 50
+      inSlope: 35
+      outSlope: 70
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 4
+      value: 120
+      inSlope: 70
+      outSlope: 70
+      tangentMode: 69
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0

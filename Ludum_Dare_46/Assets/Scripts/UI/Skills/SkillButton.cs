@@ -61,7 +61,8 @@ namespace MuchoBestoStudio.LudumDare.UI.Skill
 				return;
 			}
 
-			uint price = (uint)_skillData.PriceCurve.Evaluate(_skillData.Level);
+			uint price = (uint)_skillData.PriceCurve.Evaluate(_setLevel);
+			_priceText.enabled = true;
 			_priceText.text = "$ " + price;
 
 			if (currencySystem == null || !currencySystem.CanAfford(price))
@@ -95,15 +96,13 @@ namespace MuchoBestoStudio.LudumDare.UI.Skill
 				return;
 			}
 
-			int skillLevel = _skillData.Level;
-
-			if (system.CanAfford((uint)_skillData.ValueCurve.Evaluate(skillLevel)) != true)
+			if (system.CanAfford((uint)_skillData.ValueCurve.Evaluate(_setLevel)) != true)
 			{
 				return;
 			}
 
 			_skillData.Level = _setLevel;
-			system.Pay((uint)_skillData.ValueCurve.Evaluate(skillLevel));
+			system.Pay((uint)_skillData.ValueCurve.Evaluate(_setLevel));
 		}
 	}
 }

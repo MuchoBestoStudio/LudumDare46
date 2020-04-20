@@ -18,9 +18,13 @@ namespace MuchoBestoStudio.LudumDare.Map
 		public Vector3 Center => _center.position;
         public virtual bool Free => true;
 
-        [SerializeField]
         private List<GameObject> _characterGO = new List<GameObject>();
         public List<GameObject> CharacterOnTile => _characterGO;
+
+		private void Start()
+		{
+			_characterGO = new List<GameObject>();
+		}
 
         public void AddCharacterOnTile(GameObject character)
 		{
