@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2206748454624808844}
   - component: {fileID: -7731219659242119506}
   m_Layer: 0
-  m_Name: GiantTree_01_mort
+  m_Name: GiantTree_07_mort
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,7 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf24e2a806623774bb6526b43aa764a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _lifePoint: 4
   _combustibleAmount: 8
+  _axeDependent: 1
   _basicVisual: {fileID: 2844564821930014525}
   _emptyVisual: {fileID: 6482301347281589748}
 --- !u!1001 &4126588291192731639
