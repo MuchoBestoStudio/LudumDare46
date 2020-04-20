@@ -63,12 +63,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 			{
 				_currentDir = EDirection.NONE;
 
-				LookTo(DetermineDirection(transform.position, _path[_path.Length - 1].Center), null);
-
-				if (onEnemyReachEnd != null)
-				{
-					onEnemyReachEnd.Invoke(this);
-				}
+				LookTo(DetermineDirection(transform.position, _target.Center), OnLookFireSource);
 				return;
 			}
 
@@ -89,14 +84,19 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 			Move(_currentDir, OnMoveCompleted);
 		}
 
+		private void OnLookFireSource(bool _)
+		{
+			if (onEnemyReachEnd != null)
+			{
+				onEnemyReachEnd.Invoke(this);
+			}
+		}
+
 		private void OnMoveCompleted(bool success)
 		{
-			if (success)
-			{
-				Tile[] path = TilesManager.Instance.PathFinder.GetPath(_path[_index], _target);
-				SetPath(path);
-				MoveToNextPoint();
-			}
+			Tile[] path = TilesManager.Instance.PathFinder.GetPath(_path[_index], _target);
+			SetPath(path);
+			MoveToNextPoint();
 		}
 
 		private EDirection DetermineDirection(Vector3 start, Vector3 destination)
