@@ -18,7 +18,9 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
         public Action<uint> onMaxCombustibleAmountChanged = null;
 
         [SerializeField]
-        private Image _axeImage;
+        private GameObject _AxeObject = null;
+        [SerializeField]
+        private Image _axeImage = null;
 
         [SerializeField]
         private uint _maxCombustiblesAmount = 0;
@@ -76,6 +78,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
         {
             _playerAxe = new Axe();
             _playerAxe.Life = axeDurability;
+            _AxeObject?.SetActive(axeDurability > 0);
             UpdateDurabilityShader();
         }
 
@@ -85,14 +88,14 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
             {
                 return;
             }
-            --_playerAxe.Life;
-            UpdateDurabilityShader();
 
-            if ( PlayerAxe.Life == 0)
+            if ((--_playerAxe.Life) == 0)
             {
                 _playerAxe = null;
+                _AxeObject?.SetActive(false);
             }
 
+            UpdateDurabilityShader();
         }
 
         public void PickUpAxe()
@@ -104,7 +107,11 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
         {
             if (_axeImage && _axeImage.material.HasProperty("Vector1_495555B1"))
             {
-                float shaderDurability = _playerAxe.Life / _inventoryData.AxeDurability.LevelValue;
+                float shaderDurability = 0.0f;
+                if (_playerAxe != null)
+                {
+                    shaderDurability = _playerAxe.Life / _inventoryData.AxeDurability.LevelValue;
+                }
                 _axeImage.material.SetFloat("Vector1_495555B1", shaderDurability);
             }
         }
@@ -115,6 +122,10 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
             if (_inventoryData.AxeDurability.Level > 0)
             {
                 PickUpAxe();
+            }
+            else
+            {
+                _AxeObject?.SetActive(false);
             }
             SetCombustibleAmount(0);
         }
