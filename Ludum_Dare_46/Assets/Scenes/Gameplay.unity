@@ -11031,6 +11031,24 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 746734115, guid: 6e6faf981282afa4792134d51b1b9f6c, type: 3}
+      propertyPath: m_Text
+      value: You won [VALUE] Skills Points.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853259639, guid: 6e6faf981282afa4792134d51b1b9f6c, type: 3}
+      propertyPath: _timeTaggedString
+      value: '[MM]:[SS]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853259639, guid: 6e6faf981282afa4792134d51b1b9f6c, type: 3}
+      propertyPath: _currencyTaggedString
+      value: You won $[VALUE] !
+      objectReference: {fileID: 0}
+    - target: {fileID: 233000251449444482, guid: 6e6faf981282afa4792134d51b1b9f6c,
+        type: 3}
+      propertyPath: m_Text
+      value: You let your fire go out, you find yourself in the dark and the cold
+        surrounded by ghosts.
+      objectReference: {fileID: 0}
     - target: {fileID: 539800194136511568, guid: 6e6faf981282afa4792134d51b1b9f6c,
         type: 3}
       propertyPath: m_Name
@@ -11100,6 +11118,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 539800194208214887, guid: 6e6faf981282afa4792134d51b1b9f6c,
+        type: 3}
+      propertyPath: m_Text
+      value: Press A / Space to retry.
+      objectReference: {fileID: 0}
+    - target: {fileID: 539800195536587027, guid: 6e6faf981282afa4792134d51b1b9f6c,
+        type: 3}
+      propertyPath: m_Text
+      value: FIRE IS LOW ON COMBUSTIBLE !
+      objectReference: {fileID: 0}
+    - target: {fileID: 539800195604789257, guid: 6e6faf981282afa4792134d51b1b9f6c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e6faf981282afa4792134d51b1b9f6c, type: 3}
@@ -12512,11 +12545,21 @@ PrefabInstance:
       propertyPath: m_PolyMesh.m_Mesh
       value: 
       objectReference: {fileID: 1479306784}
+    - target: {fileID: 1189842459891842957, guid: afc9d7433f2d98f41961d321c2364af9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1223132327593563561, guid: afc9d7433f2d98f41961d321c2364af9,
         type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1479306784}
+    - target: {fileID: 1288824977100206427, guid: afc9d7433f2d98f41961d321c2364af9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1313983710428869430, guid: afc9d7433f2d98f41961d321c2364af9,
         type: 3}
       propertyPath: m_Mesh
@@ -12822,6 +12865,11 @@ PrefabInstance:
       propertyPath: m_PolyMesh.m_Mesh
       value: 
       objectReference: {fileID: 1167404843}
+    - target: {fileID: 4294887901875352335, guid: afc9d7433f2d98f41961d321c2364af9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4432767322849556858, guid: afc9d7433f2d98f41961d321c2364af9,
         type: 3}
       propertyPath: m_Mesh
@@ -12962,6 +13010,31 @@ PrefabInstance:
       propertyPath: m_PolyMesh.m_Mesh
       value: 
       objectReference: {fileID: 295789058}
+    - target: {fileID: 6506573592335495284, guid: afc9d7433f2d98f41961d321c2364af9,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6506573592335495284, guid: afc9d7433f2d98f41961d321c2364af9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6506573592335495284, guid: afc9d7433f2d98f41961d321c2364af9,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6506573592335495284, guid: afc9d7433f2d98f41961d321c2364af9,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6506573592335495284, guid: afc9d7433f2d98f41961d321c2364af9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 6619364987558230024, guid: afc9d7433f2d98f41961d321c2364af9,
         type: 3}
       propertyPath: m_PolyMesh.m_Mesh

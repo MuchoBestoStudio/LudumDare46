@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: CurrencyData_Base
   m_EditorClassIdentifier: 
   Current: 0
-  TimeMultiplier: 5
+  TimeMultiplier: 1
