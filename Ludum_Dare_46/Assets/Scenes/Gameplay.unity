@@ -99,7 +99,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: c7b90392a4c67854db5b6839c7c19acf,
     type: 2}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -5391,6 +5391,18 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &973527386 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6733785847319116785, guid: 391d7c8b3a42ea549a66ac6b5a170021,
+    type: 3}
+  m_PrefabInstance: {fileID: 1079096552}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 151aad9577a4dfe4590895b6acee39e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &989356485
 Mesh:
   m_ObjectHideFlags: 0
@@ -9987,6 +9999,11 @@ PrefabInstance:
       propertyPath: _axeImage
       value: 
       objectReference: {fileID: 631965822}
+    - target: {fileID: 1501512968312425469, guid: 18169b0d1889c5746b0583c76480a379,
+        type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 973527386}
     - target: {fileID: 4180249310297721456, guid: 18169b0d1889c5746b0583c76480a379,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11452,6 +11469,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1281245736, guid: 6e6faf981282afa4792134d51b1b9f6c, type: 3}
+      propertyPath: m_Text
+      value: ' [MM]:[SS]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853259639, guid: 6e6faf981282afa4792134d51b1b9f6c, type: 3}
+      propertyPath: _timeTaggedString
+      value: '[MM]:[SS]'
+      objectReference: {fileID: 0}
     - target: {fileID: 539800194136511568, guid: 6e6faf981282afa4792134d51b1b9f6c,
         type: 3}
       propertyPath: m_Name
