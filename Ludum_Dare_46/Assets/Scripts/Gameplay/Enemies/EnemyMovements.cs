@@ -92,6 +92,8 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 		{
 			if (success)
 			{
+				Tile[] path = TilesManager.Instance.PathFinder.GetPath(_path[_index], _target);
+				SetPath(path);
 				MoveToNextPoint();
 			}
 		}
