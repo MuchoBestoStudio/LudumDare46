@@ -14,8 +14,12 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 		private PlayerController _controller = null;
 		[SerializeField, Tooltip("")]
 		private	PlayerAnimator _animator = null;
+		[SerializeField, Tooltip("")]
+		private PlayerAnimationsReceiver _receiver = null;
 		[SerializeField]
 		private TilesManager tilesManager = null;
+
+		private	Tile _forwardTile = null;
 
 		#endregion
 
@@ -31,46 +35,46 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 		private void OnEnable()
 		{
 			_controller.onInteractPerformed += PlayerController_OnInteractActionPerformed;
+
+			_receiver.onTreeCut += PlayerAnimationReceiver_OnTreeCut;
 		}
 
 		private void OnDisable()
 		{
 			_controller.onInteractPerformed -= PlayerController_OnInteractActionPerformed;
+
+			_receiver.onTreeCut -= PlayerAnimationReceiver_OnTreeCut;
 		}
 
 		private void PlayerController_OnInteractActionPerformed()
 		{
-			if (!IsPlayingIdleAnimation())
+			if (_animator.IsPlayingAnyMovements())
 			{
 				return;
 			}
 
 			transform.position = new Vector3((int)transform.position.x, transform.position.y, (int)transform.position.z);
 
-			Tile forwardTile = tilesManager.GetTile(transform.position, transform.forward);
-			if (forwardTile != null || forwardTile.Free)
+			_forwardTile = tilesManager.GetTile(transform.position, transform.forward);
+			if (_forwardTile != null || _forwardTile.Free)
 			{
-				forwardTile.Interact(ECharacter.PLAYER);
-
-				if (forwardTile.CharacterOnTile != null)
+				if (_forwardTile.CharacterOnTile != null)
 				{
 					if (onMenacingGhost != null)
 					{
 						onMenacingGhost.Invoke();
 					}
-					return;
 				}
-				if (forwardTile is AxeTile)
+				else if (_forwardTile is AxeTile)
 				{
 					if (onPickingAxe != null)
 					{
 						onPickingAxe.Invoke();
 					}
-					return;
 				}
-				if (forwardTile is ResourceTile)
+				else if (_forwardTile is ResourceTile)
 				{
-					ResourceTile resTile = forwardTile as ResourceTile;
+					ResourceTile resTile = _forwardTile as ResourceTile;
 
 					Assert.IsNotNull(resTile, nameof(PlayerInteractions) + ": PlayerController_OnInteractActionPerformed(), resTile should not be null.");
 
@@ -82,6 +86,9 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 							{
 								onCutingTree.Invoke();
 							}
+
+							// NOTE : Return to avoid interacting with Tree, waiting for animation event
+							return;
 						}
 						else
 						{
@@ -91,14 +98,15 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 							}
 						}
 					}
-					return;
 				}
+
+				_forwardTile.Interact(ECharacter.PLAYER);
 			}
 		}
 
-		private bool IsPlayingIdleAnimation()
+		private void PlayerAnimationReceiver_OnTreeCut()
 		{
-			return _animator.IsPlayingAnyIdles();
+			_forwardTile.Interact(ECharacter.PLAYER);
 		}
 	}
 }

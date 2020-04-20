@@ -68,7 +68,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 				NextMoveDirection = _directionsPressed[_directionsPressed.Count - 1];
 			}
 
-			if (IsMoving() || IsPlayingIdleAnimations())
+			if (_animator.IsPlayingAnyInteractions())
 			{
 				return;
 			}
@@ -115,12 +115,6 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 				Move(NextMoveDirection, OnMoveCompleted);
 			}
 		}
-
-		private bool IsPlayingIdleAnimations()
-		{
-			return _animator.IsPlayingAnyIdles();
-		}
-
 
 		#endregion
 	}

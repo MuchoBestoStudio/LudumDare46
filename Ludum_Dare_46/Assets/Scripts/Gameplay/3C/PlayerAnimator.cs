@@ -10,6 +10,12 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 
 		#region Const Keys
 
+		// Animations' Tags
+		public const string IDLE_TAG = "Idle";
+		public const string MOVE_TAG = "Move";
+		public const string INTERACTION_TAG = "Interaction";
+
+		// Animator Parameters Key
 		public const string MOVE_KEY = "Move";
 		public const string PICK_AXE_KEY = "PickAxe";
 		public const string PICK_WOOD_LOG_KEY = "PickWoodLog";
@@ -26,9 +32,20 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 		[SerializeField, Tooltip("")]
 		private	PlayerInteractions _interactions = null;
 
+		private int _idlesTagHash = 0;
+		private int _moveTagHash = 0;
+		private int _interactionTagHash = 0;
+
 		#endregion
 
 		#region MonoBehaviours' methods
+
+		private void Awake()
+		{
+			_idlesTagHash = Animator.StringToHash(IDLE_TAG);
+			_moveTagHash = Animator.StringToHash(MOVE_TAG);
+			_interactionTagHash = Animator.StringToHash(INTERACTION_TAG);
+		}
 
 		private void OnEnable()
 		{
@@ -93,17 +110,17 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 
 		public bool IsPlayingAnyIdles()
 		{
-			return false;
+			return _animator.GetCurrentAnimatorStateInfo(0).tagHash == _idlesTagHash;
 		}
 
 		public bool IsPlayingAnyMovements()
 		{
-			return false;
+			return _animator.GetCurrentAnimatorStateInfo(0).tagHash == _moveTagHash;
 		}
 
 		public bool IsPlayingAnyInteractions()
 		{
-			return false;
+			return _animator.GetCurrentAnimatorStateInfo(0).tagHash == _interactionTagHash;
 		}
 
 		#endregion
