@@ -17,6 +17,8 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 		[SerializeField, Tooltip("")]
 		private PlayerAnimationsReceiver _receiver = null;
 		[SerializeField]
+		private Inventory _playerInventory = null;
+		[SerializeField]
 		private TilesManager tilesManager = null;
 
 		private	Tile _forwardTile = null;
@@ -82,6 +84,8 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 					{
 						if (resTile.Resource.AxeDependent)
 						{
+							if (_playerInventory.PlayerAxe == null)
+								return;
 							if (onCutingTree != null)
 							{
 								onCutingTree.Invoke();
