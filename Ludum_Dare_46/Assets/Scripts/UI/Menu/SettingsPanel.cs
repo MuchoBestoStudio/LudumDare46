@@ -121,7 +121,7 @@ namespace MuchoBestoStudio.LudumDare.UI.Menu
 
 		private void ChangeMusicsVolumeGoupe(float value)
 		{
-			_audioMixer.SetFloat("MusicsVolume", Mathf.Log10(value) * 20f);
+			_audioMixer.SetFloat("MusicsVolume", Mathf.Log10(value) * 20f - 10f);
 			PlayerPrefs.SetFloat("MusicsVolume", value);
 		}
 
