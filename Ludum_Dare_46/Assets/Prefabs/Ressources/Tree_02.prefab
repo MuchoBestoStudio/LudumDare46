@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &3429581166784510959
 Transform:
@@ -132,6 +132,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree_02_Souche
       objectReference: {fileID: 0}
+    - target: {fileID: 8958700436837960332, guid: e31d5449d37d41848be9c47a67505d6f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e31d5449d37d41848be9c47a67505d6f, type: 3}
 --- !u!1 &7345468236027942767 stripped
@@ -212,6 +217,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tree_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 6690129591872967638, guid: 1ac6a4597d694064d9a4ff4d966379d0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ac6a4597d694064d9a4ff4d966379d0, type: 3}

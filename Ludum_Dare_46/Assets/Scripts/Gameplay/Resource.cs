@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System;
+using DG.Tweening;
 
 using MuchoBestoStudio.LudumDare.Gameplay;
 using MuchoBestoStudio.LudumDare.Gameplay._3C;
@@ -55,7 +56,8 @@ public class Resource : MonoBehaviour, IInteractable
                 if( _emptyVisual != null)
                 {
                     _emptyVisual.SetActive(true);
-                    _basicVisual.SetActive(false);
+                    _basicVisual.transform.DORotate(Vector3.forward * 90f, 1f);
+                    _basicVisual.transform.DOMoveY(-2, 1f).SetDelay(1f).OnComplete(() => _basicVisual.SetActive(false)); ;
                 }
                 else
                 {
@@ -86,6 +88,10 @@ public class Resource : MonoBehaviour, IInteractable
                 {
                     inventory.AddCombustible(_combustibleAmount);
                     RemoveCombustible(_combustibleAmount);
+                }
+                else if (_basicVisual != null)
+                {
+                    _basicVisual.transform.DOShakeRotation(.125f, 5, 5, 5);
                 }
             }
         }
