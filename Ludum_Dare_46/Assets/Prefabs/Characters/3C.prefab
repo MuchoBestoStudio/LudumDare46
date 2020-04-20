@@ -282,6 +282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inventoryData: {fileID: 11400000, guid: 25c564ba2d4791148b61063daf7efe0c, type: 2}
+  _AxeObject: {fileID: 5726437496692984643}
   _axeImage: {fileID: 0}
   _maxCombustiblesAmount: 0
   _combustibleAmount: 0
@@ -300,6 +301,7 @@ MonoBehaviour:
   _controller: {fileID: 1501512968312425469}
   _animator: {fileID: 9208027817022405891}
   _receiver: {fileID: 2599796143972871466}
+  _playerInventory: {fileID: 179587372466170892}
   tilesManager: {fileID: 0}
 --- !u!114 &9208027817022405891
 MonoBehaviour:
@@ -706,6 +708,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec38917dc72630c48bcbe874a3fa41bb, type: 3}
+--- !u!1 &5726437496692984643 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5726437496961381693, guid: ec38917dc72630c48bcbe874a3fa41bb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1879113342}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6424907689227286503
 PrefabInstance:
   m_ObjectHideFlags: 0
