@@ -25,18 +25,14 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 
 		private void OnDisable()
 		{
-			_movements.onEnemyReachEnd -= EnemyMovements_onEnemyReachEnd;
+            ClearTilesPresence();
+            _movements.onEnemyReachEnd -= EnemyMovements_onEnemyReachEnd;
 		}
 
 		private void EnemyMovements_onEnemyReachEnd(EnemyMovements _)
 		{
 			InteractWithFrontTile();
-            Tile currentTile = TilesManager.Instance.GetTile(transform.position);
-            if (currentTile.CharacterOnTile == gameObject)
-            {
-                currentTile.SetCharacterOnTile(null);
-                currentTile.SetFree(true);
-            }
+            ClearTilesPresence();
         }
 
 		#endregion
@@ -47,15 +43,11 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 		{
 			if (character == ECharacter.PLAYER)
 			{
-				_animator.Disappear();
-                Tile currentTile = TilesManager.Instance.GetTile(transform.position);
-                if (currentTile.CharacterOnTile == gameObject)
-                {
-                    currentTile.SetCharacterOnTile(null);
-                    currentTile.SetFree(true);
-                }
+                ClearTilesPresence();
+
+                _animator.Disappear();
             }
-		}
+        }
 
 		public void InteractWithFrontTile()
 		{
@@ -70,6 +62,44 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 				forwardTile.Interact(ECharacter.ENEMY);
 			}
 		}
+
+        private void ClearTilesPresence()
+        {
+            Tile currentTile = TilesManager.Instance.GetTile(transform.position);
+            if (currentTile && currentTile.CharacterOnTile == gameObject)
+            {
+                currentTile.SetCharacterOnTile(null);
+                currentTile.SetFree(true);
+            }
+
+            Tile frontTile = TilesManager.Instance.GetTile(transform.position, transform.forward);
+            if (frontTile && frontTile.CharacterOnTile == gameObject)
+            {
+                frontTile.SetCharacterOnTile(null);
+                frontTile.SetFree(true);
+            }
+
+            Tile backTile = TilesManager.Instance.GetTile(transform.position, -transform.forward);
+            if (backTile && backTile.CharacterOnTile == gameObject)
+            {
+                backTile.SetCharacterOnTile(null);
+                backTile.SetFree(true);
+            }
+
+            Tile leftTile = TilesManager.Instance.GetTile(transform.position, -transform.right);
+            if (leftTile && leftTile.CharacterOnTile == gameObject)
+            {
+                leftTile.SetCharacterOnTile(null);
+                leftTile.SetFree(true);
+            }
+
+            Tile rightTile = TilesManager.Instance.GetTile(transform.position, transform.right);
+            if (rightTile && rightTile.CharacterOnTile == gameObject)
+            {
+                rightTile.SetCharacterOnTile(null);
+                rightTile.SetFree(true);
+            }
+        }
 
 		#endregion
 	}
