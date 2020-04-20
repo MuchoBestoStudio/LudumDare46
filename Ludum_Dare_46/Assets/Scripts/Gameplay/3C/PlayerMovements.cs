@@ -16,6 +16,8 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 		private PlayerController	_controller = null;
 		[SerializeField, Tooltip("")]
 		private	PlayerAnimator		_animator = null;
+		[SerializeField, Tooltip("")]
+		private	PlayerInteractions	_interactions = null;
 
 		private	List<EDirection>	_directionsPressed	=	new List<EDirection>();
 
@@ -32,12 +34,18 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 		private void OnEnable()
 		{
 			_controller.onMovementPerformed += PlayerController_OnMovementsPerformed;
+
+			_interactions.onInteractionCompleted += PlayerInteractions_OnInteractionCompleted;
 		}
 
 		override protected void OnDisable()
 		{
             base.OnDisable();
+
 			_controller.onMovementPerformed -= PlayerController_OnMovementsPerformed;
+
+			_interactions.onInteractionCompleted -= PlayerInteractions_OnInteractionCompleted;
+
 		}
 
 		private void PlayerController_OnMovementsPerformed(EDirection direction, bool started)
@@ -127,6 +135,16 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 			{
 				Move(NextMoveDirection, OnMoveCompleted);
 			}
+		}
+
+		private void PlayerInteractions_OnInteractionCompleted()
+		{
+			if (IsMoving())
+			{
+				return;
+			}
+
+			OnMoveCompleted(true);
 		}
 
 		#endregion

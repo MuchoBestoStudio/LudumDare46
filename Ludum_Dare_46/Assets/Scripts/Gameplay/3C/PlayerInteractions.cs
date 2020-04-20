@@ -30,7 +30,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 		public Action	onPickingWoodLog = null;
 		public Action	onPickingAxe = null;
 		public Action	onCutingTree = null;
-		public Action	onMenacingGhost = null;
+		public Action	onInteractionCompleted = null;
 
 		#endregion
 
@@ -50,7 +50,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 
 		private void PlayerController_OnInteractActionPerformed()
 		{
-			if (_animator.IsPlayingAnyMovements())
+			if (_animator.IsPlayingAnyInteractions())
 			{
 				return;
 			}
@@ -100,12 +100,22 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 				}
 
 				_forwardTile.Interact(ECharacter.PLAYER);
+
+				if (onInteractionCompleted != null)
+				{
+					onInteractionCompleted.Invoke();
+				}
 			}
 		}
 
 		private void PlayerAnimationReceiver_OnTreeCut()
 		{
 			_forwardTile.Interact(ECharacter.PLAYER);
+
+			if (onInteractionCompleted != null)
+			{
+				onInteractionCompleted.Invoke();
+			}
 		}
 	}
 }
