@@ -42,6 +42,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
         [SerializeField]
         public uint _criticalFireValue = 0;
         public Action onTimeUpdated = null;
+        public Action onStartTimer = null;
         public Action onGameOver = null;
         public Action onRestartGame = null;
         public Action<bool> onPauseChanged = null;
@@ -73,7 +74,6 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
                 _currentActionMap = GameOverActionMap;
             }
 
-            Time.timeScale = 0.0f;
             onGameOver?.Invoke();
         }
 
@@ -136,6 +136,8 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
             _controls.Player.TogglePause.performed += TogglePause;
 
             _currentActionMap.Enable();
+            enabled = false;
+            Invoke("LaunchTimer", 5f);
         }
 
         void Update()
@@ -146,6 +148,12 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
                 _gameTime += timeIncrement;
                 onTimeUpdated?.Invoke();
             }
+        }
+
+        private void LaunchTimer()
+        {
+            enabled = true;
+            onStartTimer?.Invoke();
         }
     }
 }
