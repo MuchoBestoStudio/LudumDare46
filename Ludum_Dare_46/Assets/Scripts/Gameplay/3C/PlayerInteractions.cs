@@ -22,6 +22,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 		private TilesManager tilesManager = null;
 
 		public	Tile InteractedTile { get; private set; } = null;
+		public	bool IsCuttingTree { get; private set; } = false;
 
 		#endregion
 
@@ -54,7 +55,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 
 		private void PlayerController_OnInteractActionPerformed()
 		{
-			if (_animator.IsPlayingAnyInteractions())
+			if (_animator.IsPlayingAnyInteractions() || IsCuttingTree)
 			{
 				return;
 			}
@@ -100,6 +101,9 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 								}
 								return;
 							}
+
+							IsCuttingTree = true;
+
 							if (onCutingTree != null)
 							{
 								onCutingTree.Invoke();
@@ -129,6 +133,8 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 
 		private void PlayerAnimationReceiver_OnTreeCut()
 		{
+			IsCuttingTree = false;
+
 			InteractedTile.Interact(ECharacter.PLAYER);
 
 			if (onTreeCut != null)

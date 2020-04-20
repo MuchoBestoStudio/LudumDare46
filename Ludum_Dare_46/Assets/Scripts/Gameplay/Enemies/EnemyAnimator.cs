@@ -74,6 +74,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 			}
 
 			_animator.SetTrigger("Disappear");
+
 			Invoke("SetEnemyInactive", 3f);
 		}
 

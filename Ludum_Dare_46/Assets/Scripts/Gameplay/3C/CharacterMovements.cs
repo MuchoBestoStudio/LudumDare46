@@ -26,6 +26,11 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 
 		#region Methods
 
+		public void StopMove()
+		{
+			DOTween.Kill(transform);
+		}
+
 		public void Move(EDirection direction, Action<bool> onCompleted)
 		{
 			if (direction == EDirection.NONE || TilesManager.Instance == null)
@@ -123,8 +128,8 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 
         protected virtual void OnDisable()
         {
-            DOTween.Kill(transform);
-        }
+			StopMove();
+		}
 
         #endregion
 

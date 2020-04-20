@@ -390,7 +390,7 @@ MonoBehaviour:
   _interval: {x: 5, y: 20}
   _interactSource: {fileID: 3631093901382052051}
   _errorInteractClip: {fileID: 8300000, guid: f99819d9d9cb23a489e7a015ec2875a6, type: 3}
-  _pickAxeClip: {fileID: 8300000, guid: fd6841efad5ba11418dad5c81a8d3c89, type: 3}
+  _pickAxeClip: {fileID: 8300000, guid: 92fc9b389b976184a9acecf574886c5f, type: 3}
   _pickWoodLogClip: {fileID: 8300000, guid: fd6841efad5ba11418dad5c81a8d3c89, type: 3}
   _axeBrokeClip: {fileID: 8300000, guid: bba7e706b1807a7419913d2d5a2e3782, type: 3}
   _treeFall: {fileID: 8300000, guid: 8c1223c05f3f1f44386caf8aa4011b99, type: 3}

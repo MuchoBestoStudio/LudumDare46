@@ -140,6 +140,8 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 
 		public void PlayAxeBroke()
 		{
+			VoiceTimer = Random.Range(_interval.x, _interval.y);
+
 			_interactSource.PlayOneShot(_axeBrokeClip);
 		}
 

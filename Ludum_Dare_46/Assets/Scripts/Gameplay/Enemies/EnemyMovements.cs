@@ -34,17 +34,25 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 		private void OnEnable()
 		{
 			_animator.onEnemyEndAppearing += EnemyAnimator_OnEnemyEndAppearing;
+			_animator.onEnemyStartToDisappear += EnemyAnimator_OnEnemyEndDisappearing;
 		}
 
 		override protected void OnDisable()
 		{
             base.OnDisable();
+
 			_animator.onEnemyEndAppearing -= EnemyAnimator_OnEnemyEndAppearing;
+			_animator.onEnemyStartToDisappear -= EnemyAnimator_OnEnemyEndDisappearing;
 		}
 
 		private	void EnemyAnimator_OnEnemyEndAppearing(EnemyAnimator _)
 		{
 			StartPath();
+		}
+
+		private void EnemyAnimator_OnEnemyEndDisappearing(EnemyAnimator _)
+		{
+			StopMove();
 		}
 
 		#endregion
@@ -156,6 +164,11 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 		public void StartPath()
 		{
 			MoveToNextPoint();
+		}
+
+		public void StopPath()
+		{
+			StopMove();
 		}
 
         #endregion
