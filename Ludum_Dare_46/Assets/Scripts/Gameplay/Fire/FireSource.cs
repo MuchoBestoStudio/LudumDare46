@@ -11,6 +11,9 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Fire
         [SerializeField]
         private Inventory _playerInventory = null;
 
+        [SerializeField]
+        private GameObject _interactEffect = null;
+
         public Action<uint, int> onCombustibleAmountChanged = null;
         public Action onNoCombustibleLeft = null;
         public Action<ECharacter> onInteraction = null;
@@ -78,6 +81,8 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Fire
 
         public void Interact(ECharacter character)
         {
+            _interactEffect.SetActive(true);
+            Invoke("DisableVisualInteractif", .1f);
 			if (character == ECharacter.PLAYER)
 			{
 				AddCombustible();
@@ -93,6 +98,11 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Fire
 			}
 
             onInteraction?.Invoke(character);
+        }
+
+        private void DisableVisualInteractif()
+        {
+            _interactEffect.SetActive(false);
         }
     }
 }
