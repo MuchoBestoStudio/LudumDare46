@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveDuration: 1
-  RotateDuration: 0.5
+  RotateDuration: 0.2
   _animator: {fileID: 1709768450947193775}
   _target: {fileID: 0}
 --- !u!114 &6289793358649730091
