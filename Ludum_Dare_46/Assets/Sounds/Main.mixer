@@ -28,6 +28,25 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!243 &-4160692412228368950
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Fire
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: d2c945c7d7be70944bc3757da89bb2b8
+  m_Children: []
+  m_Volume: 3d87397a4ef0ee04bacd23d7983e271c
+  m_Pitch: 4fd75c587aeab254fa6abe28c3169de6
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -2881895302517870686}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!244 &-3691026801704921055
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -38,6 +57,20 @@ AudioMixerEffectController:
   m_EffectID: efada93301115484ab23d5113b3db9f9
   m_EffectName: Attenuation
   m_MixLevel: ac35887dd2a070a4dba17d3311ef061d
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &-2881895302517870686
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 65a3713f8c593ed4f97b559a8003825d
+  m_EffectName: Attenuation
+  m_MixLevel: 54f2ebadee2a48f4a814bac6b2886735
   m_Parameters: []
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
@@ -109,6 +142,7 @@ AudioMixerController:
     - 422ca7b132c967f4d9db45fe1686168e
     - 3340372a90a591c4ba5f837a1521024a
     - efb4eba715d93714ab64893d889bc5a1
+    - d2c945c7d7be70944bc3757da89bb2b8
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -159,6 +193,7 @@ AudioMixerSnapshotController:
   m_FloatValues:
     10d666b4d269c92489b0b323fd0ee580: -8
     c9f06dd8f36d9814cb1cd5e46c5d53ad: -12
+    3d87397a4ef0ee04bacd23d7983e271c: 7
     05cac79b5c1ef3f4d8a12d407877dca0: -5
     6308fbeffb0e25d47b6c86cbcbdb96b8: 10
   m_TransitionOverrides: {}
@@ -174,6 +209,7 @@ AudioMixerGroupController:
   m_Children:
   - {fileID: -591268907259688603}
   - {fileID: 2739213692497548826}
+  - {fileID: -4160692412228368950}
   m_Volume: c9f06dd8f36d9814cb1cd5e46c5d53ad
   m_Pitch: 4dca87f1463b7ba41957320a02e03870
   m_Send: 00000000000000000000000000000000
