@@ -23,7 +23,7 @@ AnimatorState:
   m_TimeParameterActive: 0
   m_Motion: {fileID: -203655887218126122, guid: c1cb232ca64d983408daf8936e31260f,
     type: 3}
-  m_Tag: 
+  m_Tag: Interaction
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
@@ -57,7 +57,7 @@ AnimatorState:
   m_TimeParameterActive: 0
   m_Motion: {fileID: -203655887218126122, guid: d3c28e00e7c94464090e41000ddf1068,
     type: 3}
-  m_Tag: 
+  m_Tag: Idle
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
@@ -170,7 +170,7 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 0}
-  m_Tag: 
+  m_Tag: Interaction
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
@@ -199,7 +199,7 @@ AnimatorState:
   m_TimeParameterActive: 0
   m_Motion: {fileID: -203655887218126122, guid: bbe94b16e010d63428d4b6b4c5534dc2,
     type: 3}
-  m_Tag: 
+  m_Tag: Move
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
@@ -388,7 +388,7 @@ AnimatorState:
   m_TimeParameterActive: 0
   m_Motion: {fileID: -203655887218126122, guid: c4b57e09a38615e4eb93d2094d1a7be0,
     type: 3}
-  m_Tag: 
+  m_Tag: Move
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
@@ -568,37 +568,37 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: PickAxe
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: PickWoodLog
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: CutTree
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Menace
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Scared
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -659,7 +659,7 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 0}
-  m_Tag: 
+  m_Tag: Interaction
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
@@ -736,12 +736,12 @@ AnimatorStateMachine:
     - {fileID: 9085039668778527032}
     - {fileID: -6854683224734940263}
     - {fileID: 7366357911691924784}
-  - first: {fileID: 4468931859982022872}
-    second:
-    - {fileID: -4750730928997940725}
   - first: {fileID: -835378189687994966}
     second:
     - {fileID: -1962783617122234996}
+  - first: {fileID: 4468931859982022872}
+    second:
+    - {fileID: -4750730928997940725}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 30, y: 240, z: 0}
   m_EntryPosition: {x: 30, y: 120, z: 0}
@@ -803,7 +803,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: CutTree
-  m_Speed: 1
+  m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -2996769146581013987}
@@ -818,7 +818,7 @@ AnimatorState:
   m_TimeParameterActive: 0
   m_Motion: {fileID: -203655887218126122, guid: cf4bbe2e840544b48930c97b7c48ce1a,
     type: 3}
-  m_Tag: 
+  m_Tag: Interaction
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
@@ -846,7 +846,7 @@ AnimatorState:
   m_TimeParameterActive: 0
   m_Motion: {fileID: -203655887218126122, guid: ea1fda50fe6a89f49ac652715b0b9190,
     type: 3}
-  m_Tag: 
+  m_Tag: Interaction
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
@@ -905,7 +905,7 @@ AnimatorState:
   m_TimeParameterActive: 0
   m_Motion: {fileID: -203655887218126122, guid: b7633b29ebafb6a47b38038d0d6389ef,
     type: 3}
-  m_Tag: 
+  m_Tag: Idle
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
@@ -985,7 +985,7 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
-  m_ExitTime: 0.87288135
+  m_ExitTime: 2.87
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0

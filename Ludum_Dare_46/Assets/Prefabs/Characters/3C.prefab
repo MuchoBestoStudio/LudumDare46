@@ -299,6 +299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _controller: {fileID: 1501512968312425469}
   _animator: {fileID: 9208027817022405891}
+  _receiver: {fileID: 2599796143972871466}
   tilesManager: {fileID: 0}
 --- !u!114 &9208027817022405891
 MonoBehaviour:
@@ -334,6 +335,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2599796143972871466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3028730770989395694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 607f70c1da86ddb448a966c0cc40a95e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4180249310297721457
 GameObject:
   m_ObjectHideFlags: 0
@@ -728,7 +741,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 727206e7bb283d747abb0a2a2b3c711a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.518
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 727206e7bb283d747abb0a2a2b3c711a,
         type: 3}
