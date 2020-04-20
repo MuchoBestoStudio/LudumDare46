@@ -112,6 +112,8 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
 
         void Start()
         {
+            PlayerPrefs.SetInt("PreviousScene", 1);
+
             _isGamePaused = false;
             Time.timeScale = 1.0f;
             _controls = new Controls();
