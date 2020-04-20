@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,6 +23,8 @@ namespace MuchoBestoStudio.LudumDare.UI.Skill
 		private Button _upgradeButton = null;
 		[SerializeField]
 		private Outline _validateEffect = null;
+		[SerializeField]
+		private Image _getImage = null;
 
 		[Header("Dependence")]
 		[SerializeField]
@@ -46,6 +49,7 @@ namespace MuchoBestoStudio.LudumDare.UI.Skill
 		public void UpdateVisual(Gameplay.CurrencySystem currencySystem)
 		{
 			_validateEffect.enabled = false;
+			_getImage.gameObject.SetActive(false);
 
 			if (!CheckDependence())
 			{
@@ -58,6 +62,7 @@ namespace MuchoBestoStudio.LudumDare.UI.Skill
 				_upgradeButton.interactable = false;
 				_priceText.enabled = false;
 				_validateEffect.enabled = true;
+				_getImage.gameObject.SetActive(true);
 				return;
 			}
 
@@ -96,13 +101,14 @@ namespace MuchoBestoStudio.LudumDare.UI.Skill
 				return;
 			}
 
-			if (system.CanAfford((uint)_skillData.ValueCurve.Evaluate(_setLevel)) != true)
+			if (system.CanAfford((uint)_skillData.PriceCurve.Evaluate(_setLevel)) != true)
 			{
 				return;
 			}
 
 			_skillData.Level = _setLevel;
-			system.Pay((uint)_skillData.ValueCurve.Evaluate(_setLevel));
+
+			system.Pay((uint)_skillData.PriceCurve.Evaluate(_setLevel));
 		}
 	}
 }

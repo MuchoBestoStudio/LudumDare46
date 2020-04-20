@@ -62,7 +62,7 @@ namespace MuchoBestoStudio.LudumDare.UI.ViewModels
             if (_currencySystem)
             {
                 string resultString;
-                resultString = StringTagReplacer.ReplaceTag(_currencyTaggedString, "[VALUE]", _currencySystem.Currency.ToString());
+                resultString = StringTagReplacer.ReplaceTag(_currencyTaggedString, "[VALUE]", value.ToString());
                 _currencyText.text = resultString;
             }
         }

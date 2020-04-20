@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -46,7 +47,17 @@ namespace MuchoBestoStudio.LudumDare.UI.Menu
 
 		private void OnPlayButtonClicked()
 		{
+
 			SceneManager.LoadScene(_gameplayScene, LoadSceneMode.Single);
+		}
+
+		private IEnumerator LoadGame()
+		{
+			var gameScene = SceneManager.LoadSceneAsync(_gameplayScene, LoadSceneMode.Single);
+			gameScene.allowSceneActivation = false;
+
+			yield return new WaitForSeconds(3f);
+			gameScene.allowSceneActivation = true;
 		}
 
 		private void OnBackButtonClicked()
