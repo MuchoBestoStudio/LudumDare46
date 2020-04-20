@@ -85,9 +85,11 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
             {
                 return;
             }
-            if ((--_playerAxe.Life) == 0)
+            --_playerAxe.Life;
+            UpdateDurabilityShader();
+
+            if ( PlayerAxe.Life == 0)
             {
-                UpdateDurabilityShader();
                 _playerAxe = null;
             }
 
