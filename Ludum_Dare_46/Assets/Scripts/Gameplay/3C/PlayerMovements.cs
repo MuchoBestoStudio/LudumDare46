@@ -77,6 +77,12 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 			if (LookDirection == NextMoveDirection)
 			{
 				Move(direction, OnMoveCompleted);
+
+				Map.Tile nextTile = Map.TilesManager.Instance.GetTile(transform.position, transform.forward * Map.Tile.SIZE);
+				if (nextTile.CharacterOnTile.Count > 1)
+				{
+					nextTile.Interact(ECharacter.PLAYER);
+				}
 			}
 			else
 			{
@@ -105,6 +111,12 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 			if (!success || NextMoveDirection == EDirection.NONE)
 			{
 				return;
+			}
+
+			Map.Tile nextTile = Map.TilesManager.Instance.GetTile(transform.position);
+			if (nextTile.CharacterOnTile.Count > 1)
+			{
+				nextTile.Interact(ECharacter.PLAYER);
 			}
 
 			if (NextMoveDirection != LookDirection)

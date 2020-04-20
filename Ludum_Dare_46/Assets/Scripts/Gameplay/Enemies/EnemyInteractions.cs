@@ -70,38 +70,33 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
                 return;
 
             Tile currentTile = tilesManager.GetTile(transform.position);
-            if (currentTile && currentTile.CharacterOnTile == gameObject)
+            if (currentTile)
             {
-                currentTile.SetCharacterOnTile(null);
-                currentTile.SetFree(true);
+                currentTile.RemoveCharacterOnTile(gameObject);
             }
 
             Tile frontTile = tilesManager.GetTile(transform.position, transform.forward);
-            if (frontTile && frontTile.CharacterOnTile == gameObject)
+            if (frontTile)
             {
-                frontTile.SetCharacterOnTile(null);
-                frontTile.SetFree(true);
+                frontTile.RemoveCharacterOnTile(gameObject);
             }
 
             Tile backTile = tilesManager.GetTile(transform.position, -transform.forward);
-            if (backTile && backTile.CharacterOnTile == gameObject)
+            if (backTile)
             {
-                backTile.SetCharacterOnTile(null);
-                backTile.SetFree(true);
+                backTile.RemoveCharacterOnTile(gameObject);
             }
 
             Tile leftTile = tilesManager.GetTile(transform.position, -transform.right);
-            if (leftTile && leftTile.CharacterOnTile == gameObject)
+            if (leftTile)
             {
-                leftTile.SetCharacterOnTile(null);
-                leftTile.SetFree(true);
+                leftTile.RemoveCharacterOnTile(gameObject);
             }
 
             Tile rightTile = tilesManager.GetTile(transform.position, transform.right);
-            if (rightTile && rightTile.CharacterOnTile == gameObject)
+            if (rightTile)
             {
-                rightTile.SetCharacterOnTile(null);
-                rightTile.SetFree(true);
+                rightTile.RemoveCharacterOnTile(gameObject);
             }
         }
 

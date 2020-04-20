@@ -60,14 +60,9 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 			_forwardTile = tilesManager.GetTile(transform.position, transform.forward);
 			if (_forwardTile != null || _forwardTile.Free)
 			{
-				if (_forwardTile.CharacterOnTile != null)
-				{
-					if (onMenacingGhost != null)
-					{
-						onMenacingGhost.Invoke();
-					}
-				}
-				else if (_forwardTile is AxeTile)
+				if (_forwardTile.CharacterOnTile.Count > 0)
+					return;
+				if (_forwardTile is AxeTile)
 				{
 					if (onPickingAxe != null)
 					{

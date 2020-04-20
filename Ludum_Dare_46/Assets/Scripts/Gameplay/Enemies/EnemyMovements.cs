@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 using MuchoBestoStudio.LudumDare.Gameplay._3C;
 using MuchoBestoStudio.LudumDare.Map;
@@ -94,7 +95,14 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 
 		private void OnMoveCompleted(bool success)
 		{
-			Tile[] path = TilesManager.Instance.PathFinder.GetPath(_path[_index], _target);
+			Tile currentTile = _path[_index];
+			if (currentTile.CharacterOnTile.Count(go => go.CompareTag("Player")) > 0)
+			{
+				currentTile.Interact(ECharacter.PLAYER);
+				return;
+			}
+
+			Tile[] path = TilesManager.Instance.PathFinder.GetPath(currentTile, _target);
 			SetPath(path);
 			MoveToNextPoint();
 		}

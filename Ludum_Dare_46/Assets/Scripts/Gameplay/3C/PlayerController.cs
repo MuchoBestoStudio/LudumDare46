@@ -27,7 +27,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 		[SerializeField, Tooltip("")]
 		private	InputActionReference _interact = null;
 		[SerializeField, Tooltip("")]
-		private	InputActionReference _inventory = null;
+		private	InputActionReference _threat = null;
 
 		#endregion
 
@@ -48,7 +48,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 
 			RegisterInteractAction();
 
-			RegisterInventoryAction();
+			RegisterThreatAction();
 		}
 
 		private void OnDisable()
@@ -57,7 +57,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 
 			UnRegisterInteractAction();
 
-			UnRegisterInventoryAction();
+			UnRegisterThreatAction();
 		}
 
 		#endregion
@@ -170,22 +170,22 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 
 		#endregion
 
-		#region Inventory
+		#region Threat
 
-		private void RegisterInventoryAction()
+		private void RegisterThreatAction()
 		{
-			_inventory.action.performed -= OnInventoryActionPerformed;
-			_inventory.action.performed += OnInventoryActionPerformed;
-			_inventory.action.Enable();
+			_threat.action.performed -= OnThreatActionPerformed;
+			_threat.action.performed += OnThreatActionPerformed;
+			_threat.action.Enable();
 		}
 
-		private void UnRegisterInventoryAction()
+		private void UnRegisterThreatAction()
 		{
-			_inventory.action.performed -= OnInventoryActionPerformed;
-			_inventory.action.Disable();
+			_threat.action.performed -= OnThreatActionPerformed;
+			_threat.action.Disable();
 		}
 
-		private void OnInventoryActionPerformed(InputAction.CallbackContext _)
+		private void OnThreatActionPerformed(InputAction.CallbackContext _)
 		{
 			if (onInventoryPerformed != null)
 			{

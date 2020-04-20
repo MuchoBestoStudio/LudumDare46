@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using MuchoBestoStudio.LudumDare.Gameplay;
 using MuchoBestoStudio.LudumDare.Gameplay._3C;
 using MuchoBestoStudio.LudumDare.Gameplay.Enemies;
@@ -15,30 +16,36 @@ namespace MuchoBestoStudio.LudumDare.Map
 		protected Transform _center = null;
 
 		public Vector3 Center => _center.position;
-        [SerializeField]
-        private bool _free = true;
-        public virtual bool Free => _free;
-
-        public void SetFree(bool value) { _free = value; }
+        public virtual bool Free => true;
 
         [SerializeField]
-        private GameObject _characterGO = null;
-        public GameObject CharacterOnTile => _characterGO;
+        private List<GameObject> _characterGO = new List<GameObject>();
+        public List<GameObject> CharacterOnTile => _characterGO;
 
-        public void SetCharacterOnTile(GameObject character)
+        public void AddCharacterOnTile(GameObject character)
 		{
-			_characterGO = character;
+			if (!_characterGO.Contains(character))
+				_characterGO.Add(character);
+		}
+
+		public void RemoveCharacterOnTile(GameObject character)
+		{
+			if (_characterGO.Contains(character))
+				_characterGO.Remove(character);
 		}
 
         public virtual void Interact(ECharacter character)
 		{
-            if (_characterGO != null)
+            if (_characterGO.Count > 0)
             {
-                CharacterInteractions interactions = _characterGO.GetComponent<CharacterInteractions>();
+				foreach (GameObject go in _characterGO)
+				{
+		            CharacterInteractions interactions = go.GetComponent<CharacterInteractions>();
 				
-				Assert.IsNotNull(interactions, nameof(Tile) + ": Interact(), character should contains an interaction component.");
+					Assert.IsNotNull(interactions, nameof(Tile) + ": Interact(), character should contains an interaction component.");
 
-				interactions.Interact(character);
+					interactions.Interact(character);
+				}
             }
 		}
 	}
