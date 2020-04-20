@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 using MuchoBestoStudio.LudumDare.Gameplay;
 
@@ -30,6 +31,7 @@ namespace MuchoBestoStudio.LudumDare.UI.ViewModels
             {
                 _currencySystem.OnCurrencyChanged += UpdateCurrencyText;
             }
+            _timeText.DOFade(1f, 3f).SetDelay(5f);
         }
 
         private void OnDisable()
@@ -44,7 +46,14 @@ namespace MuchoBestoStudio.LudumDare.UI.ViewModels
         private void UpdateTimeText()
         {
             string resultString;
-            resultString = StringTagReplacer.ReplaceTag(_timeTaggedString, "[VALUE]", ((int)_gameManager.GameTime).ToString());
+
+            int secondes = (int)(_gameManager.GameTime % 60f);
+            int minutes = (int)(_gameManager.GameTime / 60f);
+
+
+            //resultString = StringTagReplacer.ReplaceTag(_timeTaggedString, "[VALUE]", ((int)_gameManager.GameTime).ToString());
+            resultString = StringTagReplacer.ReplaceTag(_timeTaggedString, "[MM]", minutes.ToString("00"));
+            resultString = StringTagReplacer.ReplaceTag(resultString, "[SS]", secondes.ToString("00"));
             _timeText.text = resultString;
         }
 

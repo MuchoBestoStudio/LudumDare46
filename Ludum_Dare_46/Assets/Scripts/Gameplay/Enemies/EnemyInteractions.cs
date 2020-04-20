@@ -14,6 +14,8 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 		[SerializeField, Tooltip("")]
 		private EnemyAnimator	_animator = null;
 
+		private bool _isKilled = false;
+
 		#endregion
 
 		#region MonoBehaviour's Methods
@@ -21,6 +23,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 		private void OnEnable()
 		{
 			_movements.onEnemyReachEnd += EnemyMovements_onEnemyReachEnd;
+			_isKilled = false;
 		}
 
 		private void OnDisable()
@@ -31,6 +34,10 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 
 		private void EnemyMovements_onEnemyReachEnd(EnemyMovements _)
 		{
+			if (_isKilled)
+			{
+				return;
+			}
 			InteractWithFrontTile();
             ClearTilesPresence();
         }
@@ -41,11 +48,12 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 
 		public override void Interact(ECharacter character)
 		{
-			if (character == ECharacter.PLAYER)
+			if (!_isKilled && character == ECharacter.PLAYER)
 			{
+				_isKilled = true;
                 ClearTilesPresence();
 
-                _animator.Disappear();
+				_animator.Disappear();
             }
         }
 

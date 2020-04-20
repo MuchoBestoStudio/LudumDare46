@@ -38,7 +38,8 @@ namespace MuchoBestoStudio.LudumDare.Map
 		{
             if (_characterGO.Count > 0)
             {
-				foreach (GameObject go in _characterGO)
+				var list = _characterGO.ToArray();
+				foreach (GameObject go in list)
 				{
 		            CharacterInteractions interactions = go.GetComponent<CharacterInteractions>();
 				

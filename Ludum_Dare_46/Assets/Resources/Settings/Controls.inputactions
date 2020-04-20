@@ -46,14 +46,6 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Inventory",
-                    "type": "Button",
-                    "id": "e33ad72d-c7a0-466d-8e5a-d0531a0c9a4a",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "TogglePause",
                     "type": "Button",
                     "id": "3089f593-3957-410a-9944-a3739d5daff3",
@@ -82,28 +74,6 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Interact",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "691d8ba6-0a96-439a-bc7a-c245df302e56",
-                    "path": "<Keyboard>/i",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Inventory",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4f92508a-e187-48c2-bb3d-9085f0eaa57e",
-                    "path": "<Gamepad>/buttonNorth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Inventory",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

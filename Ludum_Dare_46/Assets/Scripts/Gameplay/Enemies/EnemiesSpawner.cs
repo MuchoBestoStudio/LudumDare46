@@ -44,6 +44,8 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 		{
 			Pool = new GameObjectPool(_prefab, _parent, _initialAmount);
 
+			GameManager.Instance.onGameOver += OnGameOver;
+
 			Timer = _initialTimer;
 		}
 
@@ -62,6 +64,13 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 		#endregion
 
 		#region Spawn
+
+		private void OnGameOver()
+		{
+			enabled = false;
+
+			Pool.Unused();
+		}
 
 		public void Spawn(Vector3 position)
 		{

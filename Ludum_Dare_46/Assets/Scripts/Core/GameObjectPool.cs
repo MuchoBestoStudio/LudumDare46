@@ -85,6 +85,15 @@ namespace MuchoBestoStudio.LudumDare.Core
 			_unused.Add(go);
 		}
 
+		public void Unused()
+		{
+			GameObject[] goArray = _used.ToArray();
+
+			foreach (GameObject go in goArray)
+			{
+				Unused(go);
+			}
+		}
 		#endregion
 	}
 }
