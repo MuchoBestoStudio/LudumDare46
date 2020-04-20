@@ -16,6 +16,8 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Fire
 		{
 			public Light _light = null;
 			public Vector2 _minMax = Vector2.up;
+			public Color _MinColor = Color.black;
+			public Color _MaxColor = Color.white;
 		}
 
 		#region Variables
@@ -76,6 +78,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Fire
 		private void SetLightIntensity(FlameLight flameLight, float ratio)
 		{
 			flameLight._light.intensity = Mathf.Lerp(flameLight._minMax.x, flameLight._minMax.y, ratio);
+			flameLight._light.color = Color.Lerp (flameLight._MinColor,flameLight._MaxColor, ratio);
 		}
 		#endregion
 	}

@@ -21,6 +21,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Fire
         // Timer
         private float _currentCombustibleUpdateTimer = 0.0f;
         private float _combustibleUpdateTimer = 0.0f;
+		public uint _Damage = 1;
 
         [SerializeField]
         private uint _combustibleAmount = 0;
@@ -95,7 +96,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Fire
             }
 			else
 			{
-				RemoveCombustibles(1);
+				RemoveCombustibles(_Damage);
 			}
 
             onInteraction?.Invoke(character);
