@@ -4,30 +4,39 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Fire
 {
 	public class FireSourceVFX : MonoBehaviour
 	{
+		[System.Serializable]
+		private class FlameParticule
+		{
+			public ParticleSystem _particuleSystem = null;
+			public Vector2 _minMax = Vector2.up;
+		}
+
+		[System.Serializable]
+		private class FlameLight
+		{
+			public Light _light = null;
+			public Vector2 _minMax = Vector2.up;
+		}
+
 		#region Variables
 
 		[Header("Globals")]
 		[SerializeField, Tooltip("")]
-		private	FireSource	_source = null;
+		private FireSource _source = null;
+		[SerializeField, Tooltip("")]
+		private float _maxCombustible = 5f;
 
 		[Header("Particles")]
-		[SerializeField, Tooltip("")]
-		private	ParticleSystem	_flame = null;
-		[SerializeField, Tooltip("")]
-		private	float	_maxRateOverTime = 40f;
-		[SerializeField, Tooltip("")]
-		private	float	_maxCombustible = 5f;	
+		[SerializeField]
+		private FlameParticule[] _particuleFX = null;
 
-		private	ParticleSystem.EmissionModule	_flameEmission = new ParticleSystem.EmissionModule();
+		[Header("Light")]
+		[SerializeField]
+		private FlameLight[] _fireLights = null;
 
 		#endregion
 
 		#region MonoBehaviour's Methods
-
-		private void Awake()
-		{
-			_flameEmission = _flame.emission;
-		}
 
 		private void OnEnable()
 		{
@@ -41,18 +50,33 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Fire
 
 		private void FireSource_OnCombustibleAmountChanged(uint amount, int _)
 		{
-			SetFlameRateOverTime((amount / _maxCombustible) * _maxRateOverTime);
+			float ratio = (float)amount / _maxCombustible;
+
+			foreach (FlameParticule flameParticule in _particuleFX)
+			{
+				SetFlameRateOverTime(flameParticule, ratio * flameParticule._minMax.y);
+			}
+
+			foreach (FlameLight flameLight in _fireLights)
+			{
+				SetLightIntensity(flameLight, ratio);
+			}
 		}
 
 		#endregion
 
 		#region VFX
 
-		public void SetFlameRateOverTime(float rate)
+		private void SetFlameRateOverTime(FlameParticule flameSystem, float rate)
 		{
-			_flameEmission.rateOverTime = new ParticleSystem.MinMaxCurve(Mathf.Clamp(rate, 0f, _maxRateOverTime));
+			var emission = flameSystem._particuleSystem.emission;
+			emission.rateOverTime = new ParticleSystem.MinMaxCurve(Mathf.Clamp(rate, flameSystem._minMax.x, flameSystem._minMax.y));
 		}
 
+		private void SetLightIntensity(FlameLight flameLight, float ratio)
+		{
+			flameLight._light.intensity = Mathf.Lerp(flameLight._minMax.x, flameLight._minMax.y, ratio);
+		}
 		#endregion
 	}
 }
