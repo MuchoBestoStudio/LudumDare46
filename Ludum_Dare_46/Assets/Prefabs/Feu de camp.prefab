@@ -756,6 +756,7 @@ MonoBehaviour:
   _fireData: {fileID: 11400000, guid: 38f3add1cdefe214ab51ec8ebe9f7ce1, type: 2}
   _playerInventory: {fileID: 0}
   _interactEffect: {fileID: 0}
+  _Damage: 1
   _combustibleAmount: 0
 --- !u!114 &7493589262013571655
 MonoBehaviour:
@@ -775,6 +776,7 @@ MonoBehaviour:
   _sfx: {fileID: 5984561099714201636}
   _throwCombustible: {fileID: 8300000, guid: 02bf81b29ed62c94d92e8a862d7f3c48, type: 3}
   _blowingFire: {fileID: 8300000, guid: 07cba35a565d6e346848bf287075124b, type: 3}
+  _fireDecrease: {fileID: 8300000, guid: f3d49e66a320cd74c88d88c8788b7ab7, type: 3}
   _fireExtinguished: {fileID: 8300000, guid: 7acb031feff4a014894e23d6c41fd146, type: 3}
 --- !u!114 &2342437447783950350
 MonoBehaviour:
@@ -793,6 +795,7 @@ MonoBehaviour:
   _particuleFX:
   - _particuleSystem: {fileID: 8805948598068340559}
     _minMax: {x: 0, y: 50}
+  _smokeFX: {fileID: 0}
   _fireLights:
   - _light: {fileID: 8685874051104961809}
     _minMax: {x: 1.5, y: 5}

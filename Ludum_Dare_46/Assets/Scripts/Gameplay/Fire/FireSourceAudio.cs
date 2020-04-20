@@ -24,6 +24,8 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Fire
 		[SerializeField, Tooltip("")]
 		private AudioClip	_blowingFire = null;
 		[SerializeField, Tooltip("")]
+		private	AudioClip	_fireDecrease = null;
+		[SerializeField, Tooltip("")]
 		private	AudioClip	_fireExtinguished = null;
 
 		#endregion
@@ -47,10 +49,15 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Fire
 		private void FireSource_OnCombustibleAmountChanged(uint amount, int delta)
 		{
 			ChangeAmbiantVolume(amount / _maxCombustible);
+
             if (delta > 0)
             {
                 PlayThrowingCombustible();
             }
+			else if (delta < 0)
+			{
+				PlayFireDecreased();
+			}
         }
 
 		private void FireSource_OnNoCombustibleLeft()
@@ -87,6 +94,11 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Fire
 				_sfx.clip = _blowingFire;
 				_sfx.Play();
 			}
+		}
+
+		public void PlayFireDecreased()
+		{
+			_sfx.PlayOneShot(_fireDecrease);
 		}
 
 		public void PlayFireExtinguished()

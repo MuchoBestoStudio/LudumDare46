@@ -31,6 +31,8 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Fire
 		[Header("Particles")]
 		[SerializeField]
 		private FlameParticule[] _particuleFX = null;
+		[SerializeField]
+		private	ParticleSystem	_smokeFX = null;
 
 		[Header("Light")]
 		[SerializeField]
@@ -50,7 +52,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Fire
 			_source.onCombustibleAmountChanged -= FireSource_OnCombustibleAmountChanged;
 		}
 
-		private void FireSource_OnCombustibleAmountChanged(uint amount, int _)
+		private void FireSource_OnCombustibleAmountChanged(uint amount, int delta)
 		{
 			float ratio = (float)amount / _maxCombustible;
 
@@ -62,6 +64,11 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Fire
 			foreach (FlameLight flameLight in _fireLights)
 			{
 				SetLightIntensity(flameLight, ratio);
+			}
+
+			if (delta < 0)
+			{
+				_smokeFX.Play();
 			}
 		}
 
