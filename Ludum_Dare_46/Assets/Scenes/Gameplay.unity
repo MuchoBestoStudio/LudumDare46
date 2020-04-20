@@ -11041,23 +11041,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 746734115, guid: 6e6faf981282afa4792134d51b1b9f6c, type: 3}
-      propertyPath: m_Text
-      value: You won [VALUE] Skills Points.
-      objectReference: {fileID: 0}
-    - target: {fileID: 1853259639, guid: 6e6faf981282afa4792134d51b1b9f6c, type: 3}
-      propertyPath: _timeTaggedString
-      value: '[MM]:[SS]'
-      objectReference: {fileID: 0}
-    - target: {fileID: 1853259639, guid: 6e6faf981282afa4792134d51b1b9f6c, type: 3}
-      propertyPath: _currencyTaggedString
-      value: You won $[VALUE] !
-      objectReference: {fileID: 0}
-    - target: {fileID: 233000251449444482, guid: 6e6faf981282afa4792134d51b1b9f6c,
-        type: 3}
-      propertyPath: m_Text
-      value: You let your fire go out, you find yourself in the dark and the cold
-        surrounded by ghosts.
+    - target: {fileID: 1935629166, guid: 6e6faf981282afa4792134d51b1b9f6c, type: 3}
+      propertyPath: m_Alpha
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 539800194136511568, guid: 6e6faf981282afa4792134d51b1b9f6c,
         type: 3}
@@ -11129,19 +11115,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 539800194208214887, guid: 6e6faf981282afa4792134d51b1b9f6c,
+    - target: {fileID: 539800194471752825, guid: 6e6faf981282afa4792134d51b1b9f6c,
         type: 3}
-      propertyPath: m_Text
-      value: Press A / Space to retry.
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 539800195536587027, guid: 6e6faf981282afa4792134d51b1b9f6c,
+    - target: {fileID: 1001036017495673533, guid: 6e6faf981282afa4792134d51b1b9f6c,
         type: 3}
-      propertyPath: m_Text
-      value: FIRE IS LOW ON COMBUSTIBLE !
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 539800195604789257, guid: 6e6faf981282afa4792134d51b1b9f6c,
+    - target: {fileID: 1160379341522742652, guid: 6e6faf981282afa4792134d51b1b9f6c,
         type: 3}
-      propertyPath: m_Enabled
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
