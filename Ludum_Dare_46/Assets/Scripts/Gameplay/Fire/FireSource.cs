@@ -85,13 +85,14 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Fire
             Invoke("DisableVisualInteractif", .1f);
 			if (character == ECharacter.PLAYER)
 			{
-				AddCombustible();
 				Inventory inventory = FindObjectOfType<Inventory>();
 				if (inventory)
 				{
-					inventory.RemoveCombustible();
-				}
-			}
+                    uint combustiblesAmount = inventory.CombustibleAmount;
+                    inventory.RemoveCombustibles(combustiblesAmount);
+                    AddCombustibles(combustiblesAmount);
+                }
+            }
 			else
 			{
 				RemoveCombustibles(1);

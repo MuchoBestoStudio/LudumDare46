@@ -127,7 +127,12 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 			return DOTween.IsTweening(transform);
 		}
 
+        protected virtual void OnDisable()
+        {
+            DOTween.Kill(transform);
+        }
+
         #endregion
 
-	}
+    }
 }
