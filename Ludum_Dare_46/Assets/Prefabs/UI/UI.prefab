@@ -468,7 +468,7 @@ MonoBehaviour:
   _fireSource: {fileID: 0}
   _pauseGameObject: {fileID: 480758480}
   _CombustibleWarningObject: {fileID: 539800195536587053}
-  _criticalCombustibleAmount: 5
+  _criticalCombustibleAmount: 10
 --- !u!114 &539800194136511572
 MonoBehaviour:
   m_ObjectHideFlags: 0

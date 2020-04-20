@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d03552b9cfba54b89a54757370fe3f, type: 3}
   m_Name: BaseCombustibles_Skill
   m_EditorClassIdentifier: 
+  _defaultLevel: 1
   MaxLevel: 10
   ValueCurve:
     serializedVersion: 2
@@ -19,17 +20,17 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 5
-      inSlope: 0.5555556
-      outSlope: 0.5555556
+      inSlope: 5
+      outSlope: 5
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 10
-      value: 10
-      inSlope: 0.5555556
-      outSlope: 0.5555556
+      value: 50
+      inSlope: 5
+      outSlope: 5
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
