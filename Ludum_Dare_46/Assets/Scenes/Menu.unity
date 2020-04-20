@@ -99,7 +99,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: 07b366a46b7597b4b8689c28fd1decb3,
     type: 2}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -680,6 +680,7 @@ GameObject:
   - component: {fileID: 33420440}
   - component: {fileID: 33420444}
   - component: {fileID: 33420445}
+  - component: {fileID: 33420446}
   m_Layer: 5
   m_Name: '[Button] Skill #3 - 2 (2)'
   m_TagString: Untagged
@@ -842,6 +843,19 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 0.38431376, b: 0, a: 1}
   m_EffectDistance: {x: 6, y: -6}
   m_UseGraphicAlpha: 1
+--- !u!114 &33420446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33420438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6288a5ff1df9a440bf3f8993b0b0241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menuAudio: {fileID: 503952773}
 --- !u!1 &77611095
 GameObject:
   m_ObjectHideFlags: 0
@@ -857,6 +871,7 @@ GameObject:
   - component: {fileID: 77611097}
   - component: {fileID: 77611101}
   - component: {fileID: 77611102}
+  - component: {fileID: 77611103}
   m_Layer: 5
   m_Name: '[Button] Skill #2 - 1'
   m_TagString: Untagged
@@ -1019,6 +1034,19 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 0.38431376, b: 0, a: 1}
   m_EffectDistance: {x: 6, y: -6}
   m_UseGraphicAlpha: 1
+--- !u!114 &77611103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77611095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6288a5ff1df9a440bf3f8993b0b0241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menuAudio: {fileID: 503952773}
 --- !u!1 &87039733
 GameObject:
   m_ObjectHideFlags: 0
@@ -1416,6 +1444,7 @@ GameObject:
   - component: {fileID: 118424523}
   - component: {fileID: 118424527}
   - component: {fileID: 118424528}
+  - component: {fileID: 118424529}
   m_Layer: 5
   m_Name: '[Button] Skill #1 (1)'
   m_TagString: Untagged
@@ -1578,6 +1607,19 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 0.38431376, b: 0, a: 1}
   m_EffectDistance: {x: 6, y: -6}
   m_UseGraphicAlpha: 1
+--- !u!114 &118424529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118424521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6288a5ff1df9a440bf3f8993b0b0241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menuAudio: {fileID: 503952773}
 --- !u!1 &121191518
 GameObject:
   m_ObjectHideFlags: 0
@@ -3854,6 +3896,7 @@ GameObject:
   - component: {fileID: 427030449}
   - component: {fileID: 427030453}
   - component: {fileID: 427030454}
+  - component: {fileID: 427030455}
   m_Layer: 5
   m_Name: '[Button] Skill #1'
   m_TagString: Untagged
@@ -4014,6 +4057,19 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 0.38431376, b: 0, a: 1}
   m_EffectDistance: {x: 6, y: -6}
   m_UseGraphicAlpha: 1
+--- !u!114 &427030455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427030447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6288a5ff1df9a440bf3f8993b0b0241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menuAudio: {fileID: 503952773}
 --- !u!1 &430812659
 GameObject:
   m_ObjectHideFlags: 0
@@ -4936,6 +4992,150 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 484375336}
   m_CullTransparentMesh: 0
+--- !u!1 &503952770
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 503952772}
+  - component: {fileID: 503952771}
+  - component: {fileID: 503952773}
+  m_Layer: 0
+  m_Name: '[Audio] SFX'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &503952771
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503952770}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 1664414949306826904, guid: 3040b39b2f34b9c4084c58b52814acde,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &503952772
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503952770}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 659.0137, y: 615.3969, z: -115.31285}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &503952773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503952770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4630448f9800676468948af2b4b037ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _source: {fileID: 503952771}
+  _highlightedClip: {fileID: 8300000, guid: a7070b3392703c5478c7b5c2a3b56b26, type: 3}
+  _pressedClip: {fileID: 8300000, guid: 7f12161ad56bfae4283936e5a226ffd1, type: 3}
 --- !u!43 &530201165
 Mesh:
   m_ObjectHideFlags: 0
@@ -6091,6 +6291,7 @@ GameObject:
   - component: {fileID: 649662061}
   - component: {fileID: 649662064}
   - component: {fileID: 649662065}
+  - component: {fileID: 649662066}
   m_Layer: 5
   m_Name: '[Button] Settings'
   m_TagString: Untagged
@@ -6230,6 +6431,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &649662066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649662059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6288a5ff1df9a440bf3f8993b0b0241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menuAudio: {fileID: 503952773}
 --- !u!1 &661218478
 GameObject:
   m_ObjectHideFlags: 0
@@ -6316,6 +6530,7 @@ GameObject:
   - component: {fileID: 669654343}
   - component: {fileID: 669654342}
   - component: {fileID: 669654346}
+  - component: {fileID: 669654347}
   m_Layer: 5
   m_Name: '[Button] Back'
   m_TagString: Untagged
@@ -6441,6 +6656,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &669654347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669654341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6288a5ff1df9a440bf3f8993b0b0241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menuAudio: {fileID: 503952773}
 --- !u!1 &671278827
 GameObject:
   m_ObjectHideFlags: 0
@@ -6455,6 +6683,7 @@ GameObject:
   - component: {fileID: 671278829}
   - component: {fileID: 671278832}
   - component: {fileID: 671278833}
+  - component: {fileID: 671278834}
   m_Layer: 5
   m_Name: '[Button] Play'
   m_TagString: Untagged
@@ -6594,6 +6823,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &671278834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 671278827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6288a5ff1df9a440bf3f8993b0b0241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menuAudio: {fileID: 503952773}
 --- !u!1 &682791788
 GameObject:
   m_ObjectHideFlags: 0
@@ -8053,6 +8295,7 @@ GameObject:
   - component: {fileID: 759625363}
   - component: {fileID: 759625367}
   - component: {fileID: 759625368}
+  - component: {fileID: 759625369}
   m_Layer: 5
   m_Name: '[Button] Skill #3 - 1 (1)'
   m_TagString: Untagged
@@ -8217,6 +8460,19 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 0.38431376, b: 0, a: 1}
   m_EffectDistance: {x: 6, y: -6}
   m_UseGraphicAlpha: 1
+--- !u!114 &759625369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759625361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6288a5ff1df9a440bf3f8993b0b0241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menuAudio: {fileID: 503952773}
 --- !u!1 &764414829
 GameObject:
   m_ObjectHideFlags: 0
@@ -10396,8 +10652,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 275, y: 320.00003}
-  m_SizeDelta: {x: 800, y: 100}
+  m_AnchoredPosition: {x: 285, y: 320.00003}
+  m_SizeDelta: {x: 838, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1006373251
 MonoBehaviour:
@@ -10842,7 +11098,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1058603451}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
@@ -11171,6 +11427,7 @@ GameObject:
   - component: {fileID: 1090137508}
   - component: {fileID: 1090137507}
   - component: {fileID: 1090137511}
+  - component: {fileID: 1090137512}
   m_Layer: 5
   m_Name: '[Button] Play'
   m_TagString: Untagged
@@ -11307,6 +11564,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1090137512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1090137506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6288a5ff1df9a440bf3f8993b0b0241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menuAudio: {fileID: 503952773}
 --- !u!1 &1096699330
 GameObject:
   m_ObjectHideFlags: 0
@@ -11320,6 +11590,7 @@ GameObject:
   - component: {fileID: 1096699333}
   - component: {fileID: 1096699332}
   - component: {fileID: 1096699335}
+  - component: {fileID: 1096699336}
   m_Layer: 5
   m_Name: '[Button] Back'
   m_TagString: Untagged
@@ -11445,6 +11716,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1096699336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096699330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6288a5ff1df9a440bf3f8993b0b0241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menuAudio: {fileID: 503952773}
 --- !u!1 &1105201351
 GameObject:
   m_ObjectHideFlags: 0
@@ -12440,6 +12724,7 @@ GameObject:
   - component: {fileID: 1151116248}
   - component: {fileID: 1151116247}
   - component: {fileID: 1151116250}
+  - component: {fileID: 1151116251}
   m_Layer: 5
   m_Name: '[Button] Quit'
   m_TagString: Untagged
@@ -12564,6 +12849,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1151116251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1151116245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6288a5ff1df9a440bf3f8993b0b0241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menuAudio: {fileID: 503952773}
 --- !u!1 &1168667302
 GameObject:
   m_ObjectHideFlags: 0
@@ -13166,6 +13464,7 @@ GameObject:
   - component: {fileID: 1257786508}
   - component: {fileID: 1257786512}
   - component: {fileID: 1257786513}
+  - component: {fileID: 1257786514}
   m_Layer: 5
   m_Name: '[Button] Skill #1 (2)'
   m_TagString: Untagged
@@ -13328,6 +13627,19 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 0.38431376, b: 0, a: 1}
   m_EffectDistance: {x: 6, y: -6}
   m_UseGraphicAlpha: 1
+--- !u!114 &1257786514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1257786506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6288a5ff1df9a440bf3f8993b0b0241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menuAudio: {fileID: 503952773}
 --- !u!1 &1261629096
 GameObject:
   m_ObjectHideFlags: 0
@@ -13431,6 +13743,7 @@ GameObject:
   - component: {fileID: 1275798003}
   - component: {fileID: 1275798006}
   - component: {fileID: 1275798007}
+  - component: {fileID: 1275798008}
   m_Layer: 5
   m_Name: '[Button] Credits'
   m_TagString: Untagged
@@ -13570,6 +13883,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1275798008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275798001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6288a5ff1df9a440bf3f8993b0b0241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menuAudio: {fileID: 503952773}
 --- !u!1 &1283843959
 GameObject:
   m_ObjectHideFlags: 0
@@ -13585,6 +13911,7 @@ GameObject:
   - component: {fileID: 1283843961}
   - component: {fileID: 1283843965}
   - component: {fileID: 1283843966}
+  - component: {fileID: 1283843967}
   m_Layer: 5
   m_Name: '[Button] Skill #3 - 1 (2)'
   m_TagString: Untagged
@@ -13749,6 +14076,19 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 0.38431376, b: 0, a: 1}
   m_EffectDistance: {x: 6, y: -6}
   m_UseGraphicAlpha: 1
+--- !u!114 &1283843967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1283843959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6288a5ff1df9a440bf3f8993b0b0241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menuAudio: {fileID: 503952773}
 --- !u!1 &1293538680
 GameObject:
   m_ObjectHideFlags: 0
@@ -13910,6 +14250,7 @@ GameObject:
   - component: {fileID: 1298978591}
   - component: {fileID: 1298978595}
   - component: {fileID: 1298978596}
+  - component: {fileID: 1298978597}
   m_Layer: 5
   m_Name: '[Button] Skill #3 - 1'
   m_TagString: Untagged
@@ -14072,6 +14413,19 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 0.38431376, b: 0, a: 1}
   m_EffectDistance: {x: 6, y: -6}
   m_UseGraphicAlpha: 1
+--- !u!114 &1298978597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298978589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6288a5ff1df9a440bf3f8993b0b0241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menuAudio: {fileID: 503952773}
 --- !u!43 &1337162892
 Mesh:
   m_ObjectHideFlags: 0
@@ -14449,6 +14803,7 @@ GameObject:
   - component: {fileID: 1360115944}
   - component: {fileID: 1360115948}
   - component: {fileID: 1360115949}
+  - component: {fileID: 1360115950}
   m_Layer: 5
   m_Name: '[Button] Skill #2 - 1 (2)'
   m_TagString: Untagged
@@ -14611,6 +14966,19 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 0.38431376, b: 0, a: 1}
   m_EffectDistance: {x: 6, y: -6}
   m_UseGraphicAlpha: 1
+--- !u!114 &1360115950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360115942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6288a5ff1df9a440bf3f8993b0b0241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menuAudio: {fileID: 503952773}
 --- !u!1 &1390560094
 GameObject:
   m_ObjectHideFlags: 0
@@ -15561,6 +15929,7 @@ GameObject:
   - component: {fileID: 1520834240}
   - component: {fileID: 1520834239}
   - component: {fileID: 1520834243}
+  - component: {fileID: 1520834244}
   m_Layer: 5
   m_Name: '[Button] Back'
   m_TagString: Untagged
@@ -15686,6 +16055,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1520834244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520834238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6288a5ff1df9a440bf3f8993b0b0241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menuAudio: {fileID: 503952773}
 --- !u!1 &1530023517
 GameObject:
   m_ObjectHideFlags: 0
@@ -15855,6 +16237,7 @@ GameObject:
   - component: {fileID: 1536158955}
   - component: {fileID: 1536158954}
   - component: {fileID: 1536158958}
+  - component: {fileID: 1536158959}
   m_Layer: 5
   m_Name: '[Button] Reset'
   m_TagString: Untagged
@@ -15980,6 +16363,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1536158959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536158953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6288a5ff1df9a440bf3f8993b0b0241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menuAudio: {fileID: 503952773}
 --- !u!1 &1537573595
 GameObject:
   m_ObjectHideFlags: 0
@@ -17134,6 +17530,7 @@ GameObject:
   - component: {fileID: 1712958557}
   - component: {fileID: 1712958561}
   - component: {fileID: 1712958562}
+  - component: {fileID: 1712958563}
   m_Layer: 5
   m_Name: '[Button] Skill #3 - 2'
   m_TagString: Untagged
@@ -17296,6 +17693,19 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 0.38431376, b: 0, a: 1}
   m_EffectDistance: {x: 6, y: -6}
   m_UseGraphicAlpha: 1
+--- !u!114 &1712958563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1712958555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6288a5ff1df9a440bf3f8993b0b0241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menuAudio: {fileID: 503952773}
 --- !u!1 &1743751527
 GameObject:
   m_ObjectHideFlags: 0
@@ -19213,6 +19623,7 @@ GameObject:
   - component: {fileID: 1879626326}
   - component: {fileID: 1879626330}
   - component: {fileID: 1879626331}
+  - component: {fileID: 1879626332}
   m_Layer: 5
   m_Name: '[Button] Skill #3 - 2 (1)'
   m_TagString: Untagged
@@ -19375,6 +19786,19 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 0.38431376, b: 0, a: 1}
   m_EffectDistance: {x: 6, y: -6}
   m_UseGraphicAlpha: 1
+--- !u!114 &1879626332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1879626324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6288a5ff1df9a440bf3f8993b0b0241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menuAudio: {fileID: 503952773}
 --- !u!43 &1921742853
 Mesh:
   m_ObjectHideFlags: 0
@@ -20587,7 +21011,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2071124388}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
@@ -20708,6 +21132,7 @@ GameObject:
   - component: {fileID: 2079681047}
   - component: {fileID: 2079681051}
   - component: {fileID: 2079681052}
+  - component: {fileID: 2079681053}
   m_Layer: 5
   m_Name: '[Button] Skill #2 - 1 (3)'
   m_TagString: Untagged
@@ -20870,6 +21295,19 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 0.38431376, b: 0, a: 1}
   m_EffectDistance: {x: 6, y: -6}
   m_UseGraphicAlpha: 1
+--- !u!114 &2079681053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2079681045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6288a5ff1df9a440bf3f8993b0b0241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menuAudio: {fileID: 503952773}
 --- !u!1 &2082448573
 GameObject:
   m_ObjectHideFlags: 0
@@ -20885,6 +21323,7 @@ GameObject:
   - component: {fileID: 2082448575}
   - component: {fileID: 2082448579}
   - component: {fileID: 2082448580}
+  - component: {fileID: 2082448581}
   m_Layer: 5
   m_Name: '[Button] Skill #2 - 1 (1)'
   m_TagString: Untagged
@@ -21047,6 +21486,19 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 0.38431376, b: 0, a: 1}
   m_EffectDistance: {x: 6, y: -6}
   m_UseGraphicAlpha: 1
+--- !u!114 &2082448581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082448573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6288a5ff1df9a440bf3f8993b0b0241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menuAudio: {fileID: 503952773}
 --- !u!1 &2088422665
 GameObject:
   m_ObjectHideFlags: 0
