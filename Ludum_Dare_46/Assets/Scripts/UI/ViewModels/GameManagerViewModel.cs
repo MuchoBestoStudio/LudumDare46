@@ -32,6 +32,15 @@ namespace MuchoBestoStudio.LudumDare.UI.ViewModels
             }
         }
 
+        private void OnDisable()
+        {
+            _gameManager.onTimeUpdated -= UpdateTimeText;
+            if (_currencySystem)
+            {
+                _currencySystem.OnCurrencyChanged -= UpdateCurrencyText;
+            }
+        }
+
         private void UpdateTimeText()
         {
             string resultString;
