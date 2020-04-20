@@ -205,7 +205,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _center: {fileID: 6290032207473362254}
-  _characterGO: {fileID: 0}
+  _characterGO:
+  - {fileID: 0}
   _axe: {fileID: 1537779313043975388}
 --- !u!1001 &6498464133689776609
 PrefabInstance:
@@ -219,6 +220,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hache
       objectReference: {fileID: 0}
+    - target: {fileID: 6288347366949781985, guid: ec38917dc72630c48bcbe874a3fa41bb,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6288347366949781985, guid: ec38917dc72630c48bcbe874a3fa41bb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2e7d972b6143c6f4fa243ee5da66aeae, type: 2}
+    - target: {fileID: 6288347366949781985, guid: ec38917dc72630c48bcbe874a3fa41bb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 531766754c02bdd4193e0c2c317a7be6, type: 2}
     - target: {fileID: 8728887885128451886, guid: ec38917dc72630c48bcbe874a3fa41bb,
         type: 3}
       propertyPath: m_LocalPosition.x
