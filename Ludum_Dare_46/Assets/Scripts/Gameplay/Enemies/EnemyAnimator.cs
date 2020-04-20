@@ -10,6 +10,8 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 
 		[SerializeField, Tooltip("")]
 		private	EnemyMovements	_movements = null;
+		[SerializeField]
+		private Animator _animator = null;
 
 		#endregion
 
@@ -71,6 +73,12 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 				onEnemyStartToDisappear.Invoke(this);
 			}
 
+			_animator.SetTrigger("Disappear");
+			Invoke("SetEnemyInactive", 1.5f);
+		}
+
+		private void SetEnemyInactive()
+		{
 			gameObject.SetActive(false);
 		}
 
