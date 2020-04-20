@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using DG.Tweening;
 
 using MuchoBestoStudio.LudumDare.Gameplay;
 using MuchoBestoStudio.LudumDare.Gameplay.Fire;
@@ -11,7 +12,11 @@ namespace MuchoBestoStudio.LudumDare.UI
     public class UIManager : MonoBehaviour
     {
         [SerializeField]
-        GameObject _gameOverObject = null;
+        private GameObject _hudObject = null;
+        [SerializeField]
+        private GameObject _gameOverObject = null;
+        [SerializeField]
+        private GameObject _introGameObject = null;
         [SerializeField]
         private Inventory _playerInventory = null;
         [SerializeField]
@@ -52,6 +57,8 @@ namespace MuchoBestoStudio.LudumDare.UI
                 _CombustibleWarningObject.SetActive(false);
             }
 
+            _introGameObject.SetActive(true);
+            _introGameObject.GetComponent<CanvasGroup>().DOFade(0f, 3f).SetDelay(5f).OnComplete(() => _introGameObject.SetActive(false));  ;
             _CombustibleWarningObject.GetComponent<Animation>().Play();
         }
 
@@ -60,17 +67,22 @@ namespace MuchoBestoStudio.LudumDare.UI
             if (_gameOverObject)
             {
                 _gameOverObject.SetActive(true);
+                _gameOverObject.GetComponent<CanvasGroup>().DOFade(1f, 5f);
+                _hudObject.SetActive(false);
             }
         }
 
         private void HideGameOverPanel()
         {
             _gameOverObject.SetActive(false);
+            _hudObject.SetActive(true);
         }
 
         private void OnPauseChanged(bool isPaused)
         {
             _pauseGameObject.SetActive(isPaused);
+            _hudObject.SetActive(!isPaused);
+            _introGameObject.SetActive(isPaused);
         }
 
         private void OnFireCombustibleChanged(uint value, int delta)

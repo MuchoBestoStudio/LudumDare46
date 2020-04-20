@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 using MuchoBestoStudio.LudumDare.Gameplay;
 
@@ -30,6 +31,7 @@ namespace MuchoBestoStudio.LudumDare.UI.ViewModels
             {
                 _currencySystem.OnCurrencyChanged += UpdateCurrencyText;
             }
+            _timeText.DOFade(1f, 3f).SetDelay(5f);
         }
 
         private void OnDisable()
