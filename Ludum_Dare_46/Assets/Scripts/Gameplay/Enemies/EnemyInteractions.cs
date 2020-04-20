@@ -65,35 +65,39 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 
         private void ClearTilesPresence()
         {
-            Tile currentTile = TilesManager.Instance.GetTile(transform.position);
+            TilesManager tilesManager = TilesManager.Instance;
+            if (tilesManager == null)
+                return;
+
+            Tile currentTile = tilesManager.GetTile(transform.position);
             if (currentTile && currentTile.CharacterOnTile == gameObject)
             {
                 currentTile.SetCharacterOnTile(null);
                 currentTile.SetFree(true);
             }
 
-            Tile frontTile = TilesManager.Instance.GetTile(transform.position, transform.forward);
+            Tile frontTile = tilesManager.GetTile(transform.position, transform.forward);
             if (frontTile && frontTile.CharacterOnTile == gameObject)
             {
                 frontTile.SetCharacterOnTile(null);
                 frontTile.SetFree(true);
             }
 
-            Tile backTile = TilesManager.Instance.GetTile(transform.position, -transform.forward);
+            Tile backTile = tilesManager.GetTile(transform.position, -transform.forward);
             if (backTile && backTile.CharacterOnTile == gameObject)
             {
                 backTile.SetCharacterOnTile(null);
                 backTile.SetFree(true);
             }
 
-            Tile leftTile = TilesManager.Instance.GetTile(transform.position, -transform.right);
+            Tile leftTile = tilesManager.GetTile(transform.position, -transform.right);
             if (leftTile && leftTile.CharacterOnTile == gameObject)
             {
                 leftTile.SetCharacterOnTile(null);
                 leftTile.SetFree(true);
             }
 
-            Tile rightTile = TilesManager.Instance.GetTile(transform.position, transform.right);
+            Tile rightTile = tilesManager.GetTile(transform.position, transform.right);
             if (rightTile && rightTile.CharacterOnTile == gameObject)
             {
                 rightTile.SetCharacterOnTile(null);
