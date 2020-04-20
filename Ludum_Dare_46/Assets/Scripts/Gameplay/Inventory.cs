@@ -26,6 +26,8 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
         private uint _maxCombustiblesAmount = 0;
         public uint MaxCombustibleAmount => _maxCombustiblesAmount;
 
+		public Action onAxeBroke = null;
+
         public void SetMaxCombustibleAmount(uint value)
         {
             _maxCombustiblesAmount = value;
@@ -93,6 +95,11 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
             {
                 _playerAxe = null;
                 _AxeObject?.SetActive(false);
+
+				if (onAxeBroke != null)
+				{
+					onAxeBroke.Invoke();
+				}
             }
 
             UpdateDurabilityShader();
@@ -129,5 +136,10 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
             }
             SetCombustibleAmount(0);
         }
+
+		public bool IsFullOfCombustible()
+		{
+			return _combustibleAmount == _maxCombustiblesAmount;
+		}
     }
 }
