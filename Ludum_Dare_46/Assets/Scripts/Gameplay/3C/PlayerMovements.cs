@@ -34,8 +34,9 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 			_controller.onMovementPerformed += PlayerController_OnMovementsPerformed;
 		}
 
-		private void OnDisable()
+		override protected void OnDisable()
 		{
+            base.OnDisable();
 			_controller.onMovementPerformed -= PlayerController_OnMovementsPerformed;
 		}
 

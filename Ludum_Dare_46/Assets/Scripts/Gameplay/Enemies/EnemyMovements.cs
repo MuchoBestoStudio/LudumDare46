@@ -35,8 +35,9 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 			_animator.onEnemyEndAppearing += EnemyAnimator_OnEnemyEndAppearing;
 		}
 
-		private void OnDisable()
+		override protected void OnDisable()
 		{
+            base.OnDisable();
 			_animator.onEnemyEndAppearing -= EnemyAnimator_OnEnemyEndAppearing;
 		}
 
