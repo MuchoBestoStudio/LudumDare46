@@ -31,6 +31,14 @@ namespace MuchoBestoStudio.LudumDare.UI.Menu
 
 		#region MonoBehaviour's Methods
 
+		private void Start()
+		{
+			if (PlayerPrefs.GetInt("PreviousScene", 0) == 1)
+			{
+				OnPlayButtonClicked();
+			}
+		}
+
 		private void OnEnable()
 		{
 			_play.onClick.AddListener(OnPlayButtonClicked);

@@ -31,6 +31,8 @@ public class SplashScreenFader : MonoBehaviour
 
     void Start()
     {
+        PlayerPrefs.SetInt("PreviousScene", 0);
+
         transform.SetAsLastSibling();
         Color faderColor = _fader.color;
         faderColor.a = 0.0f;
