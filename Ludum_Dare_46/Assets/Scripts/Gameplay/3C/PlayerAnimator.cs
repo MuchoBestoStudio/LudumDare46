@@ -107,6 +107,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 		public void Scared()
 		{
 			_animator.SetTrigger(SCARED_KEY);
+			_animator.SetBool(MOVE_KEY, false);
 		}
 
 		public bool IsPlayingAnyIdles()
