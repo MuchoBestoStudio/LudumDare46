@@ -218,8 +218,7 @@ MonoBehaviour:
       type: 3}
   _interact: {fileID: -5548793354506133487, guid: fe133f96050bcf24b95c5bb2917d11bd,
     type: 3}
-  _inventory: {fileID: -4095184050835189062, guid: fe133f96050bcf24b95c5bb2917d11bd,
-    type: 3}
+  _threat: {fileID: 0}
 --- !u!114 &7368722731462656565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,6 +235,7 @@ MonoBehaviour:
   RotateDuration: 0.1
   _controller: {fileID: 1501512968312425469}
   _animator: {fileID: 9208027817022405891}
+  _interactions: {fileID: 6998041153490574929}
 --- !u!114 &1353283693121331019
 MonoBehaviour:
   m_ObjectHideFlags: 0

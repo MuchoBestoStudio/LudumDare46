@@ -20,7 +20,6 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 		public const string PICK_AXE_KEY = "PickAxe";
 		public const string PICK_WOOD_LOG_KEY = "PickWoodLog";
 		public const string CUT_TREE_KEY = "CutTree";
-		public const string MENACE_KEY = "Menace";
 		public const string SCARED_KEY = "Scared";
 
 		#endregion
@@ -53,7 +52,6 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 			_movements.onStopMoving += StopMoving;
 
 			_interactions.onCutingTree += CutTree;
-			_interactions.onMenacingGhost += MenaceGhost;
 			//_interactions.onPickingAxe += PickAxe;
 			//_interactions.onPickingWoodLog += PickWoodLog;
 		}
@@ -64,7 +62,6 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 			_movements.onStopMoving -= StopMoving;
 
 			_interactions.onCutingTree -= CutTree;
-			_interactions.onMenacingGhost -= MenaceGhost;
 			_interactions.onPickingAxe -= PickAxe;
 			_interactions.onPickingWoodLog -= PickWoodLog;
 		}
@@ -96,11 +93,6 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 		public void CutTree()
 		{
 			_animator.SetTrigger(CUT_TREE_KEY);
-		}
-
-		public void MenaceGhost()
-		{
-			_animator.SetTrigger(MENACE_KEY);
 		}
 
 		public void Scared()

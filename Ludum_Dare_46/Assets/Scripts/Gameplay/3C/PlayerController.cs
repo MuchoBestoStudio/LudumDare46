@@ -22,12 +22,15 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 
 		#region Variables
 
+		[Header("Controls")]
 		[SerializeField, Tooltip("")]
 		private	MovementsBlock _movements = new MovementsBlock();
 		[SerializeField, Tooltip("")]
 		private	InputActionReference _interact = null;
+
+		[Header("Gameplay")]
 		[SerializeField, Tooltip("")]
-		private	InputActionReference _threat = null;
+		private	GameManager	_gameManager = null;
 
 		#endregion
 
@@ -44,20 +47,41 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 
 		private void OnEnable()
 		{
+			RegisterToGameOver();
+
 			RegisterMovements();
 
 			RegisterInteractAction();
-
-			RegisterThreatAction();
 		}
 
 		private void OnDisable()
 		{
+			UnRegisterToGameOver();
+
 			UnRegisterMovements();
 
 			UnRegisterInteractAction();
+		}
 
-			UnRegisterThreatAction();
+		#endregion
+
+		#region GameOver
+
+		private void RegisterToGameOver()
+		{
+			_gameManager.onGameOver += GameManager_onGameOver;
+		}
+
+		private void UnRegisterToGameOver()
+		{
+			_gameManager.onGameOver -= GameManager_onGameOver;
+		}
+
+		private void GameManager_onGameOver()
+		{
+			UnRegisterMovements();
+
+			UnRegisterInteractAction();
 		}
 
 		#endregion
@@ -165,31 +189,6 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 			if (onInteractPerformed != null)
 			{
 				onInteractPerformed.Invoke();
-			}
-		}
-
-		#endregion
-
-		#region Threat
-
-		private void RegisterThreatAction()
-		{
-			_threat.action.performed -= OnThreatActionPerformed;
-			_threat.action.performed += OnThreatActionPerformed;
-			_threat.action.Enable();
-		}
-
-		private void UnRegisterThreatAction()
-		{
-			_threat.action.performed -= OnThreatActionPerformed;
-			_threat.action.Disable();
-		}
-
-		private void OnThreatActionPerformed(InputAction.CallbackContext _)
-		{
-			if (onInventoryPerformed != null)
-			{
-				onInventoryPerformed.Invoke();
 			}
 		}
 

@@ -59,14 +59,6 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Inventory"",
-                    ""type"": ""Button"",
-                    ""id"": ""e33ad72d-c7a0-466d-8e5a-d0531a0c9a4a"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
                     ""name"": ""TogglePause"",
                     ""type"": ""Button"",
                     ""id"": ""3089f593-3957-410a-9944-a3739d5daff3"",
@@ -95,28 +87,6 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Interact"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""691d8ba6-0a96-439a-bc7a-c245df302e56"",
-                    ""path"": ""<Keyboard>/i"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Inventory"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""4f92508a-e187-48c2-bb3d-9085f0eaa57e"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Inventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -391,7 +361,6 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Player_MoveDown = m_Player.FindAction("Move Down", throwIfNotFound: true);
         m_Player_MoveUp = m_Player.FindAction("Move Up", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
-        m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
         m_Player_TogglePause = m_Player.FindAction("TogglePause", throwIfNotFound: true);
         // GameOver
         m_GameOver = asset.FindActionMap("GameOver", throwIfNotFound: true);
@@ -450,7 +419,6 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_MoveDown;
     private readonly InputAction m_Player_MoveUp;
     private readonly InputAction m_Player_Interact;
-    private readonly InputAction m_Player_Inventory;
     private readonly InputAction m_Player_TogglePause;
     public struct PlayerActions
     {
@@ -461,7 +429,6 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @MoveDown => m_Wrapper.m_Player_MoveDown;
         public InputAction @MoveUp => m_Wrapper.m_Player_MoveUp;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
-        public InputAction @Inventory => m_Wrapper.m_Player_Inventory;
         public InputAction @TogglePause => m_Wrapper.m_Player_TogglePause;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
@@ -487,9 +454,6 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
-                @Inventory.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInventory;
-                @Inventory.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInventory;
-                @Inventory.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInventory;
                 @TogglePause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTogglePause;
                 @TogglePause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTogglePause;
                 @TogglePause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTogglePause;
@@ -512,9 +476,6 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
-                @Inventory.started += instance.OnInventory;
-                @Inventory.performed += instance.OnInventory;
-                @Inventory.canceled += instance.OnInventory;
                 @TogglePause.started += instance.OnTogglePause;
                 @TogglePause.performed += instance.OnTogglePause;
                 @TogglePause.canceled += instance.OnTogglePause;
@@ -580,7 +541,6 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnMoveDown(InputAction.CallbackContext context);
         void OnMoveUp(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
-        void OnInventory(InputAction.CallbackContext context);
         void OnTogglePause(InputAction.CallbackContext context);
     }
     public interface IGameOverActions
