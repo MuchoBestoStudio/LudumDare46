@@ -20,6 +20,8 @@ namespace MuchoBestoStudio.LudumDare.UI.Skill
 		private TextMeshProUGUI _priceText = null;
 		[SerializeField]
 		private Button _upgradeButton = null;
+		[SerializeField]
+		private Outline _validateEffect = null;
 
 		[Header("Dependence")]
 		[SerializeField]
@@ -43,16 +45,19 @@ namespace MuchoBestoStudio.LudumDare.UI.Skill
 
 		public void UpdateVisual(Gameplay.CurrencySystem currencySystem)
 		{
+			_validateEffect.enabled = false;
+
 			if (!CheckDependence())
 			{
 				_upgradeButton.interactable = false;
-				_priceText.text = "";
+				_priceText.enabled = false;
 				return;
 			}
 			if (_skillData.Level >= _setLevel)
 			{
 				_upgradeButton.interactable = false;
-				_priceText.text = "Gotten";
+				_priceText.enabled = false;
+				_validateEffect.enabled = true;
 				return;
 			}
 

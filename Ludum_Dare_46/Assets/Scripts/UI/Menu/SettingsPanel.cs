@@ -56,7 +56,7 @@ namespace MuchoBestoStudio.LudumDare.UI.Menu
 		private void OnEnable()
 		{
 			_back.onClick.AddListener(OnBackButtonClicked);
-			_reset.onClick.AddListener(OnSwitchResetPanel);
+			_reset.onClick.AddListener(OnShowResetPanel);
 
 			_resetYes.onClick.AddListener(OnResetButtonClicked);
 			_resetNo.onClick.AddListener(OnSwitchResetPanel);
@@ -71,7 +71,7 @@ namespace MuchoBestoStudio.LudumDare.UI.Menu
 		private void OnDisable()
 		{
 			_back.onClick.RemoveListener(OnBackButtonClicked);
-			_reset.onClick.RemoveListener(OnSwitchResetPanel);
+			_reset.onClick.RemoveListener(OnShowResetPanel);
 
 			_resetYes.onClick.RemoveListener(OnResetButtonClicked);
 			_resetNo.onClick.RemoveListener(OnSwitchResetPanel);
@@ -94,6 +94,11 @@ namespace MuchoBestoStudio.LudumDare.UI.Menu
 		private void OnSwitchResetPanel()
 		{
 			_resetPanel.SetActive(!_resetPanel.activeSelf);
+		}
+
+		private void OnShowResetPanel()
+		{
+			_resetPanel.SetActive(true);
 		}
 
 		private void OnResetButtonClicked()
@@ -122,7 +127,7 @@ namespace MuchoBestoStudio.LudumDare.UI.Menu
 
 		private void ChangeSFXVolumeGoupe(float value)
 		{
-			_audioMixer.SetFloat("SFXVolume", Mathf.Log10(value) * 20f);
+			_audioMixer.SetFloat("SFXVolume", Mathf.Log10(value) * 20f - 15f);
 			PlayerPrefs.SetFloat("SFXVolume", value);
 		}
 		#endregion
