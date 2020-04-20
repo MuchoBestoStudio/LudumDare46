@@ -127,6 +127,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
             {
                 _AxeObject?.SetActive(false);
             }
+            UpdateDurabilityShader();
             SetCombustibleAmount(0);
         }
     }
