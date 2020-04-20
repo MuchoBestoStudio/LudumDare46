@@ -121,13 +121,13 @@ namespace MuchoBestoStudio.LudumDare.UI.Menu
 
 		private void ChangeMusicsVolumeGoupe(float value)
 		{
-			_audioMixer.SetFloat("MusicsVolume", Mathf.Log10(value) * 20f - 10f);
+			_audioMixer.SetFloat("MusicsVolume", Mathf.Log10(value) * 20f - 8f);
 			PlayerPrefs.SetFloat("MusicsVolume", value);
 		}
 
 		private void ChangeSFXVolumeGoupe(float value)
 		{
-			_audioMixer.SetFloat("SFXVolume", Mathf.Log10(value) * 20f - 15f);
+			_audioMixer.SetFloat("SFXVolume", Mathf.Log10(value) * 20f - 12f);
 			PlayerPrefs.SetFloat("SFXVolume", value);
 		}
 		#endregion
