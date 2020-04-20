@@ -21,7 +21,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 		[SerializeField]
 		private TilesManager tilesManager = null;
 
-		private	Tile _forwardTile = null;
+		public	Tile InteractedTile { get; private set; } = null;
 
 		#endregion
 
@@ -30,7 +30,11 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 		public Action	onPickingWoodLog = null;
 		public Action	onPickingAxe = null;
 		public Action	onCutingTree = null;
+		public Action	onTreeCut = null;
 		public Action	onInteractionCompleted = null;
+
+		public Action	onAxeNotAvailable = null;
+		public Action	onInventoryFull = null;
 
 		#endregion
 
@@ -57,21 +61,30 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 
 			transform.position = new Vector3((int)transform.position.x, transform.position.y, (int)transform.position.z);
 
-			_forwardTile = tilesManager.GetTile(transform.position, transform.forward);
-			if (_forwardTile != null || _forwardTile.Free)
+			InteractedTile = tilesManager.GetTile(transform.position, transform.forward);
+			if (InteractedTile != null || InteractedTile.Free)
 			{
-				if (_forwardTile.CharacterOnTile.Count > 0)
+				if (InteractedTile.CharacterOnTile.Count > 0)
 					return;
-				if (_forwardTile is AxeTile)
+				if (InteractedTile is AxeTile)
 				{
 					if (onPickingAxe != null)
 					{
 						onPickingAxe.Invoke();
 					}
 				}
-				else if (_forwardTile is ResourceTile)
+				else if (InteractedTile is ResourceTile)
 				{
-					ResourceTile resTile = _forwardTile as ResourceTile;
+					if (_playerInventory.IsFullOfCombustible())
+					{
+						if (onInventoryFull != null)
+						{
+							onInventoryFull.Invoke();
+						}
+						return;
+					}
+
+					ResourceTile resTile = InteractedTile as ResourceTile;
 
 					Assert.IsNotNull(resTile, nameof(PlayerInteractions) + ": PlayerController_OnInteractActionPerformed(), resTile should not be null.");
 
@@ -80,7 +93,13 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 						if (resTile.Resource.AxeDependent)
 						{
 							if (_playerInventory.PlayerAxe == null)
+							{
+								if (onAxeNotAvailable != null)
+								{
+									onAxeNotAvailable.Invoke();
+								}
 								return;
+							}
 							if (onCutingTree != null)
 							{
 								onCutingTree.Invoke();
@@ -99,7 +118,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 					}
 				}
 
-				_forwardTile.Interact(ECharacter.PLAYER);
+				InteractedTile.Interact(ECharacter.PLAYER);
 
 				if (onInteractionCompleted != null)
 				{
@@ -110,8 +129,12 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 
 		private void PlayerAnimationReceiver_OnTreeCut()
 		{
-			_forwardTile.Interact(ECharacter.PLAYER);
+			InteractedTile.Interact(ECharacter.PLAYER);
 
+			if (onTreeCut != null)
+			{
+				onTreeCut.Invoke();
+			}
 			if (onInteractionCompleted != null)
 			{
 				onInteractionCompleted.Invoke();
