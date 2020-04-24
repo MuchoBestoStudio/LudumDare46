@@ -17,8 +17,8 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 		[SerializeField, Tooltip("")]
 		private	Tile _target = null;
 
-		private	int	_index = 0;
-		private Tile[]	_path = new Tile[0];
+		private Tile	_path = null;
+		private Tile	_currentTile = null;
 		private EDirection _currentDir = EDirection.NONE;
 
 		#endregion
@@ -35,6 +35,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 		{
 			_animator.onEnemyEndAppearing += EnemyAnimator_OnEnemyEndAppearing;
 			_animator.onEnemyStartToDisappear += EnemyAnimator_OnEnemyEndDisappearing;
+			GameManager.Instance.onTimeUpdated += OnTickUpdate;
 		}
 
 		override protected void OnDisable()
@@ -43,11 +44,18 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 
 			_animator.onEnemyEndAppearing -= EnemyAnimator_OnEnemyEndAppearing;
 			_animator.onEnemyStartToDisappear -= EnemyAnimator_OnEnemyEndDisappearing;
+			GameManager.Instance.onTimeUpdated -= OnTickUpdate;
 		}
 
 		private	void EnemyAnimator_OnEnemyEndAppearing(EnemyAnimator _)
 		{
 			StartPath();
+			_currentDir = DetermineDirection(transform.position, _path.Center);
+
+			if (_currentDir != LookDirection)
+			{
+				LookTo(_currentDir, null);
+			}
 		}
 
 		private void EnemyAnimator_OnEnemyEndDisappearing(EnemyAnimator _)
@@ -61,36 +69,29 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 
 		private void MoveToNextPoint()
 		{
-			if (!enabled || _path == null || _path.Length == 0)
+			if (_target == null || !_path)
 			{
 				return;
 			}
 
-			++_index;
-
-			if (_index + 1 >= _path.Length)
-			{
-				_currentDir = EDirection.NONE;
-
-				LookTo(DetermineDirection(transform.position, _target.Center), OnLookFireSource);
-				return;
-			}
-
-			_currentDir =  DetermineDirection(transform.position, _path[_index].Center);
+			_currentDir =  DetermineDirection(transform.position, _path.Center);
 
 			if (_currentDir != LookDirection)
 			{
-				LookTo(_currentDir, OnLookToCompleted);
+				LookTo(_currentDir, null);
 			}
 			else
 			{
-				Move(_currentDir, OnMoveCompleted);
+				if (_path == _target)
+				{
+					OnLookFireSource(true);
+					_target = null;
+				}
+				else
+				{
+					Move(_currentDir, OnMoveComplete);
+				}
 			}
-		}
-
-		private void OnLookToCompleted(bool _)
-		{
-			Move(_currentDir, OnMoveCompleted);
 		}
 
 		private void OnLookFireSource(bool _)
@@ -101,18 +102,15 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 			}
 		}
 
-		private void OnMoveCompleted(bool success)
+		private void OnTickUpdate()
 		{
-			Tile currentTile = _path[_index];
-			if (currentTile.CharacterOnTile.Count(go => go.CompareTag("Player")) > 0)
-			{
-				currentTile.Interact(ECharacter.PLAYER);
-				return;
-			}
-
-			Tile[] path = TilesManager.Instance.PathFinder.GetPath(currentTile, _target);
-			SetPath(path);
+			_path = TilesManager.Instance.PathFinder.GetPath(_currentTile, _target);
 			MoveToNextPoint();
+		}
+
+		private void OnMoveComplete(bool _)
+		{
+			_currentTile = _path;
 		}
 
 		private EDirection DetermineDirection(Vector3 start, Vector3 destination)
@@ -136,34 +134,23 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 			return EDirection.NONE;
 		}
 
-		private void SetPath(Tile[] path)
-		{
-			_index = 0;
-
-			_path = path;
-		}
-
 		private void RetrievePath()
 		{
-			Tile startTile = TilesManager.Instance.GetTile(transform.position);
+			_currentTile = TilesManager.Instance.GetTile(transform.position);
 
-			Assert.IsNotNull(startTile, nameof(EnemyMovements) + ": RetrievePath(), startTile should not be null.");
+			Assert.IsNotNull(_currentTile, nameof(EnemyMovements) + ": RetrievePath(), startTile should not be null.");
 
-			Tile[] path = TilesManager.Instance.PathFinder.GetPath(startTile, _target);
-
-			SetPath(path);
+			_path = TilesManager.Instance.PathFinder.GetPath(_currentTile, _target);
 		}
 
 		public void SetTarget(Tile newTarget)
 		{
 			_target = newTarget;
-
-			RetrievePath();
 		}
 
 		public void StartPath()
 		{
-			MoveToNextPoint();
+			RetrievePath();
 		}
 
 		public void StopPath()

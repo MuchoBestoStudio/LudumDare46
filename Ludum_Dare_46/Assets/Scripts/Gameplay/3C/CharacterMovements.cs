@@ -16,6 +16,8 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 		public	EDirection	MoveDirection { get; private set; } = EDirection.NONE;
 		public	EDirection	LookDirection { get; private set; } = EDirection.UP;
 
+		protected Tile _onTile = null;
+
 		#endregion
 
 		#region Events
@@ -25,6 +27,11 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 		#endregion
 
 		#region Methods
+
+        protected virtual void OnDisable()
+        {
+			StopMove();
+		}
 
 		public void StopMove()
 		{
@@ -51,15 +58,16 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 			{
 				DOTween.defaultEaseType = Ease.Linear;
 				transform.DOMove(nextTile.Center, MoveDuration, false)
+						 .OnStart(OnStartMoving)
 						 .OnComplete(() => {
-                                                currentTile.RemoveCharacterOnTile(gameObject);
-												nextTile.AddCharacterOnTile(gameObject);
+                                currentTile.RemoveCharacterOnTile(gameObject);
+								nextTile.AddCharacterOnTile(gameObject);
 
-                                                if (onCompleted != null)
-												{
-													onCompleted.Invoke(true);
-												}
-											});
+                                if (onCompleted != null)
+								{
+									onCompleted.Invoke(true);
+								}
+							});
 
 				if (onMovePerformed != null)
 				{
@@ -126,10 +134,8 @@ namespace MuchoBestoStudio.LudumDare.Gameplay._3C
 			return DOTween.IsTweening(transform);
 		}
 
-        protected virtual void OnDisable()
-        {
-			StopMove();
-		}
+		protected virtual void OnStartMoving()
+		{ }
 
         #endregion
 

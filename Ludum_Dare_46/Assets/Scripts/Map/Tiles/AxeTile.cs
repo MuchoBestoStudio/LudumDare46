@@ -18,6 +18,7 @@ namespace MuchoBestoStudio.LudumDare.Map
 				return;
 			}
 
+			GameManager.Instance.OnTickUpdate();
 			Inventory inventory = FindObjectOfType<Inventory>();
 			inventory.PickUpAxe();
 			_axe.SetActive(false);

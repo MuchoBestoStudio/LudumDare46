@@ -19,6 +19,10 @@ namespace MuchoBestoStudio.LudumDare.Map
 			{
 				_fireSource.Interact(character);
 			}
+			if (character == ECharacter.PLAYER)
+			{
+				GameManager.Instance.OnTickUpdate();
+			}
 		}
 	}
 }

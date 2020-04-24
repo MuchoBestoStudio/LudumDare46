@@ -26,8 +26,13 @@ namespace MuchoBestoStudio.LudumDare.Pathfinding
 			}
 		}
 
-		public Map.Tile[] GetPath(Map.Tile start, Map.Tile end)
+		public Map.Tile GetPath(Map.Tile start, Map.Tile end)
 		{
+			if (!start || !end)
+			{
+				return null;
+			}
+
 			bool pathSuccess = false;
 			PathNode startNode = new PathNode(start);
 			PathNode targetNode = new PathNode(end);
@@ -75,27 +80,20 @@ namespace MuchoBestoStudio.LudumDare.Pathfinding
 			{
 				return RetracePath(startNode, targetNode);
 			}
-			return new Map.Tile[0];
+			return null;
 		}
 
-		private Map.Tile[] RetracePath(PathNode startNode, PathNode endNode)
+		private Map.Tile RetracePath(PathNode startNode, PathNode endNode)
 		{
 			List<Map.Tile> path = new List<Map.Tile>();
 			PathNode currentNode = endNode;
 
-			while (currentNode != startNode)
+			while (currentNode.Parent != startNode)
 			{
-				path.Add(currentNode.TileNode);
 				currentNode = currentNode.Parent;
 			}
-			path.Add(startNode.TileNode);
 
-			path.RemoveAt(0);
-
-			Map.Tile[] waypoints = path.ToArray();
-			System.Array.Reverse(waypoints);
-
-			return waypoints;
+			return currentNode.TileNode;
 		}
 
 		private PathNode[] GetNeighbours(PathNode node, Map.Tile target)

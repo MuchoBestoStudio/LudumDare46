@@ -26,6 +26,7 @@ namespace MuchoBestoStudio.LudumDare.Core
 		{
 			Prefab = prefab;
 			Parent = parent;
+			Prefab.SetActive(false);
 
 			Grow(amount);
 		}

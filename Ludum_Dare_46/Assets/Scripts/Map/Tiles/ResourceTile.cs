@@ -50,6 +50,10 @@ namespace MuchoBestoStudio.LudumDare.Map
 			{
 				_resource.Interact(character);
 			}
+			if (character == ECharacter.PLAYER)
+			{
+				GameManager.Instance.OnTickUpdate();
+			}
 		}
 	}
 }

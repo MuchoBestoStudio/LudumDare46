@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System;
+using System.Collections;
 using DG.Tweening;
 
 using MuchoBestoStudio.LudumDare.Gameplay;
@@ -25,7 +25,7 @@ public class Resource : MonoBehaviour, IInteractable
     [SerializeField]
     private GameObject _emptyVisual = null;
 
-    public Action<uint> onCombustibleAmountChanged = null;
+    public System.Action<uint> onCombustibleAmountChanged = null;
 
     private void Awake()
     {
@@ -56,7 +56,7 @@ public class Resource : MonoBehaviour, IInteractable
                 if( _emptyVisual != null)
                 {
                     _emptyVisual.SetActive(true);
-                    _basicVisual.transform.DORotate(Vector3.forward * 90f, 1f);
+                    _basicVisual.transform.DORotate(Vector3.forward * 90f + Vector3.up * Random.Range(0f, 360f), 1f);
                     _basicVisual.transform.DOMoveY(-2, 1f).SetDelay(1f).OnComplete(() => _basicVisual.SetActive(false)); ;
                 }
                 else

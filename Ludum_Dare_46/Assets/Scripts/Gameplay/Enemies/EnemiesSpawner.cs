@@ -23,11 +23,11 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 		[SerializeField, Tooltip("")]
 		private Tile		_target = null;
 		[SerializeField, Tooltip("")]
-		private	float		_initialTimer = 5f;
+		private	int _initialTick = 5;
 		[SerializeField, Tooltip("")]
-		private float		_interval = 3f;
+		private int		_interval = 5;
 
-		public float Timer { get; private set; } = 0f;
+		public int Timer { get; private set; } = 0;
 
 		public	GameObjectPool	Pool { get; private set; } = null;
 
@@ -45,15 +45,22 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Enemies
 			Pool = new GameObjectPool(_prefab, _parent, _initialAmount);
 
 			GameManager.Instance.onGameOver += OnGameOver;
+			GameManager.Instance.onTimeUpdated += OnTickUpdate;
 
-			Timer = _initialTimer;
+			Timer = _initialTick;
 		}
 
-		private void Update()
+		private void OnDestroy()
 		{
-			Timer -= Time.deltaTime;
+			GameManager.Instance.onTimeUpdated -= OnTickUpdate;
+			GameManager.Instance.onGameOver -= OnGameOver;
+		}
 
-			if (Timer <= 0f)
+		private void OnTickUpdate()
+		{
+			--Timer;
+
+			if (Timer == 0)
 			{
 				Timer += _interval;
 

@@ -6640,7 +6640,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1075186088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6664,8 +6664,8 @@ MonoBehaviour:
   - {fileID: 1814274121}
   - {fileID: 309344328}
   _target: {fileID: 1097738433}
-  _initialTimer: 3
-  _interval: 8
+  _initialTick: 5
+  _interval: 3
 --- !u!4 &1075186089
 Transform:
   m_ObjectHideFlags: 0

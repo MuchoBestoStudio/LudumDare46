@@ -19,8 +19,8 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Fire
         public Action<ECharacter> onInteraction = null;
 
         // Timer
-        private float _currentCombustibleUpdateTimer = 0.0f;
-        private float _combustibleUpdateTimer = 0.0f;
+        private int _currentCombustibleUpdateTick = 0;
+        private int _combustibleUpdateTick = 0;
 		public uint _Damage = 1;
 
         [SerializeField]
@@ -62,19 +62,18 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Fire
         void Start()
         {
             SetCombustibleAmount((uint)_fireData.BaseCombustibles.LevelValue);
-            _combustibleUpdateTimer = _fireData.CombustibleTimer.LevelValue;
-            _currentCombustibleUpdateTimer = 0.0f;
-            enabled = false;
-            GameManager.Instance.onStartTimer += () => enabled = true;
+            _combustibleUpdateTick = (int)_fireData.CombustibleTimer.LevelValue;
+            _currentCombustibleUpdateTick = _combustibleUpdateTick;
+            GameManager.Instance.onTimeUpdated += OnUseCombustible;
         }
 
-        void Update()
+        void OnUseCombustible()
         {
-            _currentCombustibleUpdateTimer += UnityEngine.Time.deltaTime;
+            --_currentCombustibleUpdateTick;
 
-            if (_currentCombustibleUpdateTimer > _combustibleUpdateTimer)
+            if (_currentCombustibleUpdateTick == 0)
             {
-                _currentCombustibleUpdateTimer = 0.0f;
+                _currentCombustibleUpdateTick = _combustibleUpdateTick;
                 if (_combustibleAmount > 0)
                 {
                     SetCombustibleAmount(_combustibleAmount - 1);
@@ -84,16 +83,17 @@ namespace MuchoBestoStudio.LudumDare.Gameplay.Fire
 
         public void Interact(ECharacter character)
         {
-            _interactEffect.SetActive(true);
-            Invoke("DisableVisualInteractif", .1f);
 			if (character == ECharacter.PLAYER)
 			{
 				Inventory inventory = FindObjectOfType<Inventory>();
 				if (inventory)
 				{
+                    _interactEffect.SetActive(true);
+                    Invoke("DisableVisualInteractif", .1f);
                     uint combustiblesAmount = inventory.CombustibleAmount;
                     inventory.RemoveCombustibles(combustiblesAmount);
                     AddCombustibles(combustiblesAmount);
+                    GameManager.Instance.OnTickUpdate();
                 }
             }
 			else

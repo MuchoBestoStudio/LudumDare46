@@ -41,6 +41,7 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
         FireSource _fireSource = null;
         [SerializeField]
         public uint _criticalFireValue = 0;
+
         public Action onTimeUpdated = null;
         public Action onStartTimer = null;
         public Action onGameOver = null;
@@ -55,7 +56,38 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
         private bool _isGamePaused = false;
         public bool IsGamePaused => _isGamePaused;
 
-        void InvokeGameOver()
+        private void Start()
+        {
+            PlayerPrefs.SetInt("PreviousScene", 1);
+
+            _isGamePaused = false;
+            Time.timeScale = 1.0f;
+            _controls = new Controls();
+            PlayerActionMap = _controls.Player;
+            GameOverActionMap = _controls.GameOver;
+            _currentActionMap = PlayerActionMap;
+
+            if (_fireSource)
+            {
+                _fireSource.onNoCombustibleLeft -= InvokeGameOver;
+                _fireSource.onNoCombustibleLeft += InvokeGameOver;
+                _fireSource.onCombustibleAmountChanged -= HandleFireCombustibleAmountChanged;
+                _fireSource.onCombustibleAmountChanged += HandleFireCombustibleAmountChanged;
+            }
+
+            _controls.GameOver.Retry.performed -= InvokeRestartGame;
+            _controls.GameOver.Retry.performed += InvokeRestartGame;
+
+            _controls.Player.TogglePause.performed -= TogglePause;
+            _controls.Player.TogglePause.performed += TogglePause;
+
+            _currentActionMap.Enable();
+            enabled = false;
+            Invoke("LaunchTimer", 5f);
+        }
+
+		#region Event
+		void InvokeGameOver()
         {
             CurrencySystem currencySystem = FindObjectOfType<CurrencySystem>();
             if (currencySystem)
@@ -98,7 +130,19 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
             }
         }
 
-        void TogglePause(InputAction.CallbackContext _)
+        private void LaunchTimer()
+        {
+            onStartTimer?.Invoke();
+        }
+		#endregion
+
+        public void OnTickUpdate()
+        {
+            ++_gameTime;
+            onTimeUpdated?.Invoke();
+        }
+
+		void TogglePause(InputAction.CallbackContext _)
         {
             _isGamePaused = !_isGamePaused;
             Time.timeScale = _isGamePaused ? 0.0f : 1.0f;
@@ -108,52 +152,6 @@ namespace MuchoBestoStudio.LudumDare.Gameplay
         void HandleFireCombustibleAmountChanged(uint value, int delta)
         {
             onFireCombustibleChanged?.Invoke(value, delta);
-        }
-
-        void Start()
-        {
-            PlayerPrefs.SetInt("PreviousScene", 1);
-
-            _isGamePaused = false;
-            Time.timeScale = 1.0f;
-            _controls = new Controls();
-            PlayerActionMap = _controls.Player;
-            GameOverActionMap = _controls.GameOver;
-            _currentActionMap = PlayerActionMap;
-
-            if (_fireSource)
-            {
-                _fireSource.onNoCombustibleLeft -= InvokeGameOver;
-                _fireSource.onNoCombustibleLeft += InvokeGameOver;
-                _fireSource.onCombustibleAmountChanged -= HandleFireCombustibleAmountChanged;
-                _fireSource.onCombustibleAmountChanged += HandleFireCombustibleAmountChanged;
-            }
-
-            _controls.GameOver.Retry.performed -= InvokeRestartGame;
-            _controls.GameOver.Retry.performed += InvokeRestartGame;
-
-            _controls.Player.TogglePause.performed -= TogglePause;
-            _controls.Player.TogglePause.performed += TogglePause;
-
-            _currentActionMap.Enable();
-            enabled = false;
-            Invoke("LaunchTimer", 5f);
-        }
-
-        void Update()
-        {
-            float timeIncrement = Time.deltaTime * Time.timeScale;
-            if (timeIncrement > 0.0f)
-            {
-                _gameTime += timeIncrement;
-                onTimeUpdated?.Invoke();
-            }
-        }
-
-        private void LaunchTimer()
-        {
-            enabled = true;
-            onStartTimer?.Invoke();
         }
     }
 }
